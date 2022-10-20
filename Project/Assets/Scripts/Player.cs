@@ -15,9 +15,13 @@ public class Player : MonoBehaviour
     }
 
     public int hp;
+    public Transform holdPos;
+    public Transform throwPos;
+    public GameManager.GameTurn ownTurn;
 
-    public Rigidbody2D rigidbody;
-    public Collider2D collider;
+    protected Rigidbody2D rigidbody;
+    protected Collider2D collider;
+    protected Animator animator;
 
     protected Bullet currentBullet;
     protected PlayerStatus currentStatus;
@@ -26,6 +30,8 @@ public class Player : MonoBehaviour
     {
         this.rigidbody = GetComponent<Rigidbody2D>();
         this.collider = GetComponent<Collider2D>();
+        this.animator = GetComponent<Animator>();
+
         this.hp = 100;
         this.currentStatus = PlayerStatus.Idle;
     }
@@ -46,6 +52,21 @@ public class Player : MonoBehaviour
     public virtual void UpdateAttack()
     {
         // TODO
+        this.GetDirection();
+        this.GetPower();
+        this.ThrowBullet();
+    }
+
+    protected virtual void GetDirection()
+    {
+    }
+
+    protected virtual void GetPower()
+    {
+    }
+
+    public virtual void ThrowBullet()
+    {
     }
 
     public virtual void UpdateBehit()
