@@ -1,0 +1,42 @@
+name: Daily Build
+on:
+  schedule:
+    - cron: "0 21 * * *"
+
+jobs:
+  build:
+    runs-on: "windows-latest"
+    steps:
+      - name: Cache Library
+        uses: actions/cache@v2
+        with:
+          path: ./Project/Library
+          key: Library-Project-StandaloneWindows64
+          restore-keys: |
+            Library-Project-
+            Library-
+      
+      - name: Build Unity Player
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        uses: game-ci/unity-builder@v2.1.2  
+        with:
+          # Platform that the build should target.
+          targetPlatform: StandaloneWindows64
+          # Version of unity to use for building the project. Use "auto" to get from your ProjectSettings/ProjectVersion.txt
+          unityVersion: auto
+          # Relative path to the project to be built.
+          projectPath: ./Project
+          # Name of the build.
+          buildName: MiniProject2D
+          # Path where the builds should be stored.
+          buildsPath: ./Build
+          versioning: Semantic
+      
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Build
+          path: ./Build
