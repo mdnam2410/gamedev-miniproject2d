@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public int windForceScaleFactor = 10;
 
     private void Awake()
     {
@@ -35,15 +37,19 @@ public class GameManager : MonoBehaviour
 
     // Environment - wind
     public float windSpeed;
+    public Text windSpeedUI;
     public float timeRandomChangeWindSpeed;
     public float cachedTimeRandomChangeWindSpeed;
-
+    
     private float dt;
 
     private void Start()
     {
         this.InitPlayers();
         this.InitEnvironment();
+        this.windSpeed = 0;
+        if (this.windSpeedUI != null) 
+            this.windSpeedUI.text = "0";
     }
 
     public void InitPlayers()
@@ -99,14 +105,16 @@ public class GameManager : MonoBehaviour
         if (this.cachedTimeRandomChangeWindSpeed < 0)
         {
             this.cachedTimeRandomChangeWindSpeed = this.timeRandomChangeWindSpeed;
-            this.timeRandomChangeWindSpeed = UnityEngine.Random.Range(5f, 10f);
+            this.timeRandomChangeWindSpeed = UnityEngine.Random.Range(10f, 20f);
             this.RandomChangeWindSpeed();
         }
     }
 
     public void RandomChangeWindSpeed()
     {
-        this.windSpeed = UnityEngine.Random.Range(0f, 5f);
+        this.windSpeed = UnityEngine.Random.Range(-10, 11);
+        if (this.windSpeedUI != null)
+        this.windSpeedUI.text = windSpeed.ToString();
     }
 
     public void UpdateGameEnd()
