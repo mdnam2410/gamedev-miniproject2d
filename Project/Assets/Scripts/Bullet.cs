@@ -24,22 +24,25 @@ public class Bullet : MonoBehaviour
     public float mass;
     public float radius;
     public float damage;
+    public Transform firePos;
+    public Vector3 offsetToFirePos;
 
     public Player owner;
-    public Player target;
+    public List<GameObject> ownerColliders;
 
-    public Rigidbody2D rigidbody;
-    public Collider2D collider;
+    public Rigidbody2D rbd;
+    public Collider2D cld;
 
-    protected BulletStatus currentStatus;
-    protected CollisionType currentCollision;
+    public BulletStatus currentStatus;
+    public CollisionType currentCollision;
     
     private void Start()
     {
-        this.rigidbody = GetComponent<Rigidbody2D>();
-        this.collider = GetComponent<Collider2D>();
+        this.rbd = GetComponent<Rigidbody2D>();
+        this.cld = GetComponent<Collider2D>();
         this.currentStatus = BulletStatus.Hidden;
         this.currentCollision = CollisionType.None;
+        this.offsetToFirePos = this.transform.position - this.firePos.transform.position;
         this.InitData();
     }
 
@@ -50,7 +53,8 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        this.UpdatePosition();
+        //this.UpdatePosition();
+        this.UpdateRotation();
         this.UpdateCollision();
     }
 
@@ -71,6 +75,26 @@ public class Bullet : MonoBehaviour
                 this.Fly();
                 break;
         }
+    }
+
+    public virtual void UpdateRotation()
+    {
+        Vector3 target = Quaternion.Euler(0, 0, 90) * new Vector3(this.rbd.velocity.x, this.rbd.velocity.y);
+        Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: target);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360 * Time.deltaTime);
+        /*
+        switch (this.currentStatus)
+        {
+            case BulletStatus.Hidden:
+            case BulletStatus.Hit:
+            case BulletStatus.BeHolding:
+            case BulletStatus.Thrown:
+                break;
+            case BulletStatus.Flying:
+                
+                break;
+        }
+        */
     }
 
     protected virtual void HoldByOwner()
@@ -107,6 +131,7 @@ public class Bullet : MonoBehaviour
         // TODO
         this.ExecuteSpecialEffect();
         this.gameObject.SetActive(false);
+        this.gameObject.transform.position = this.offsetToFirePos + this.firePos.position;
     }
 
     protected virtual void ExecuteSpecialEffect()
@@ -118,11 +143,12 @@ public class Bullet : MonoBehaviour
     {
         // TODO
         this.gameObject.SetActive(false);
+        this.gameObject.transform.position = this.offsetToFirePos + this.firePos.position;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.Equals(this.owner.gameObject)) return;
+        if (this.ownerColliders.Contains(collision.gameObject)) return;
 
         if (collision.gameObject.tag.Equals("Player"))
         {
