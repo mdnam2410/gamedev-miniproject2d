@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public enum PlayerRole
+    {
+        P1,
+        P2,
+        Bot
+    }
     public enum PlayerStatus
     {
         Idle,
@@ -14,24 +20,22 @@ public class Player : MonoBehaviour
         Lose
     }
 
+    public PlayerRole role;
     public int hp;
-    public Transform holdPos;
-    public Transform throwPos;
+    public Transform firePos;
+    public Collider2D heroHead;
+    public Collider2D tank;
+
+    public Animator heroHeadAnimator;
+    public Animator tankAnimator;
+
+
     public GameManager.GameTurn ownTurn;
-
-    protected Rigidbody2D rigidbody;
-    protected Collider2D collider;
-    protected Animator animator;
-
-    protected Bullet currentBullet;
-    protected PlayerStatus currentStatus;
+    public Bullet bullet;
+    public PlayerStatus currentStatus;
 
     private void Start()
     {
-        this.rigidbody = GetComponent<Rigidbody2D>();
-        this.collider = GetComponent<Collider2D>();
-        this.animator = GetComponent<Animator>();
-
         this.hp = 100;
         this.currentStatus = PlayerStatus.Idle;
     }
@@ -54,7 +58,15 @@ public class Player : MonoBehaviour
         // TODO
         this.GetDirection();
         this.GetPower();
-        this.ThrowBullet();
+        if (this.tankAnimator.GetBool("DemoFire"))
+        {
+            if (this.bullet.gameObject.activeInHierarchy) return;
+
+            this.tankAnimator.SetBool("DemoFire", false);
+            this.tankAnimator.SetTrigger("Fire");
+            this.heroHeadAnimator.SetTrigger("Fire");
+            //this.ThrowBullet();
+        }
     }
 
     protected virtual void GetDirection()
@@ -67,6 +79,11 @@ public class Player : MonoBehaviour
 
     public virtual void ThrowBullet()
     {
+        this.bullet.currentCollision = Bullet.CollisionType.None;
+        this.bullet.currentStatus = Bullet.BulletStatus.Flying;
+        this.bullet.gameObject.transform.rotation = Quaternion.identity;
+        this.bullet.gameObject.SetActive(true);
+        this.bullet.rbd.AddForce(new Vector2(300, 400));
     }
 
     public virtual void UpdateBehit()
