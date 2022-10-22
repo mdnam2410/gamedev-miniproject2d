@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   windForceScaleFactor: 10
   timeCount: 0
-  gameType: 0
+  gameType: 1
   currentTurn: 0
   endTurn: 0
   playerList: []
