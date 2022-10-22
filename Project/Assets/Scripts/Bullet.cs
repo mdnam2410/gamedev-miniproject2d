@@ -153,6 +153,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player"))
         {
             this.currentCollision = CollisionType.Target;
+            Debug.Log("Hit Target!");
         }
         else
         {

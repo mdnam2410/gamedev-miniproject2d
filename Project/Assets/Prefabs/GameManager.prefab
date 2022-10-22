@@ -46,7 +46,7 @@ MonoBehaviour:
   windForceScaleFactor: 10
   timeCount: 0
   gameType: 1
-  currentTurn: 0
+  currentTurn: 1
   endTurn: 0
   playerList: []
   windSpeed: 0
