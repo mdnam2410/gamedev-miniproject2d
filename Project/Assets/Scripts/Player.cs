@@ -3,14 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
-{
-    public enum PlayerRole
-    {
-        P1,
-        P2,
-        Bot
-    }
-    public enum PlayerStatus
+{    public enum PlayerStatus
     {
         Idle,
         Aiming,
@@ -20,7 +13,7 @@ public class Player : MonoBehaviour
         Lose
     }
 
-    public PlayerRole role;
+    public GameManager.GameTurn ownRole;
     public int hp;
     public Transform firePos;
     public Collider2D heroHead;
@@ -36,23 +29,41 @@ public class Player : MonoBehaviour
     public bool isMoving;
 
     public Vector2 fireForce;
+    public Player target;
 
     private void Start()
     {
         this.hp = 100;
         this.currentStatus = PlayerStatus.Idle;
         this.isMoving = false;
-        this.fireForce = new Vector2(300, 350);
         this.rigid2D = GetComponent<Rigidbody2D>();
+        this.InitFireForce();
+
+    }
+
+    private void InitFireForce()
+    {
+        this.fireForce = new Vector2(300, 350);
+        if (this.target != null)
+        {
+            float delta = this.target.transform.position.x - this.transform.position.x;
+            if (delta < 0)
+            {
+                this.fireForce = new Vector2(-300, 350);
+            }
+        }
     }
 
     private void Update()
     {
-        this.CheckInOwnTurn();
-        this.UpdateMove();
-        this.UpdateAttack();
-        this.UpdateBehit();
-        this.UpdateWinLoseStatus();
+        if (GameManager.instance != null && this.ownRole == GameManager.instance.currentTurn)
+        {
+            this.CheckInOwnTurn();
+            this.UpdateMove();
+            this.UpdateAttack();
+            this.UpdateBehit();
+            this.UpdateWinLoseStatus();
+        }
     }
 
     public virtual void CheckInOwnTurn()
@@ -62,15 +73,41 @@ public class Player : MonoBehaviour
 
     public virtual void UpdateMove()
     {
+        this.MovingByKey();
+        this.UpdateTankMovingAnimation();
+
+    }
+
+    private void MovingByKey()
+    {
         if (Input.GetKey(KeyCode.D))
         {
-            if (this.rigid2D.velocity.magnitude < 3)
-                this.rigid2D.AddForce(new Vector2(2, 1f));
+            if (this.rigid2D.velocity.magnitude < 1)
+                this.rigid2D.AddForce(new Vector2(1, 0.6f));
+            this.isMoving = true;
+            
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            if (this.rigid2D.velocity.magnitude < 3)
-                this.rigid2D.AddForce(new Vector2(-2, 1f));
+            if (this.rigid2D.velocity.magnitude < 1)
+                this.rigid2D.AddForce(new Vector2(-1, 0.6f));
+            this.isMoving = true;
+        }
+        else
+        {
+            this.isMoving = false;
+        }
+    }
+
+    private void UpdateTankMovingAnimation()
+    {
+        if (this.isMoving)
+        {
+            this.tankAnimator.SetBool("Moving", true);
+        }
+        else
+        {
+            this.tankAnimator.SetBool("Moving", false);
         }
     }
 
@@ -106,7 +143,6 @@ public class Player : MonoBehaviour
 
     protected virtual void ApplyWindForce()
     {
-        // TODO
     }
 
     public virtual void ThrowBullet()
