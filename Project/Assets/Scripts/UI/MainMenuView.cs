@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenuView : BaseView
 {
     public static readonly string Path = "Prefabs/UI/MainMenu";
 
+    [Header("Scenes")]
+    [SerializeField] string scene1;
+
+    [Header("Buttons")]
     [SerializeField] GameObject btnNewGame;
     [SerializeField] GameObject btnVsBot;
     [SerializeField] GameObject btnVsPlayer;
@@ -43,9 +48,9 @@ public class MainMenuView : BaseView
         Application.Quit();
     }
 
-    public void LoadScene()
+    public void OnClick_LoadVsBotMode()
     {
-
+        SceneManager.LoadScene(scene1, LoadSceneMode.Additive);
     }
 
     void ShowHide(List<GameObject> gameObjects, bool value)

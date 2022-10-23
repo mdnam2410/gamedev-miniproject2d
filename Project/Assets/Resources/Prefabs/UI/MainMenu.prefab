@@ -428,7 +428,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5385770707947122961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -458,6 +458,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 956eed397afc35f45a5183309ca52e5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scene1: Map01
   btnNewGame: {fileID: 5385770709698115606}
   btnVsBot: {fileID: 5385770709935878060}
   btnVsPlayer: {fileID: 5385770708041640864}
@@ -1916,7 +1917,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5385770709935878059}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5385770707947122973}
+        m_TargetAssemblyTypeName: MainMenuView, Assembly-CSharp
+        m_MethodName: OnClick_LoadVsBotMode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5385770710013846206
 GameObject:
   m_ObjectHideFlags: 0
