@@ -50,6 +50,8 @@ public class MainMenuView : BaseView
 
     public void OnClick_LoadVsBotMode()
     {
+        InGameView.CurrentScene = scene1;
+        ViewManager.Instance.ChangeMain(InGameView.Path);
         SceneManager.LoadScene(scene1, LoadSceneMode.Additive);
     }
 

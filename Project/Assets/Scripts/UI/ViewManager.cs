@@ -36,8 +36,8 @@ public class ViewManager : MonoBehaviour
     {
         if (main.childCount > 0)
         {
-            var child = top.GetChild(0);
-            Destroy(child);
+            var child = main.GetChild(0);
+            Destroy(child.gameObject);
         }
         var viewPrefab = Resources.Load<GameObject>(path);
         if (viewPrefab != null)
