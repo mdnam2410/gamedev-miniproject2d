@@ -14,6 +14,8 @@ public class AngleRuler : MonoBehaviour
     void Start()
     {
         curAngle = 0;
+        minAngle = -65;
+        maxAngle = 115;
     }
 
     // Update is called once per frame
@@ -21,13 +23,21 @@ public class AngleRuler : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-
+            IncreaseAngle(1);
+        }
+        else if (Input.GetKey(KeyCode.S))
+        {
+            IncreaseAngle(-1);
         }
     }
 
     void IncreaseAngle(int delta)
     {
-        curAngle += delta;
-        needle.transform.eulerAngles = new Vector3(0, 0, )
+        int newAngle = curAngle + delta;
+        if (newAngle <= 115 && newAngle >= minAngle)
+        {
+            curAngle = newAngle;
+            needle.IncreaseAngle(delta);
+        }
     }
 }

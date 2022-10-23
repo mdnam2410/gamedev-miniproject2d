@@ -4,14 +4,8 @@ using UnityEngine;
 
 public class Needle : MonoBehaviour
 {
-    void Start()
+    public void IncreaseAngle(int delta)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z - delta);
     }
 }
