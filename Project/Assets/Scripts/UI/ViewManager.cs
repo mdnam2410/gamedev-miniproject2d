@@ -32,6 +32,25 @@ public class ViewManager : MonoBehaviour
     [SerializeField] Transform main;
     [SerializeField] Transform top;
 
+    public void ChangeMain(string path)
+    {
+        if (main.childCount > 0)
+        {
+            var child = top.GetChild(0);
+            Destroy(child);
+        }
+        var viewPrefab = Resources.Load<GameObject>(path);
+        if (viewPrefab != null)
+        {
+            var view = Instantiate(viewPrefab);
+            view.transform.SetParent(main);
+        }
+        else
+        {
+            Debug.LogError($"View prefab {path} is null");
+        }
+    }
+
     public void PushTop(string path)
     {
         var viewPrefab = Resources.Load<GameObject>(path);
