@@ -55,7 +55,14 @@ public class Player : MonoBehaviour
         this.currentStatus = PlayerStatus.Idle;
         this.movingState = MovingState.None;
         this.rigid2D = GetComponent<Rigidbody2D>();
+        if (this.bullet != null)
+        {
+            this.bullet.OnDestroyed.AddListener(this.ResetForNewTurn);
+        }
 
+        GameManager.instance.OnTurnChanged.AddListener(this.OnTurnChange);
+
+        ForceBar.instance.OnPowerCompleted.AddListener(this.Fire);
     }
 
     private void Update()
@@ -66,11 +73,6 @@ public class Player : MonoBehaviour
         if (GameManager.instance.currentValidAction == GameManager.ValidAction.All)
         {
             this.UpdateMove();
-            this.UpdateAttack();
-        }
-        else if (GameManager.instance.currentValidAction == GameManager.ValidAction.ShootOnly)
-        {
-            this.UpdateAttack();
         }
     }
 
@@ -145,21 +147,11 @@ public class Player : MonoBehaviour
         return false;
     }
 
-    public virtual void UpdateAttack()
-    {
-        if (this.bullet.gameObject.activeInHierarchy) return;
-
-        this.Aim();
-        this.GetPower();
-        this.Fire();
-    }
-
     private void Fire()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (this.ownRole == GameManager.instance.currentTurn)
         {
             this.CalculateForceVector();
-            this.ApplyWindForce();
             this.SetFireAnim();
             this.fired = true;
         }
@@ -172,29 +164,17 @@ public class Player : MonoBehaviour
         this.heroHeadAnimator.SetTrigger("Fire");
     }
 
-    protected virtual void Aim()
-    {
-        this.angle = GameManager.instance.angleRuler.curAngle;
-    }
-
-    protected virtual void GetPower()
-    {
-        // TODO
-        this.force = 500;
-    }
-
     protected virtual void CalculateForceVector()
     {
+        this.angle = GameManager.instance.angleRuler.curAngle;
+
         if (this.faceDirection == FaceDirection.RightLeft)
         {
             this.angle = 180f - this.angle;
         }
 
+        this.force = ForceBar.instance.getForce();
         this.forceVector = new Vector2(Mathf.Cos(this.angle * Mathf.PI / 180f), Mathf.Sin(this.angle * Mathf.PI / 180f)) * this.force;
-    }
-
-    protected virtual void ApplyWindForce()
-    {
     }
 
     public virtual void ThrowBullet()
@@ -220,6 +200,20 @@ public class Player : MonoBehaviour
         else
         {
             Debug.Log(this.gameObject.name + ": " + this.hp.ToString());
+        }
+    }
+
+    public virtual void ResetForNewTurn()
+    {
+        //this.fired = false;
+        Debug.Log("Bullet destroy event invoked");
+    }
+
+    public virtual void OnTurnChange()
+    {
+        if (this.ownRole == GameManager.instance.currentTurn)
+        {
+            this.fired = false;
         }
     }
 
