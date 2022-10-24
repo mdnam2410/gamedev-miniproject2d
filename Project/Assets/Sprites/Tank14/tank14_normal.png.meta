@@ -187,7 +187,7 @@ TextureImporter:
       name: tank14_normal_1
       rect:
         serializedVersion: 2
-        x: 145
+        x: 138
         y: 0
         width: 154
         height: 120
@@ -229,7 +229,7 @@ TextureImporter:
       name: tank14_normal_3
       rect:
         serializedVersion: 2
-        x: 461
+        x: 468
         y: 0
         width: 154
         height: 120
@@ -250,7 +250,7 @@ TextureImporter:
       name: tank14_normal_4
       rect:
         serializedVersion: 2
-        x: 631
+        x: 636
         y: 5
         width: 154
         height: 115
@@ -271,7 +271,7 @@ TextureImporter:
       name: tank14_normal_6
       rect:
         serializedVersion: 2
-        x: 799
+        x: 804
         y: 0
         width: 154
         height: 120
@@ -292,7 +292,7 @@ TextureImporter:
       name: tank14_normal_8
       rect:
         serializedVersion: 2
-        x: 969
+        x: 971
         y: 0
         width: 154
         height: 120
@@ -313,7 +313,7 @@ TextureImporter:
       name: tank14_normal_9
       rect:
         serializedVersion: 2
-        x: 1129
+        x: 1135
         y: 0
         width: 154
         height: 120
@@ -334,7 +334,7 @@ TextureImporter:
       name: tank14_normal_11
       rect:
         serializedVersion: 2
-        x: 1295
+        x: 1301
         y: 0
         width: 155
         height: 120
@@ -355,7 +355,7 @@ TextureImporter:
       name: tank14_normal_13
       rect:
         serializedVersion: 2
-        x: 1460
+        x: 1469
         y: 0
         width: 154
         height: 120
@@ -376,7 +376,7 @@ TextureImporter:
       name: tank14_normal_15
       rect:
         serializedVersion: 2
-        x: 1625
+        x: 1633
         y: 0
         width: 154
         height: 120
@@ -397,7 +397,7 @@ TextureImporter:
       name: tank14_normal_17
       rect:
         serializedVersion: 2
-        x: 1794
+        x: 1800
         y: 0
         width: 154
         height: 120
@@ -418,7 +418,7 @@ TextureImporter:
       name: tank14_normal_19
       rect:
         serializedVersion: 2
-        x: 1957
+        x: 1964
         y: 0
         width: 154
         height: 120
@@ -439,7 +439,7 @@ TextureImporter:
       name: tank14_normal_21
       rect:
         serializedVersion: 2
-        x: 2123
+        x: 2129
         y: 0
         width: 154
         height: 120
@@ -460,7 +460,7 @@ TextureImporter:
       name: tank14_normal_23
       rect:
         serializedVersion: 2
-        x: 2288
+        x: 2296
         y: 1
         width: 154
         height: 118
@@ -481,8 +481,8 @@ TextureImporter:
       name: tank14_normal_25
       rect:
         serializedVersion: 2
-        x: 2454
-        y: 1
+        x: 2463
+        y: 2
         width: 154
         height: 118
       alignment: 0
@@ -502,7 +502,7 @@ TextureImporter:
       name: tank14_normal_27
       rect:
         serializedVersion: 2
-        x: 2623
+        x: 2629
         y: 0
         width: 154
         height: 120
@@ -523,7 +523,7 @@ TextureImporter:
       name: tank14_normal_29
       rect:
         serializedVersion: 2
-        x: 2787
+        x: 2793
         y: 0
         width: 154
         height: 120
@@ -544,7 +544,7 @@ TextureImporter:
       name: tank14_normal_31
       rect:
         serializedVersion: 2
-        x: 2965
+        x: 2961
         y: 0
         width: 154
         height: 120
@@ -565,7 +565,7 @@ TextureImporter:
       name: tank14_normal_32
       rect:
         serializedVersion: 2
-        x: 3131
+        x: 3130
         y: 0
         width: 145
         height: 120
