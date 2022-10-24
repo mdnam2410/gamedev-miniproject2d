@@ -1,0 +1,762 @@
+fileFormatVersion: 2
+guid: a5c9011ddb3e80f4f9762f870917e1d8
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6160465361008014090
+    second: tank14_move_0
+  - first:
+      213: 611433339697853175
+    second: tank14_move_1
+  - first:
+      213: 142111590912542046
+    second: tank14_move_2
+  - first:
+      213: -1592066278408976580
+    second: tank14_move_3
+  - first:
+      213: 4608703531244585976
+    second: tank14_move_4
+  - first:
+      213: -2802056130833008073
+    second: tank14_move_5
+  - first:
+      213: -3285957606629424787
+    second: tank14_move_6
+  - first:
+      213: 8962650996947313438
+    second: tank14_move_7
+  - first:
+      213: -1065582848925383959
+    second: tank14_move_8
+  - first:
+      213: 2496414232192138855
+    second: tank14_move_9
+  - first:
+      213: -783184689756488875
+    second: tank14_move_10
+  - first:
+      213: -8648014353047166266
+    second: tank14_move_11
+  - first:
+      213: -4179625159472360062
+    second: tank14_move_12
+  - first:
+      213: 1511195017642664599
+    second: tank14_move_13
+  - first:
+      213: 3828989443940088169
+    second: tank14_move_14
+  - first:
+      213: -5818329376815553891
+    second: tank14_move_15
+  - first:
+      213: 8122575281281975436
+    second: tank14_move_16
+  - first:
+      213: -5648731976139456373
+    second: tank14_move_17
+  - first:
+      213: 2097626918454522819
+    second: tank14_move_18
+  - first:
+      213: 7312864390441316663
+    second: tank14_move_19
+  - first:
+      213: 8393594958961031232
+    second: tank14_move_20
+  - first:
+      213: -5436404135371749625
+    second: tank14_move_21
+  - first:
+      213: -2686560895554095789
+    second: tank14_move_22
+  - first:
+      213: -3722065018204358220
+    second: tank14_move_23
+  - first:
+      213: 2037272391075313500
+    second: tank14_move_24
+  - first:
+      213: -2597852505872994151
+    second: tank14_move_25
+  - first:
+      213: -8964936717088444634
+    second: tank14_move_26
+  - first:
+      213: 3299125941104290802
+    second: tank14_move_27
+  - first:
+      213: -6869086077409339101
+    second: tank14_move_28
+  - first:
+      213: 2154292082476476540
+    second: tank14_move_29
+  - first:
+      213: 3433455478263580497
+    second: tank14_move_30
+  - first:
+      213: -7593675541909876647
+    second: tank14_move_31
+  - first:
+      213: -8096392302530996747
+    second: tank14_move_32
+  - first:
+      213: 4120790512827012352
+    second: tank14_move_33
+  - first:
+      213: 3674099487042210265
+    second: tank14_move_34
+  - first:
+      213: 223244161944779090
+    second: tank14_move_35
+  - first:
+      213: -6101521798950113827
+    second: tank14_move_36
+  - first:
+      213: -9082826664931339474
+    second: tank14_move_37
+  - first:
+      213: -991136264987209926
+    second: tank14_move_38
+  - first:
+      213: 1269640781946644600
+    second: tank14_move_39
+  - first:
+      213: -4983200604922170251
+    second: tank14_move_40
+  - first:
+      213: 7543384696700522763
+    second: tank14_move_41
+  - first:
+      213: -1918043236096639456
+    second: tank14_move_42
+  - first:
+      213: 7049759260653900263
+    second: tank14_move_43
+  - first:
+      213: 2856539460024443492
+    second: tank14_move_44
+  - first:
+      213: 7785304465463573486
+    second: tank14_move_45
+  - first:
+      213: 8833262764882352418
+    second: tank14_move_46
+  - first:
+      213: 3167118981248000379
+    second: tank14_move_47
+  - first:
+      213: -5999173726245627047
+    second: tank14_move_48
+  - first:
+      213: -1040561321163598604
+    second: tank14_move_49
+  - first:
+      213: 9036045214609783764
+    second: tank14_move_50
+  - first:
+      213: -2081500539785048535
+    second: tank14_move_51
+  - first:
+      213: 7507350877762886282
+    second: tank14_move_52
+  - first:
+      213: 9149824957789714258
+    second: tank14_move_53
+  - first:
+      213: -3010115300066172340
+    second: tank14_move_54
+  - first:
+      213: 3540563907048446431
+    second: tank14_move_55
+  - first:
+      213: 8465120296700276070
+    second: tank14_move_56
+  - first:
+      213: 1945097073298835652
+    second: tank14_move_57
+  - first:
+      213: -4227683772993916297
+    second: tank14_move_58
+  - first:
+      213: -4138893254193471553
+    second: tank14_move_59
+  - first:
+      213: 7114494318565241990
+    second: tank14_move_60
+  - first:
+      213: 296258774871979013
+    second: tank14_move_61
+  - first:
+      213: 6817107026775416549
+    second: tank14_move_62
+  - first:
+      213: 3012399374810649377
+    second: tank14_move_63
+  - first:
+      213: -6170410236196001796
+    second: tank14_move_64
+  - first:
+      213: 19707359556322384
+    second: tank14_move_65
+  - first:
+      213: -113987374821202885
+    second: tank14_move_66
+  - first:
+      213: 8424885804365640165
+    second: tank14_move_67
+  - first:
+      213: -2091313011635361623
+    second: tank14_move_68
+  - first:
+      213: -1609023438511766644
+    second: tank14_move_69
+  - first:
+      213: 7137332581788795277
+    second: tank14_move_70
+  - first:
+      213: 4699529036927751612
+    second: tank14_move_71
+  - first:
+      213: -2029351368654970241
+    second: tank14_move_72
+  - first:
+      213: 1838483407404204425
+    second: tank14_move_73
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tank14_move_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 4
+        width: 65
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fcc40ac461a18aa0800000000000000
+      internalID: -6160465361008014090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank14_move_2
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 4
+        width: 65
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e55cece2db1e8f100800000000000000
+      internalID: 142111590912542046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank14_move_4
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 4
+        width: 65
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f30ce6917765ff30800000000000000
+      internalID: 4608703531244585976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank14_move_6
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 4
+        width: 64
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d614cdd67fee562d0800000000000000
+      internalID: -3285957606629424787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank14_move_8
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 4
+        width: 63
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e2cd0b6b0a4631f0800000000000000
+      internalID: -1065582848925383959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank14_move_9
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 4
+        width: 61
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76eba02848b05a220800000000000000
+      internalID: 2496414232192138855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank14_move_10
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 4
+        width: 62
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55b3a859ca19125f0800000000000000
+      internalID: -783184689756488875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank14_move_13
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 5
+        width: 62
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7926ee4acd7d8f410800000000000000
+      internalID: 1511195017642664599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank14_move_16
+      rect:
+        serializedVersion: 2
+        x: 763
+        y: 5
+        width: 63
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c844e2ede2f29b070800000000000000
+      internalID: 8122575281281975436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank14_move_19
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 5
+        width: 64
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 731bbdafa638c7560800000000000000
+      internalID: 7312864390441316663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank14_move_22
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 5
+        width: 65
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 355fa09791b67bad0800000000000000
+      internalID: -2686560895554095789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank14_move_25
+      rect:
+        serializedVersion: 2
+        x: 1038
+        y: 4
+        width: 64
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 990f490f8e292fbd0800000000000000
+      internalID: -2597852505872994151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank14_move_28
+      rect:
+        serializedVersion: 2
+        x: 1130
+        y: 4
+        width: 63
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3295f684b9a1ca0a0800000000000000
+      internalID: -6869086077409339101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank14_move_31
+      rect:
+        serializedVersion: 2
+        x: 1222
+        y: 4
+        width: 63
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 950d3e0e358dd9690800000000000000
+      internalID: -7593675541909876647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank14_move_34
+      rect:
+        serializedVersion: 2
+        x: 1314
+        y: 4
+        width: 63
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d9889a64060df230800000000000000
+      internalID: 3674099487042210265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank14_move_37
+      rect:
+        serializedVersion: 2
+        x: 1406
+        y: 4
+        width: 63
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e235258654153f180800000000000000
+      internalID: -9082826664931339474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank14_move_40
+      rect:
+        serializedVersion: 2
+        x: 1498
+        y: 4
+        width: 64
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5743a13b37d18dab0800000000000000
+      internalID: -4983200604922170251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank14_move_42
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 3
+        width: 65
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02e7e98c6ddb165e0800000000000000
+      internalID: -1918043236096639456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank14_move_43
+      rect:
+        serializedVersion: 2
+        x: 1682
+        y: 3
+        width: 65
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e1db4342b6c5d160800000000000000
+      internalID: 7049759260653900263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank14_move_44
+      rect:
+        serializedVersion: 2
+        x: 1774
+        y: 4
+        width: 65
+        height: 50
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 462a4a9118774a720800000000000000
+      internalID: 2856539460024443492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
