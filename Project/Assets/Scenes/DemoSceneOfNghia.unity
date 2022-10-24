@@ -239,6 +239,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2999312012218212241, guid: d2491daddee99614bac1da8369931c26, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1744863615}
     - target: {fileID: 2999312012218212242, guid: d2491daddee99614bac1da8369931c26, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -573,9 +577,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8083653060741108587, guid: 78c4225b818fd974e9170226e5a28314, type: 3}
-      propertyPath: ownRole
-      value: 2
-      objectReference: {fileID: 0}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1172962840}
     - target: {fileID: 8083653060741108587, guid: 78c4225b818fd974e9170226e5a28314, type: 3}
       propertyPath: faceDirection
       value: 1
@@ -619,6 +623,17 @@ RectTransform:
   m_AnchoredPosition: {x: -352, y: -372}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &1172962840 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2999312012218212241, guid: d2491daddee99614bac1da8369931c26, type: 3}
+  m_PrefabInstance: {fileID: 2190944}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 828422527565d99429b3d042964663fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1337298200
 GameObject:
   m_ObjectHideFlags: 0
@@ -998,6 +1013,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1744863615 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8083653060741108587, guid: 78c4225b818fd974e9170226e5a28314, type: 3}
+  m_PrefabInstance: {fileID: 509339446}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 828422527565d99429b3d042964663fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1832487900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,6 +1132,8 @@ MonoBehaviour:
   cld: {fileID: 0}
   currentStatus: 0
   currentCollision: 0
+  firingSound: {fileID: 0}
+  explodingSound: {fileID: 0}
 --- !u!50 &1832487904
 Rigidbody2D:
   serializedVersion: 4

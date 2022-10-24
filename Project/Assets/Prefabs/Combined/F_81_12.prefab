@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 828422527565d99429b3d042964663fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownRole: 1
+  ownRole: 2
   hp: 100
   firePos: {fileID: 8083653060110048268}
   heroHead: {fileID: 8083653061028599703}
@@ -61,8 +61,11 @@ MonoBehaviour:
   movingSpeed: 10
   movingState: 0
   faceDirection: 0
-  fireForce: {x: 300, y: 350}
+  forceVector: {x: 0, y: 0}
   target: {fileID: 0}
+  angle: 135
+  force: 200
+  fired: 0
 --- !u!50 &8083653060741108586
 Rigidbody2D:
   serializedVersion: 4
