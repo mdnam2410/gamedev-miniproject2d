@@ -637,3 +637,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 7273760547194553028}
+  text: {fileID: 7273760545932469925}
