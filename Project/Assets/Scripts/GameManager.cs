@@ -7,6 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public int windForceScaleFactor = 10;
+    public float validTimeForMoving = 30;
+    public float validTimeForShooting = 0;
+    public float remainingTimeOfTurn;
 
     private void Awake()
     {
@@ -23,24 +26,34 @@ public class GameManager : MonoBehaviour
         None,
         P1,
         P2,
-        Player,
         Bot
+    }
+
+    public enum ValidAction
+    {
+        None,
+        All,
+        ShootOnly
     }
 
     public int timeCount;
     public GameType gameType;
     public GameTurn currentTurn;
+    public ValidAction currentValidAction;
+
     public bool endTurn;
-    
+    public bool timeout;
+
     // Players
-    public List<Player> playerList;
+    public Player P1;
+    public Player P2;
 
     // Environment - wind
     public float windSpeed;
     public Text windSpeedUI;
     public float timeRandomChangeWindSpeed;
     public float cachedTimeRandomChangeWindSpeed;
-    
+
     private float dt;
 
     private void Start()
@@ -49,7 +62,7 @@ public class GameManager : MonoBehaviour
         this.InitEnvironment();
         this.currentTurn = GameTurn.P1;
         this.windSpeed = 0;
-        if (this.windSpeedUI != null) 
+        if (this.windSpeedUI != null)
             this.windSpeedUI.text = "0";
     }
 
@@ -72,35 +85,69 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         this.dt = Time.deltaTime;
+        this.remainingTimeOfTurn -= this.dt;
 
         this.UpdateTurn();
-        this.UpdateWindForce();
-        this.UpdateGameEnd();
+        this.UpdateValidAction();
+        this.UpdateEnvironment();
     }
 
     public void UpdateTurn()
     {
-        if (this.endTurn)
+        if (this.endTurn || this.timeout)
         {
-            ChangeCurrentTurn();
+            this.ChangeCurrentTurn();
+            this.ResetTurnValues();
         }
+
     }
 
-    public GameTurn ChangeCurrentTurn()
+    public void ResetTurnValues()
     {
-        if (this.gameType == GameType.vsBot)
+        // TODO
+        // reset endturn
+        // reset timeout
+        this.timeout = false;
+
+        // reset remaining time
+        this.remainingTimeOfTurn = 45f;
+
+        // reset valid action
+        this.currentValidAction = ValidAction.All;
+    }
+
+    public void UpdateValidAction()
+    {
+        if (this.remainingTimeOfTurn >= this.validTimeForMoving)
         {
-            if (this.currentTurn == GameTurn.Player) return GameTurn.Bot;
-            else return GameTurn.Player;
+            this.currentValidAction = ValidAction.All;
+        }
+        else if (this.remainingTimeOfTurn >= this.validTimeForShooting)
+        {
+            this.currentValidAction = ValidAction.ShootOnly;
         }
         else
         {
-            if (this.currentTurn == GameTurn.P1) return GameTurn.P2;
-            else return GameTurn.P1;
+            // not reach
+            this.currentValidAction = ValidAction.None;
         }
     }
 
-    public void UpdateWindForce()
+    public void ChangeCurrentTurn()
+    {
+        if (this.gameType == GameType.vsBot)
+        {
+            if (this.currentTurn == GameTurn.P1) this.currentTurn = GameTurn.Bot;
+            else this.currentTurn = GameTurn.P1;
+        }
+        else
+        {
+            if (this.currentTurn == GameTurn.P1) this.currentTurn = GameTurn.P2;
+            else this.currentTurn = GameTurn.P1;
+        }
+    }
+
+    public void UpdateEnvironment()
     {
         this.cachedTimeRandomChangeWindSpeed -= this.dt;
         if (this.cachedTimeRandomChangeWindSpeed < 0)
@@ -115,23 +162,33 @@ public class GameManager : MonoBehaviour
     {
         this.windSpeed = UnityEngine.Random.Range(-10, 11);
         if (this.windSpeedUI != null)
-        this.windSpeedUI.text = windSpeed.ToString();
-    }
-
-    public void UpdateGameEnd()
-    {
-        foreach (Player player in this.playerList)
-        {
-            if (player.hp <= 0)
-            {
-                Time.timeScale = 0f;
-                this.DisplayEndGameInfo();
-            }
-        }
+            this.windSpeedUI.text = windSpeed.ToString();
     }
 
     private void DisplayEndGameInfo()
     {
         // TODO
+    }
+
+    public void EndTurn()
+    {
+        // called from Bullet
+        // called by timeout
+    }
+
+    public void PlayerDefeated(Player player)
+    {
+        if (player == P1)
+        {
+            if (this.gameType == GameType.vsPlayer) Debug.Log("P2 Win");
+            else Debug.Log("YOU LOSE");
+        }
+        else
+        {
+            if (this.gameType == GameType.vsPlayer) Debug.Log("P1 Win");
+            else Debug.Log("YOU WIN");
+        }
+
+        Time.timeScale = 0;
     }
 }

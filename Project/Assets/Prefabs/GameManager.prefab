@@ -44,11 +44,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   windForceScaleFactor: 10
+  validTimeForMoving: 30
+  validTimeForShooting: 0
+  remainingTimeOfTurn: 500
   timeCount: 0
   gameType: 1
   currentTurn: 1
+  currentValidAction: 0
   endTurn: 0
-  playerList: []
+  timeout: 0
+  P1: {fileID: 0}
+  P2: {fileID: 0}
   windSpeed: 0
   windSpeedUI: {fileID: 0}
   timeRandomChangeWindSpeed: 7
