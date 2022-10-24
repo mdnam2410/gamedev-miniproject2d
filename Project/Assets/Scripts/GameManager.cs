@@ -48,6 +48,10 @@ public class GameManager : MonoBehaviour
     public Player P1;
     public Player P2;
 
+    // Healthbars
+    public HealthBar healthBar1;
+    public HealthBar healthBar2;
+
     // Environment - wind
     public float windSpeed;
     public Text windSpeedUI;
@@ -90,6 +94,7 @@ public class GameManager : MonoBehaviour
         this.UpdateTurn();
         this.UpdateValidAction();
         this.UpdateEnvironment();
+        this.UpdateHpUI();
     }
 
     public void UpdateTurn()
@@ -163,6 +168,12 @@ public class GameManager : MonoBehaviour
         this.windSpeed = UnityEngine.Random.Range(-10, 11);
         if (this.windSpeedUI != null)
             this.windSpeedUI.text = windSpeed.ToString();
+    }
+
+    public void UpdateHpUI()
+    {
+        healthBar1.setHealth(P1.hp);
+        healthBar2.setHealth(P2.hp);
     }
 
     private void DisplayEndGameInfo()

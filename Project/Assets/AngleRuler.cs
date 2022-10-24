@@ -7,15 +7,17 @@ using static Player;
 public class AngleRuler : MonoBehaviour
 {
     public Needle needle;
-    public int maxAngle;
-    public int minAngle;
-    public int curAngle;
+    public float maxAngle;
+    public float minAngle;
+    public float curAngle;
+    public float rotateSpeed;
 
     void Start()
     {
         curAngle = 0;
         minAngle = -65;
         maxAngle = 115;
+        rotateSpeed = 45;
     }
 
     // Update is called once per frame
@@ -23,18 +25,18 @@ public class AngleRuler : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            IncreaseAngle(1);
+            IncreaseAngle(Time.deltaTime * this.rotateSpeed);
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            IncreaseAngle(-1);
+            IncreaseAngle(-Time.deltaTime * this.rotateSpeed);
         }
     }
 
-    void IncreaseAngle(int delta)
+    void IncreaseAngle(float delta)
     {
-        int newAngle = curAngle + delta;
-        if (newAngle <= 115 && newAngle >= minAngle)
+        float newAngle = curAngle + delta;
+        if (newAngle <= maxAngle && newAngle >= minAngle)
         {
             curAngle = newAngle;
             needle.IncreaseAngle(delta);
