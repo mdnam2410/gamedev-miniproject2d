@@ -11,7 +11,7 @@ public class TestHealth : MonoBehaviour
     {
         if (this.health != 0)
         {
-            this.healthBar.setHealth(this.health);
+            this.healthBar.SetHealth(this.health);
         }
     }
 

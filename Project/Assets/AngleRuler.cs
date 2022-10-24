@@ -36,10 +36,12 @@ public class AngleRuler : MonoBehaviour
     void IncreaseAngle(float delta)
     {
         float newAngle = curAngle + delta;
+        float x = transform.localScale.x;
+
         if (newAngle <= maxAngle && newAngle >= minAngle)
         {
             curAngle = newAngle;
-            needle.IncreaseAngle(delta);
+            needle.IncreaseAngle(delta * x / Mathf.Abs(x));
         }
     }
 }

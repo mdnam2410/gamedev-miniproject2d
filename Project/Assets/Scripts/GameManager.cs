@@ -48,9 +48,10 @@ public class GameManager : MonoBehaviour
     public Player P1;
     public Player P2;
 
-    // Healthbars
+    // UIs
     public HealthBar healthBar1;
     public HealthBar healthBar2;
+    public AngleRuler angleRuler;
 
     // Environment - wind
     public float windSpeed;
@@ -91,6 +92,7 @@ public class GameManager : MonoBehaviour
         this.dt = Time.deltaTime;
         this.remainingTimeOfTurn -= this.dt;
 
+        this.UpdateTurnUI();
         this.UpdateTurn();
         this.UpdateValidAction();
         this.UpdateEnvironment();
@@ -103,6 +105,7 @@ public class GameManager : MonoBehaviour
         {
             this.ChangeCurrentTurn();
             this.ResetTurnValues();
+            //this.UpdateTurnUI();
         }
 
     }
@@ -152,6 +155,28 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UpdateTurnUI()
+    {
+        if (this.currentTurn == GameTurn.P1)
+        {
+            this.SetPositionForAngleRuler(P1);
+        }
+        else
+        {
+            this.SetPositionForAngleRuler(P2);
+        }
+        
+    }
+
+    public void SetPositionForAngleRuler(Player player)
+    {
+        this.angleRuler.transform.position = player.firePos.position;
+
+        Vector3 scale = this.angleRuler.transform.localScale;
+        float xScale = player.transform.localScale.x;
+        this.angleRuler.transform.localScale = new Vector3(-Mathf.Abs(scale.x) * xScale / Mathf.Abs(xScale), scale.y, scale.z);
+    }
+
     public void UpdateEnvironment()
     {
         this.cachedTimeRandomChangeWindSpeed -= this.dt;
@@ -172,8 +197,8 @@ public class GameManager : MonoBehaviour
 
     public void UpdateHpUI()
     {
-        healthBar1.setHealth(P1.hp);
-        healthBar2.setHealth(P2.hp);
+        healthBar1.SetHealth(P1.hp);
+        healthBar2.SetHealth(P2.hp);
     }
 
     private void DisplayEndGameInfo()

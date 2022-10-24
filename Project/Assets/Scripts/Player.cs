@@ -174,7 +174,7 @@ public class Player : MonoBehaviour
 
     protected virtual void Aim()
     {
-        // TODO
+        this.angle = GameManager.instance.angleRuler.curAngle;
     }
 
     protected virtual void GetPower()
@@ -183,7 +183,15 @@ public class Player : MonoBehaviour
         this.force = 500;
     }
 
-    protected virtual void CalculateForceVector() => this.forceVector = new Vector2(Mathf.Cos(this.angle), Mathf.Sin(this.angle)) * this.force;
+    protected virtual void CalculateForceVector()
+    {
+        if (this.faceDirection == FaceDirection.RightLeft)
+        {
+            this.angle = 180f - this.angle;
+        }
+
+        this.forceVector = new Vector2(Mathf.Cos(this.angle * Mathf.PI / 180f), Mathf.Sin(this.angle * Mathf.PI / 180f)) * this.force;
+    }
 
     protected virtual void ApplyWindForce()
     {
@@ -202,6 +210,7 @@ public class Player : MonoBehaviour
     public virtual void Behit(int damage)
     {
         this.hp -= damage;
+        this.heroHeadAnimator.SetTrigger("Behit");
         if (this.hp <= 0)
         {
             this.hp = 0;
