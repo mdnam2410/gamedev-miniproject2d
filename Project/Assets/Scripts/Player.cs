@@ -175,7 +175,6 @@ public class Player : MonoBehaviour
     protected virtual void Aim()
     {
         // TODO
-        this.angle = 45f;
     }
 
     protected virtual void GetPower()
