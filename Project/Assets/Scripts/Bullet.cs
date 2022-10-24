@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Bullet : MonoBehaviour
 {
@@ -38,6 +39,7 @@ public class Bullet : MonoBehaviour
 
     public AudioSource firingSound;
     public AudioSource explodingSound;
+    public UnityEvent OnDestroyed;
 
     // explosion video -> anim "Explode"
 
@@ -129,6 +131,8 @@ public class Bullet : MonoBehaviour
         {
             this.DestroyByEnvironment();
         }
+
+        this.OnDestroyed.Invoke();
     }
 
     protected virtual void HitTarget()

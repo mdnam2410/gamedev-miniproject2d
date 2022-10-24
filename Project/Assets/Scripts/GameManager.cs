@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
     public float timeRandomChangeWindSpeed;
     public float cachedTimeRandomChangeWindSpeed;
 
+    public UnityEvent OnTurnChanged;
+
     private float dt;
 
     private void Start()
@@ -69,6 +71,9 @@ public class GameManager : MonoBehaviour
         this.windSpeed = 0;
         if (this.windSpeedUI != null)
             this.windSpeedUI.text = "0";
+
+        this.OnTurnChanged.AddListener(this.ResetTurnValues);
+
     }
 
     public void InitPlayers()
@@ -104,8 +109,7 @@ public class GameManager : MonoBehaviour
         if (this.endTurn || this.timeout)
         {
             this.ChangeCurrentTurn();
-            this.ResetTurnValues();
-            //this.UpdateTurnUI();
+            this.OnTurnChanged.Invoke();
         }
 
     }
