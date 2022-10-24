@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
-{    public enum PlayerStatus
+{
+    public enum PlayerStatus
     {
         Idle,
-        Aiming,
-        Throw,
-        BeHit,
+        Moving,
+        Attacking,
+        Behit,
         Win,
         Lose
     }
@@ -42,55 +43,42 @@ public class Player : MonoBehaviour
     public MovingState movingState;
     public FaceDirection faceDirection;
 
-    public Vector2 fireForce;
+    public Vector2 forceVector;
     public Player target;
+    public float angle = 45f;
+    public float force = 200;
+    public bool fired = false;
 
     private void Start()
     {
         this.hp = 100;
         this.currentStatus = PlayerStatus.Idle;
         this.movingState = MovingState.None;
-        this.faceDirection = FaceDirection.LeftRight;
         this.rigid2D = GetComponent<Rigidbody2D>();
-        this.InitFireForce();
 
-    }
-
-    private void InitFireForce()
-    {
-        this.fireForce = new Vector2(300, 350);
-        if (this.target != null)
-        {
-            float delta = this.target.transform.position.x - this.transform.position.x;
-            if (delta < 0)
-            {
-                this.fireForce = new Vector2(-300, 350);
-            }
-        }
     }
 
     private void Update()
     {
-        if (GameManager.instance != null && this.ownRole == GameManager.instance.currentTurn)
+        if (GameManager.instance == null) return;
+        if (this.ownRole != GameManager.instance.currentTurn) return;
+
+        if (GameManager.instance.currentValidAction == GameManager.ValidAction.All)
         {
-            this.CheckInOwnTurn();
             this.UpdateMove();
             this.UpdateAttack();
-            this.UpdateBehit();
-            this.UpdateWinLoseStatus();
         }
-    }
-
-    public virtual void CheckInOwnTurn()
-    {
-        // TODO
+        else if (GameManager.instance.currentValidAction == GameManager.ValidAction.ShootOnly)
+        {
+            this.UpdateAttack();
+        }
     }
 
     public virtual void UpdateMove()
     {
         this.UpdateFaceDirection();
         this.MovingByKey();
-        this.UpdateTankMovingAnimation();
+        this.UpdateTankAnim();
 
     }
 
@@ -115,7 +103,7 @@ public class Player : MonoBehaviour
                 this.rigid2D.AddForce(new Vector2(1, 0.6f));
 
             this.movingState = MovingState.ToRight;
-            
+
         }
         else if (Input.GetKey(KeyCode.A))
         {
@@ -130,7 +118,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void UpdateTankMovingAnimation()
+    private void UpdateTankAnim()
     {
         if (this.movingState != MovingState.None)
         {
@@ -163,29 +151,40 @@ public class Player : MonoBehaviour
 
         this.Aim();
         this.GetPower();
-        this.FireBullet();
+        this.Fire();
     }
 
-    private void FireBullet()
+    private void Fire()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            this.CalculateForceVector();
             this.ApplyWindForce();
-            this.tankAnimator.SetBool("DemoFire", false);
-            this.tankAnimator.SetTrigger("Fire");
-            this.heroHeadAnimator.SetTrigger("Fire");
+            this.SetFireAnim();
+            this.fired = true;
         }
+    }
+
+    private void SetFireAnim()
+    {
+        this.tankAnimator.SetBool("DemoFire", false);
+        this.tankAnimator.SetTrigger("Fire");
+        this.heroHeadAnimator.SetTrigger("Fire");
     }
 
     protected virtual void Aim()
     {
         // TODO
+        this.angle = 45f;
     }
 
     protected virtual void GetPower()
     {
         // TODO
+        this.force = 500;
     }
+
+    protected virtual void CalculateForceVector() => this.forceVector = new Vector2(Mathf.Cos(this.angle), Mathf.Sin(this.angle)) * this.force;
 
     protected virtual void ApplyWindForce()
     {
@@ -198,12 +197,22 @@ public class Player : MonoBehaviour
         this.bullet.currentStatus = Bullet.BulletStatus.Flying;
         this.bullet.gameObject.transform.rotation = Quaternion.identity;
         this.bullet.gameObject.SetActive(true);
-        this.bullet.rbd.AddForce(this.fireForce + new Vector2(GameManager.instance.windSpeed * GameManager.instance.windForceScaleFactor, 0));
+        this.bullet.rbd.AddForce(this.forceVector + new Vector2(GameManager.instance.windSpeed * GameManager.instance.windForceScaleFactor, 0));
     }
 
-    public virtual void UpdateBehit()
+    public virtual void Behit(int damage)
     {
-        // TODO
+        this.hp -= damage;
+        if (this.hp <= 0)
+        {
+            this.hp = 0;
+            this.currentStatus = PlayerStatus.Lose;
+            GameManager.instance.PlayerDefeated(this);
+        }
+        else
+        {
+            Debug.Log(this.gameObject.name + ": " + this.hp.ToString());
+        }
     }
 
     public virtual void UpdateWinLoseStatus()

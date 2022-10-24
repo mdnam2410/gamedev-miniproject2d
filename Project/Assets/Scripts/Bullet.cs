@@ -23,7 +23,7 @@ public class Bullet : MonoBehaviour
 
     public float mass;
     public float radius;
-    public float damage;
+    public int damage;
     public Transform firePos;
     public Vector3 offsetToFirePos;
 
@@ -35,7 +35,12 @@ public class Bullet : MonoBehaviour
 
     public BulletStatus currentStatus;
     public CollisionType currentCollision;
-    
+
+    public AudioSource firingSound;
+    public AudioSource explodingSound;
+
+    // explosion video -> anim "Explode"
+
     private void Start()
     {
         this.rbd = GetComponent<Rigidbody2D>();
@@ -128,7 +133,7 @@ public class Bullet : MonoBehaviour
 
     protected virtual void HitTarget()
     {
-        // TODO
+        this.owner.target.Behit(this.damage);
         this.ExecuteSpecialEffect();
         this.gameObject.SetActive(false);
         this.gameObject.transform.position = this.offsetToFirePos + this.firePos.position;
