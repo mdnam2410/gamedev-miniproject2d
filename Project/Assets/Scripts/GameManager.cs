@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    private static GameManager _instance;
     public float totalTimeOfTurn = 20;
     public float remainingTimeOfTurn;
     public float validTimeForMoving = 10;
@@ -13,9 +13,22 @@ public class GameManager : MonoBehaviour
     
     public int windForceScaleFactor = 10;
 
+    private GameManager() {}
+    public static GameManager instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = new GameManager();
+            }
+            return _instance;
+        }
+    }
+
     private void Awake()
     {
-        instance = this;
+        _instance = this;
     }
     public enum GameType
     {
@@ -238,8 +251,9 @@ public class GameManager : MonoBehaviour
 
     public void UpdateHpUI()
     {
-        healthBar1.SetHealth(P1.hp);
-        healthBar2.SetHealth(P2.hp);
+        return;
+        //healthBar1.SetHealth(P1.hp);
+        //healthBar2.SetHealth(P2.hp);
     }
 
     private void DisplayEndGameInfo()
