@@ -75,7 +75,8 @@ public class GameManager : MonoBehaviour
     public float timeRandomChangeWindSpeed;
     public float cachedTimeRandomChangeWindSpeed;
 
-    public UnityEvent OnTurnChanged;
+    public UnityEvent OnTurnChanged = new UnityEvent();
+    public UnityEvent OnGameEnd = new UnityEvent();
 
     public float waitingTime = 2f;
 
@@ -274,6 +275,7 @@ public class GameManager : MonoBehaviour
             else Debug.Log("YOU WIN");
         }
 
-        Time.timeScale = 0;
+        Time.timeScale = 0f;
+        ViewManager.Instance.PushTop(EndGameView.Path);
     }
 }
