@@ -43,10 +43,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d85af023339fdc4cbd580883fddcbab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windForceScaleFactor: 10
-  validTimeForMoving: 30
+  totalTimeOfTurn: 20
+  remainingTimeOfTurn: 0
+  validTimeForMoving: 10
   validTimeForShooting: 0
-  remainingTimeOfTurn: 500
+  windForceScaleFactor: 10
   timeCount: 0
   gameType: 1
   currentTurn: 1
@@ -55,7 +56,15 @@ MonoBehaviour:
   timeout: 0
   P1: {fileID: 0}
   P2: {fileID: 0}
+  currentPlayer: {fileID: 0}
+  healthBar1: {fileID: 0}
+  healthBar2: {fileID: 0}
+  angleRuler: {fileID: 0}
   windSpeed: 0
   windSpeedUI: {fileID: 0}
   timeRandomChangeWindSpeed: 7
   cachedTimeRandomChangeWindSpeed: 0
+  OnTurnChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  waitingTime: 3
