@@ -6,10 +6,12 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public int windForceScaleFactor = 10;
-    public float validTimeForMoving = 30;
-    public float validTimeForShooting = 0;
+    public float totalTimeOfTurn = 20;
     public float remainingTimeOfTurn;
+    public float validTimeForMoving = 10;
+    public float validTimeForShooting = 0;
+    
+    public int windForceScaleFactor = 10;
 
     private void Awake()
     {
@@ -47,6 +49,7 @@ public class GameManager : MonoBehaviour
     // Players
     public Player P1;
     public Player P2;
+    public Player currentPlayer;
 
     // UIs
     public HealthBar healthBar1;
@@ -61,6 +64,8 @@ public class GameManager : MonoBehaviour
 
     public UnityEvent OnTurnChanged;
 
+    public float waitingTime = 2f;
+
     private float dt;
 
     private void Start()
@@ -68,6 +73,7 @@ public class GameManager : MonoBehaviour
         this.InitPlayers();
         this.InitEnvironment();
         this.currentTurn = GameTurn.P1;
+        this.currentPlayer = this.P1;
         this.windSpeed = 0;
         if (this.windSpeedUI != null)
             this.windSpeedUI.text = "0";
@@ -95,13 +101,30 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         this.dt = Time.deltaTime;
-        this.remainingTimeOfTurn -= this.dt;
 
+        this.CheckTimeout();
         this.UpdateTurnUI();
         this.UpdateTurn();
         this.UpdateValidAction();
         this.UpdateEnvironment();
         this.UpdateHpUI();
+    }
+
+    public void CheckTimeout()
+    {
+        this.remainingTimeOfTurn -= this.dt;
+
+        if (this.remainingTimeOfTurn <= 0)
+        {
+            if (this.currentPlayer.currentStatus != Player.Status.Attacking)
+            {
+                this.timeout = true;
+            }
+            else
+            {
+                //wait
+            }
+        }
     }
 
     public void UpdateTurn()
@@ -111,18 +134,29 @@ public class GameManager : MonoBehaviour
             this.ChangeCurrentTurn();
             this.OnTurnChanged.Invoke();
         }
-
     }
+
+    public void OnBulletDestroy()
+    {
+        this.LockAllPlayerActions();
+        Invoke(nameof(this.EndTurn), this.waitingTime);
+    }
+
+    public void LockAllPlayerActions() => GameManager.instance.currentValidAction = ValidAction.None;
+
+    public void EndTurn() => this.endTurn = true;
+
+
 
     public void ResetTurnValues()
     {
-        // TODO
         // reset endturn
+        this.endTurn = false;
         // reset timeout
         this.timeout = false;
 
         // reset remaining time
-        this.remainingTimeOfTurn = 45f;
+        this.remainingTimeOfTurn = this.totalTimeOfTurn;
 
         // reset valid action
         this.currentValidAction = ValidAction.All;
@@ -157,6 +191,9 @@ public class GameManager : MonoBehaviour
             if (this.currentTurn == GameTurn.P1) this.currentTurn = GameTurn.P2;
             else this.currentTurn = GameTurn.P1;
         }
+
+        if (this.currentPlayer == this.P1) this.currentPlayer = this.P2;
+        else this.currentPlayer = this.P1;
     }
 
     public void UpdateTurnUI()
@@ -208,12 +245,6 @@ public class GameManager : MonoBehaviour
     private void DisplayEndGameInfo()
     {
         // TODO
-    }
-
-    public void EndTurn()
-    {
-        // called from Bullet
-        // called by timeout
     }
 
     public void PlayerDefeated(Player player)

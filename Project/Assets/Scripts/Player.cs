@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public enum PlayerStatus
+    public enum Status
     {
         Idle,
         Moving,
+        Aiming,
         Attacking,
-        Behit,
         Win,
         Lose
     }
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     public Animator tankAnimator;
     public GameManager.GameTurn ownTurn;
     public Bullet bullet;
-    public PlayerStatus currentStatus;
+    public Status currentStatus;
     public Rigidbody2D rigid2D;
 
     public float movingSpeed = 10;
@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         this.hp = 100;
-        this.currentStatus = PlayerStatus.Idle;
+        this.currentStatus = Status.Idle;
         this.movingState = MovingState.None;
         this.rigid2D = GetComponent<Rigidbody2D>();
         if (this.bullet != null)
@@ -149,11 +149,13 @@ public class Player : MonoBehaviour
 
     private void Fire()
     {
+        if (this.fired) return;
         if (this.ownRole == GameManager.instance.currentTurn)
         {
             this.CalculateForceVector();
             this.SetFireAnim();
             this.fired = true;
+            this.currentStatus = Status.Attacking;
         }
     }
 
@@ -194,7 +196,7 @@ public class Player : MonoBehaviour
         if (this.hp <= 0)
         {
             this.hp = 0;
-            this.currentStatus = PlayerStatus.Lose;
+            this.currentStatus = Status.Lose;
             GameManager.instance.PlayerDefeated(this);
         }
         else
@@ -215,6 +217,8 @@ public class Player : MonoBehaviour
         {
             this.fired = false;
         }
+
+        this.currentStatus = Status.Idle;
     }
 
     public virtual void UpdateWinLoseStatus()
