@@ -25,6 +25,8 @@ public class ForceBar : MonoBehaviour
         slider.value = 0;
         slider.maxValue = 1000;
         sign = 1;
+
+        GameManager.instance.OnTurnChanged.AddListener(resetForce);
     }
 
     void Update()
@@ -76,5 +78,10 @@ public class ForceBar : MonoBehaviour
     private void updateText()
     {
         text.text = slider.value.ToString() + "/" + slider.maxValue.ToString();
+    }
+
+    private void resetForce()
+    {
+        slider.value = 0f;
     }
 }

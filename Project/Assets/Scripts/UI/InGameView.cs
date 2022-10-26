@@ -20,6 +20,11 @@ public class InGameView : BaseView
     [Header("Countdown")]
     [SerializeField] TMP_Text textCountdown;
 
+    private void Start()
+    {
+        GameManager.instance.OnGameEnd.AddListener(OnGameEnd);
+    }
+
     private void Update()
     {
         healthBar1.SetHealth(GameManager.instance.P1.hp);
@@ -37,5 +42,11 @@ public class InGameView : BaseView
     {
         Time.timeScale = 0f;
         ViewManager.Instance.PushTop(PopupPauseView.Path);
+    }
+
+    public void OnGameEnd()
+    {
+        Time.timeScale = 0f;
+
     }
 }
