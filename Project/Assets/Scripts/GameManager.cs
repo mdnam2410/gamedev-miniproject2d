@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
+    private GameManager() { }
+
     public float totalTimeOfTurn = 20;
     public float remainingTimeOfTurn;
     public float validTimeForMoving = 10;
@@ -13,12 +15,11 @@ public class GameManager : MonoBehaviour
     
     public int windForceScaleFactor = 10;
 
-    private GameManager() {}
-    public static GameManager instance
+    public static GameManager Instance
     {
         get
         {
-            if (_instance == null)
+            if(_instance == null)
             {
                 _instance = new GameManager();
             }
@@ -75,8 +76,10 @@ public class GameManager : MonoBehaviour
     public float timeRandomChangeWindSpeed;
     public float cachedTimeRandomChangeWindSpeed;
 
-    public UnityEvent OnTurnChanged = new UnityEvent();
+    public UnityEvent OnTurnChanged;
     public UnityEvent OnGameEnd = new UnityEvent();
+    public UnityEvent OnPlayerShoot;
+    public UnityEvent OnBulletDestroyed;
 
     public float waitingTime = 2f;
 
@@ -93,7 +96,7 @@ public class GameManager : MonoBehaviour
             this.windSpeedUI.text = "0";
 
         this.OnTurnChanged.AddListener(this.ResetTurnValues);
-
+        this.OnBulletDestroyed.AddListener(this.BulletDestroy);
     }
 
     public void InitPlayers()
@@ -150,13 +153,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void OnBulletDestroy()
+    public void BulletDestroy()
     {
         this.LockAllPlayerActions();
         Invoke(nameof(this.EndTurn), this.waitingTime);
     }
 
-    public void LockAllPlayerActions() => GameManager.instance.currentValidAction = ValidAction.None;
+    public void LockAllPlayerActions() => GameManager.Instance.currentValidAction = ValidAction.None;
 
     public void EndTurn() => this.endTurn = true;
 
@@ -252,6 +255,8 @@ public class GameManager : MonoBehaviour
 
     public void UpdateHpUI()
     {
+        healthBar1.SetHealth(P1.hp);
+        healthBar2.SetHealth(P2.hp);
         return;
         //healthBar1.SetHealth(P1.hp);
         //healthBar2.SetHealth(P2.hp);
