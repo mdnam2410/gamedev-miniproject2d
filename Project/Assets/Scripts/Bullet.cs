@@ -50,6 +50,7 @@ public class Bullet : MonoBehaviour
         this.currentCollision = CollisionType.None;
         this.offsetToFirePos = this.transform.position - this.firePos.transform.position;
         this.InitData();
+        this.OnDestroyed.AddListener(GameManager.instance.OnBulletDestroy);
     }
 
     public virtual void InitData()

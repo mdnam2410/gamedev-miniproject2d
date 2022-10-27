@@ -177,6 +177,7 @@ public class GameManager : MonoBehaviour
 
         // reset valid action
         this.currentValidAction = ValidAction.All;
+
     }
 
     public void UpdateValidAction()
@@ -257,9 +258,7 @@ public class GameManager : MonoBehaviour
     {
         healthBar1.SetHealth(P1.hp);
         healthBar2.SetHealth(P2.hp);
-        return;
-        //healthBar1.SetHealth(P1.hp);
-        //healthBar2.SetHealth(P2.hp);
+
     }
 
     private void DisplayEndGameInfo()

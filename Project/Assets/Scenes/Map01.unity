@@ -4175,6 +4175,10 @@ PrefabInstance:
       propertyPath: healthBar2
       value: 
       objectReference: {fileID: 2028867772}
+    - target: {fileID: 5701465755692188179, guid: 5e16a360cebf86a4e94a290d4e531cfa, type: 3}
+      propertyPath: currentTurn
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5701465755692188180, guid: 5e16a360cebf86a4e94a290d4e531cfa, type: 3}
       propertyPath: m_Name
       value: GameManager
