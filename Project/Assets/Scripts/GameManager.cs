@@ -5,9 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
-    public float totalTimeOfTurn = 20;
+    public float totalTimeOfTurn = 31;
     public float remainingTimeOfTurn;
-    public float validTimeForMoving = 10;
+    public float validTimeForMoving = 15;
     public float validTimeForShooting = 0;
     
     public int windForceScaleFactor = 10;
@@ -120,6 +120,7 @@ public class GameManager : MonoBehaviour
 
         if (this.remainingTimeOfTurn <= 0)
         {
+            this.remainingTimeOfTurn = 0;
             if (this.currentPlayer.currentStatus != Player.Status.Attacking)
             {
                 this.timeout = true;
