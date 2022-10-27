@@ -22,20 +22,20 @@ public class InGameView : BaseView
 
     private void Start()
     {
-        GameManager.instance.OnGameEnd.AddListener(OnGameEnd);
+        //GameManager.Instance.OnGameEnd.AddListener(OnGameEnd);
     }
 
     private void Update()
     {
-        healthBar1.SetHealth(GameManager.instance.P1.hp);
-        healthBar2.SetHealth(GameManager.instance.P2.hp);
+        healthBar1.SetHealth(GameManager.Instance.P1.hp);
+        healthBar2.SetHealth(GameManager.Instance.P2.hp);
 
-        float wind = GameManager.instance.windSpeed;
+        float wind = GameManager.Instance.windSpeed;
         textWindspeed.text = Mathf.Abs(wind).ToString();
         arrowLeft.SetActive(wind < 0);
         arrowRight.SetActive(wind > 0);
 
-        textCountdown.text = ((int)GameManager.instance.remainingTimeOfTurn).ToString();
+        textCountdown.text = ((int)GameManager.Instance.remainingTimeOfTurn).ToString();
     }
 
     public void OnClick_Pause()

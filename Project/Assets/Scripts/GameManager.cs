@@ -5,9 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
-    private static GameManager _instance;
-    private GameManager() { }
-
     public float totalTimeOfTurn = 20;
     public float remainingTimeOfTurn;
     public float validTimeForMoving = 10;
@@ -15,21 +12,11 @@ public class GameManager : MonoBehaviour
     
     public int windForceScaleFactor = 10;
 
-    public static GameManager Instance
-    {
-        get
-        {
-            if(_instance == null)
-            {
-                _instance = new GameManager();
-            }
-            return _instance;
-        }
-    }
+    public static GameManager Instance;
 
     private void Awake()
     {
-        _instance = this;
+        Instance = this;
     }
     public enum GameType
     {

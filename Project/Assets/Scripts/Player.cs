@@ -73,6 +73,10 @@ public class Player : MonoBehaviour
         {
             this.UpdateMove();
         }
+        else
+        {
+            this.tankAnimator.SetBool("Moving", false);
+        }
     }
 
     public virtual void UpdateMove()
@@ -80,7 +84,6 @@ public class Player : MonoBehaviour
         this.UpdateFaceDirection();
         this.MovingByKey();
         this.UpdateTankAnim();
-
     }
 
     private void UpdateFaceDirection()
