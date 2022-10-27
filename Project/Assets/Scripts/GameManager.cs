@@ -39,6 +39,15 @@ public class GameManager : MonoBehaviour
         ShootOnly
     }
 
+    public enum GameEndType
+    {
+        None,
+        PlayerWin,
+        BotWin,
+        Player1Win,
+        Player2Win
+    }
+
     public int timeCount;
     public GameType gameType;
     public GameTurn currentTurn;
@@ -256,18 +265,36 @@ public class GameManager : MonoBehaviour
 
     public void PlayerDefeated(Player player)
     {
+        GameEndType gameEndType;
         if (player == P1)
         {
-            if (this.gameType == GameType.vsPlayer) Debug.Log("P2 Win");
-            else Debug.Log("YOU LOSE");
+            if (this.gameType == GameType.vsPlayer)
+            {
+                gameEndType = GameEndType.Player2Win;
+                Debug.Log("P2 Win");
+            }
+            else
+            {
+                gameEndType = GameEndType.BotWin;
+                Debug.Log("YOU LOSE");
+            }
         }
         else
         {
-            if (this.gameType == GameType.vsPlayer) Debug.Log("P1 Win");
-            else Debug.Log("YOU WIN");
+            if (this.gameType == GameType.vsPlayer)
+            {
+                gameEndType = GameEndType.Player1Win;
+                Debug.Log("P1 Win");
+            }
+            else
+            {
+                gameEndType = GameEndType.PlayerWin;
+                Debug.Log("YOU WIN");
+            }
         }
 
         Time.timeScale = 0f;
+        EndGameView.GameEndType = gameEndType;
         ViewManager.Instance.PushTop(EndGameView.Path);
     }
 }
