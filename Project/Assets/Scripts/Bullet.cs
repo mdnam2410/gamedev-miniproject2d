@@ -39,7 +39,6 @@ public class Bullet : MonoBehaviour
 
     public AudioSource firingSound;
     public AudioSource explodingSound;
-    public UnityEvent OnDestroyed;
 
     // explosion video -> anim "Explode"
 
@@ -51,7 +50,6 @@ public class Bullet : MonoBehaviour
         this.currentCollision = CollisionType.None;
         this.offsetToFirePos = this.transform.position - this.firePos.transform.position;
         this.InitData();
-        this.OnDestroyed.AddListener(GameManager.instance.OnBulletDestroy);
     }
 
     public virtual void InitData()
@@ -90,19 +88,6 @@ public class Bullet : MonoBehaviour
         Vector3 target = Quaternion.Euler(0, 0, 90) * new Vector3(this.rbd.velocity.x, this.rbd.velocity.y);
         Quaternion targetRotation = Quaternion.LookRotation(forward: Vector3.forward, upwards: target);
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360 * Time.deltaTime);
-        /*
-        switch (this.currentStatus)
-        {
-            case BulletStatus.Hidden:
-            case BulletStatus.Hit:
-            case BulletStatus.BeHolding:
-            case BulletStatus.Thrown:
-                break;
-            case BulletStatus.Flying:
-                
-                break;
-        }
-        */
     }
 
     protected virtual void HoldByOwner()
@@ -133,7 +118,7 @@ public class Bullet : MonoBehaviour
             this.DestroyByEnvironment();
         }
 
-        this.OnDestroyed.Invoke();
+        GameManager.Instance.OnBulletDestroyed.Invoke();
     }
 
     protected virtual void HitTarget()

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -48,6 +49,7 @@ public class Player : MonoBehaviour
     public float angle = 45f;
     public float force = 200;
     public bool fired = false;
+    public bool canMove;
 
     private void Start()
     {
@@ -55,22 +57,19 @@ public class Player : MonoBehaviour
         this.currentStatus = Status.Idle;
         this.movingState = MovingState.None;
         this.rigid2D = GetComponent<Rigidbody2D>();
-        if (this.bullet != null)
-        {
-            this.bullet.OnDestroyed.AddListener(this.ResetForNewTurn);
-        }
+        this.canMove = true;
 
-        GameManager.instance.OnTurnChanged.AddListener(this.OnTurnChange);
-
-        ForceBar.instance.OnPowerCompleted.AddListener(this.Fire);
+        GameManager.Instance.OnTurnChanged.AddListener(this.OnTurnChange);
+        ForceBar.Instance.OnPowerCompleted.AddListener(this.Fire);
+        ForceBar.Instance.OnPowerCompleted.AddListener(this.lockMovingOnFire);
     }
 
     private void Update()
     {
-        if (GameManager.instance == null) return;
-        if (this.ownRole != GameManager.instance.currentTurn) return;
+        if (GameManager.Instance == null) return;
+        if (this.ownRole != GameManager.Instance.currentTurn) return;
 
-        if (GameManager.instance.currentValidAction == GameManager.ValidAction.All)
+        if (GameManager.Instance.currentValidAction == GameManager.ValidAction.All)
         {
             this.UpdateMove();
         }
@@ -99,6 +98,12 @@ public class Player : MonoBehaviour
     }
     private void MovingByKey()
     {
+        if (!this.canMove)
+        {
+            this.movingState = MovingState.None;
+            return;
+        }
+
         if (Input.GetKey(KeyCode.D))
         {
             if (this.rigid2D.velocity.magnitude < 1)
@@ -150,12 +155,13 @@ public class Player : MonoBehaviour
     private void Fire()
     {
         if (this.fired) return;
-        if (this.ownRole == GameManager.instance.currentTurn)
+        if (this.ownRole == GameManager.Instance.currentTurn)
         {
             this.CalculateForceVector();
             this.SetFireAnim();
             this.fired = true;
             this.currentStatus = Status.Attacking;
+            GameManager.Instance.OnPlayerShoot.Invoke();
         }
     }
 
@@ -168,14 +174,14 @@ public class Player : MonoBehaviour
 
     protected virtual void CalculateForceVector()
     {
-        this.angle = GameManager.instance.angleRuler.curAngle;
+        this.angle = GameManager.Instance.angleRuler.curAngle;
 
         if (this.faceDirection == FaceDirection.RightLeft)
         {
             this.angle = 180f - this.angle;
         }
 
-        this.force = ForceBar.instance.getForce();
+        this.force = ForceBar.Instance.getForce();
         this.forceVector = new Vector2(Mathf.Cos(this.angle * Mathf.PI / 180f), Mathf.Sin(this.angle * Mathf.PI / 180f)) * this.force;
     }
 
@@ -186,7 +192,7 @@ public class Player : MonoBehaviour
         this.bullet.currentStatus = Bullet.BulletStatus.Flying;
         this.bullet.gameObject.transform.rotation = Quaternion.identity;
         this.bullet.gameObject.SetActive(true);
-        this.bullet.rbd.AddForce(this.forceVector + new Vector2(GameManager.instance.windSpeed * GameManager.instance.windForceScaleFactor, 0));
+        this.bullet.rbd.AddForce(this.forceVector + new Vector2(GameManager.Instance.windSpeed * GameManager.Instance.windForceScaleFactor, 0));
     }
 
     public virtual void Behit(int damage)
@@ -197,7 +203,7 @@ public class Player : MonoBehaviour
         {
             this.hp = 0;
             this.currentStatus = Status.Lose;
-            GameManager.instance.PlayerDefeated(this);
+            GameManager.Instance.PlayerDefeated(this);
         }
         else
         {
@@ -205,21 +211,19 @@ public class Player : MonoBehaviour
         }
     }
 
-    public virtual void ResetForNewTurn()
-    {
-        //this.fired = false;
-        Debug.Log("Bullet destroy event invoked");
-    }
-
     public virtual void OnTurnChange()
     {
-        if (this.ownRole == GameManager.instance.currentTurn)
+        if (this.ownRole == GameManager.Instance.currentTurn)
         {
             this.fired = false;
         }
 
+        this.canMove = true;
         this.currentStatus = Status.Idle;
     }
+
+    private void lockMovingOnFire() => this.canMove = false;
+    private void unlockMove() => this.canMove = true;
 
     public virtual void UpdateWinLoseStatus()
     {
