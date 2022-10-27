@@ -43,9 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d85af023339fdc4cbd580883fddcbab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalTimeOfTurn: 20
+  totalTimeOfTurn: 31
   remainingTimeOfTurn: 0
-  validTimeForMoving: 10
+  validTimeForMoving: 15
   validTimeForShooting: 0
   windForceScaleFactor: 10
   timeCount: 0
@@ -65,6 +65,15 @@ MonoBehaviour:
   timeRandomChangeWindSpeed: 7
   cachedTimeRandomChangeWindSpeed: 0
   OnTurnChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  OnGameEnd:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerShoot:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBulletDestroyed:
     m_PersistentCalls:
       m_Calls: []
   waitingTime: 3
