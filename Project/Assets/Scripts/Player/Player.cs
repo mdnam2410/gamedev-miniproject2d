@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
     public Status currentStatus;
     public Rigidbody2D rigid2D;
 
-    public float movingSpeed = 10;
+    public float movingSpeed = 5;
     public MovingState movingState;
     public FaceDirection faceDirection;
 
@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
     public float force = 200;
     public bool fired = false;
     public bool canMove;
+    public Vector2 velo;
 
     protected virtual void Start()
     {
@@ -66,6 +67,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        this.velo = this.rigid2D.velocity;
         if (GameManager.Instance == null) return;
         if (this.ownRole != GameManager.Instance.currentTurn) return;
 
@@ -82,7 +84,7 @@ public class Player : MonoBehaviour
     public virtual void UpdateMove()
     {
         this.UpdateFaceDirection();
-        this.MovingByKey();
+        this.Move();
         this.UpdateTankAnim();
     }
 
@@ -99,7 +101,8 @@ public class Player : MonoBehaviour
         this.transform.localScale = new Vector3(-this.transform.localScale.x, this.transform.localScale.y, this.transform.localScale.z);
         this.faceDirection = (FaceDirection)(1 - this.faceDirection);
     }
-    private void MovingByKey()
+
+    protected virtual void Move()
     {
         if (!this.canMove)
         {
@@ -107,18 +110,20 @@ public class Player : MonoBehaviour
             return;
         }
 
-        if (Input.GetKey(KeyCode.D))
+        if (this.MoveRight())
         {
             if (this.rigid2D.velocity.magnitude < 1)
-                this.rigid2D.AddForce(new Vector2(1, 0.6f));
+                //this.rigid2D.AddForce(new Vector2(10, 0.6f));
+                this.rigid2D.velocity = new Vector2(this.rigid2D.velocity.x + this.movingSpeed * Time.deltaTime, .1f);
 
             this.movingState = MovingState.ToRight;
 
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (this.MoveLeft())
         {
             if (this.rigid2D.velocity.magnitude < 1)
-                this.rigid2D.AddForce(new Vector2(-1, 0.6f));
+                //this.rigid2D.AddForce(new Vector2(-10, 0.6f));
+                this.rigid2D.velocity = new Vector2(this.rigid2D.velocity.x - this.movingSpeed * Time.deltaTime, .1f);
 
             this.movingState = MovingState.ToLeft;
         }
@@ -126,6 +131,15 @@ public class Player : MonoBehaviour
         {
             this.movingState = MovingState.None;
         }
+    }
+
+    protected virtual bool MoveLeft()
+    {
+        return Input.GetKey(KeyCode.A);
+    }
+
+    protected virtual bool MoveRight() {
+        return Input.GetKey(KeyCode.D);
     }
 
     protected virtual void UpdateTankAnim()

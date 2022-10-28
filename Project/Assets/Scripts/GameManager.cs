@@ -85,8 +85,8 @@ public class GameManager : MonoBehaviour
     {
         this.InitPlayers();
         this.InitEnvironment();
-        this.currentTurn = GameTurn.P1;
-        this.currentPlayer = this.P1;
+        //this.currentTurn = GameTurn.P1;
+        //this.currentPlayer = this.P1;
         this.windSpeed = 0;
         if (this.windSpeedUI != null)
             this.windSpeedUI.text = "0";
