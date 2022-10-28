@@ -1072,6 +1072,7 @@ MonoBehaviour:
   force: 200
   fired: 0
   canMove: 0
+  velo: {x: 0, y: 0}
 --- !u!114 &150292336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1104,11 +1105,16 @@ MonoBehaviour:
   force: 200
   fired: 0
   canMove: 0
+  velo: {x: 0, y: 0}
   DirectionToTarget: {x: 0, y: 0}
+  Direction: 0
+  MovingTime: 3
+  RemainMovingTime: 0
   ForceScaleFactor: 0.1
   ForceEpsilon: 0
   AngleEpsilon: 0
   FinishedAiming: 0
+  ObstacleDetector: {fileID: 0}
 --- !u!4 &150292337
 Transform:
   m_ObjectHideFlags: 0
@@ -1438,7 +1444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 436629211}
   - component: {fileID: 436629212}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TX Village Props Ladder M (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4442,7 +4448,7 @@ PrefabInstance:
       objectReference: {fileID: 2028867772}
     - target: {fileID: 5701465755692188179, guid: 5e16a360cebf86a4e94a290d4e531cfa, type: 3}
       propertyPath: currentTurn
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5701465755692188179, guid: 5e16a360cebf86a4e94a290d4e531cfa, type: 3}
       propertyPath: currentPlayer
@@ -4454,6 +4460,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e16a360cebf86a4e94a290d4e531cfa, type: 3}
+--- !u!1 &860734141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 860734142}
+  m_Layer: 0
+  m_Name: Detector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &860734142
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860734141}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.27, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8083653060814175846}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &891940984
 GameObject:
   m_ObjectHideFlags: 0
@@ -5076,7 +5112,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7208481279798210085, guid: b66942e8458865e4990a5fc39874e9a1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.04
+      value: -15.03
       objectReference: {fileID: 0}
     - target: {fileID: 7208481279798210085, guid: b66942e8458865e4990a5fc39874e9a1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8428,6 +8464,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7215825732374118346, guid: dd2db3a72de75d74cbfd20cacdfaa246, type: 3}
+      propertyPath: m_Size.x
+      value: 1.0763664
+      objectReference: {fileID: 0}
+    - target: {fileID: 7215825732374118346, guid: dd2db3a72de75d74cbfd20cacdfaa246, type: 3}
+      propertyPath: m_Size.y
+      value: 0.81571794
+      objectReference: {fileID: 0}
+    - target: {fileID: 7215825732374118346, guid: dd2db3a72de75d74cbfd20cacdfaa246, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.003569603
+      objectReference: {fileID: 0}
+    - target: {fileID: 7215825732374118346, guid: dd2db3a72de75d74cbfd20cacdfaa246, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.11859858
+      objectReference: {fileID: 0}
     - target: {fileID: 7215825732374118389, guid: dd2db3a72de75d74cbfd20cacdfaa246, type: 3}
       propertyPath: m_Name
       value: Tank12
@@ -8480,7 +8532,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2999312011329293533}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.44, y: -0.76, z: -3.5998552}
+  m_LocalPosition: {x: -10.44, y: -0.565, z: -3.5998552}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 500878640}
@@ -8551,7 +8603,7 @@ MonoBehaviour:
   bullet: {fileID: 1143223861}
   currentStatus: 0
   rigid2D: {fileID: 0}
-  movingSpeed: 10
+  movingSpeed: 5
   movingState: 0
   faceDirection: 0
   forceVector: {x: 0, y: 0}
@@ -8560,6 +8612,7 @@ MonoBehaviour:
   force: 200
   fired: 0
   canMove: 0
+  velo: {x: 0, y: 0}
 --- !u!1001 &3986398541796059064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8724,6 +8777,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5549890281245903183, guid: dac643e2f555bc24d91127d485998257, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dac643e2f555bc24d91127d485998257, type: 3}
 --- !u!1001 &7273760547105219574
@@ -8850,6 +8907,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2999312011329293532}
     m_Modifications:
+    - target: {fileID: 5692810792599902485, guid: e06cd6e5e182ae543957f0fb4da9789e, type: 3}
+      propertyPath: m_Size.x
+      value: 1.1557522
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692810792599902485, guid: e06cd6e5e182ae543957f0fb4da9789e, type: 3}
+      propertyPath: m_Size.y
+      value: 1.0341961
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692810792599902485, guid: e06cd6e5e182ae543957f0fb4da9789e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692810792599902485, guid: e06cd6e5e182ae543957f0fb4da9789e, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0049467087
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692810792599902485, guid: e06cd6e5e182ae543957f0fb4da9789e, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0058392584
+      objectReference: {fileID: 0}
     - target: {fileID: 5692810792599902486, guid: e06cd6e5e182ae543957f0fb4da9789e, type: 3}
       propertyPath: owner
       value: 
@@ -8961,11 +9038,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8083653060814176154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.71, y: -1.78, z: -3.5998552}
+  m_LocalPosition: {x: 9.22, y: -1.75, z: -3.5998552}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 1034729845}
   - {fileID: 1925371302}
+  - {fileID: 860734142}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9001,7 +9079,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.010033131, y: -0.1750555}
+  m_Offset: {x: -0.010033131, y: -0.16758347}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -9012,7 +9090,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.92557716, y: 0.4817276}
+  m_Size: {x: 0.92557716, y: 0.46678352}
   m_EdgeRadius: 0
 --- !u!114 &8083653060814176156
 MonoBehaviour:
@@ -9037,7 +9115,7 @@ MonoBehaviour:
   bullet: {fileID: 1966514288}
   currentStatus: 0
   rigid2D: {fileID: 8083653060814175844}
-  movingSpeed: 10
+  movingSpeed: 5
   movingState: 0
   faceDirection: 1
   forceVector: {x: 0, y: 0}
@@ -9046,11 +9124,16 @@ MonoBehaviour:
   force: 200
   fired: 0
   canMove: 0
+  velo: {x: 0, y: 0}
   DirectionToTarget: {x: 0, y: 0}
+  Direction: 0
+  MovingTime: 5
+  RemainMovingTime: 0
   ForceScaleFactor: 0.05
   ForceEpsilon: 20
   AngleEpsilon: 10
   FinishedAiming: 0
+  ObstacleDetector: {fileID: 860734142}
 --- !u!1001 &9142278913992669578
 PrefabInstance:
   m_ObjectHideFlags: 0

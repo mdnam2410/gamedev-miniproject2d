@@ -21,6 +21,14 @@ public class Bot : Player
         AdjusBoth,
         Dummy,
     }
+
+    public enum BotMovingDirection
+    {
+        None,
+        Left,
+        Right
+    }
+
     public struct TurnInfo
     {
         public Vector2 BotPos;
@@ -35,10 +43,14 @@ public class Bot : Player
     public TurnInfo LastTurnInfo;
 
     public Vector2 DirectionToTarget;
+    public BotMovingDirection Direction;
+    public float MovingTime = 3f;
+    public float RemainMovingTime;
     public float ForceScaleFactor = 0.1f;
     public float ForceEpsilon;
     public float AngleEpsilon = 0.05f;
     public bool FinishedAiming;
+    public Transform ObstacleDetector;
 
     protected override void Start()
     {
@@ -47,6 +59,8 @@ public class Bot : Player
         this.movingState = MovingState.None;
         this.rigid2D = GetComponent<Rigidbody2D>();
         this.canMove = true;
+        this.RemainMovingTime = this.MovingTime;
+        this.Direction = BotMovingDirection.None;
         this.FinishedAiming = false;
 
         GameManager.Instance.OnTurnChanged.AddListener(this.OnTurnChange);
@@ -55,13 +69,10 @@ public class Bot : Player
     }
     public override void UpdateMove()
     {
-        // TODO
-        // base.UpdateMove();
         this.LookAtPlayer();
-        this.CalculateDestination();
-        this.AutoMove();
+        //this.DetectObstacle();
+        this.Move();
         this.UpdateTankAnim();
-        this.Fire();
     }
 
     private void LookAtPlayer()
@@ -81,20 +92,51 @@ public class Bot : Player
         return false;
     }
 
-    private void CalculateDestination()
+    protected virtual void DetectObstacle()
     {
-        // TODO
+        if (!this.canMove) return;
+        RaycastHit2D obstacle = default;
+        if (this.Direction == BotMovingDirection.Right)
+        {
+            obstacle = Physics2D.Raycast(this.ObstacleDetector.transform.position, Vector2.right, .5f);
+        }
+        else if (this.Direction == BotMovingDirection.Left)
+        {
+            obstacle = Physics2D.Raycast(this.ObstacleDetector.transform.position, Vector2.left, .5f);
+        }
+
+        if (obstacle != default)
+        {
+            Debug.Log("Detect obstacle");
+            this.canMove = false;
+        }
+
     }
 
-    private void AutoMove()
+    protected override void Move()
     {
-        // TODO
+        this.RemainMovingTime -= Time.deltaTime;
+        if (this.RemainMovingTime > 0)
+        {
+            base.Move();
+        }
+        else
+        {
+            this.movingState = MovingState.None;
+            this.Fire();
+        }
     }
 
-    protected override void UpdateTankAnim()
+    protected override bool MoveRight()
     {
-        // TODO
+        return this.Direction == BotMovingDirection.Right;
     }
+
+    protected override bool MoveLeft()
+    {
+        return this.Direction == BotMovingDirection.Left;
+    }
+
 
     public override void Fire()
     {
@@ -158,5 +200,7 @@ public class Bot : Player
         this.angle = 0;
         this.currentStatus = Status.Idle;
         this.FinishedAiming = false;
+        this.Direction = (BotMovingDirection)(UnityEngine.Random.Range(0, 3));
+        this.RemainMovingTime = this.MovingTime;
     }
 }
