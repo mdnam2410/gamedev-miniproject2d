@@ -57,7 +57,7 @@ public class AngleRuler : MonoBehaviour
         }
     }
 
-    void IncreaseAngle(float delta)
+    public void IncreaseAngle(float delta)
     {
         float newAngle = curAngle + delta;
         float x = transform.localScale.x;

@@ -10,6 +10,7 @@ public class MainMenuView : BaseView
 
     [Header("Scenes")]
     [SerializeField] string scene1;
+    [SerializeField] string scene2;
 
     [Header("Buttons")]
     [SerializeField] GameObject btnNewGame;
@@ -50,6 +51,9 @@ public class MainMenuView : BaseView
 
     public void OnClick_LoadVsBotMode()
     {
+        InGameView.CurrentScene = scene2;
+        ViewManager.Instance.ChangeMain(InGameView.Path);
+        SceneManager.LoadScene(scene2, LoadSceneMode.Additive);
     }
 
     public void OnClick_LoadVSPlayerMode()

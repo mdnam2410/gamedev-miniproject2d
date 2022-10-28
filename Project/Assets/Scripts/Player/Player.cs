@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
     public bool fired = false;
     public bool canMove;
 
-    private void Start()
+    protected virtual void Start()
     {
         this.hp = 100;
         this.currentStatus = Status.Idle;
@@ -86,15 +86,15 @@ public class Player : MonoBehaviour
         this.UpdateTankAnim();
     }
 
-    private void UpdateFaceDirection()
+    public virtual void UpdateFaceDirection()
     {
         if (Input.GetMouseButtonDown(1))
         {
-            this.ReverseDirectionByInput();
+            this.ReverseFaceDirection();
         }
     }
 
-    private void ReverseDirectionByInput()
+    public virtual void ReverseFaceDirection()
     {
         this.transform.localScale = new Vector3(-this.transform.localScale.x, this.transform.localScale.y, this.transform.localScale.z);
         this.faceDirection = (FaceDirection)(1 - this.faceDirection);
@@ -128,7 +128,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void UpdateTankAnim()
+    protected virtual void UpdateTankAnim()
     {
         if (this.movingState != MovingState.None)
         {
@@ -155,7 +155,7 @@ public class Player : MonoBehaviour
         return false;
     }
 
-    private void Fire()
+    public virtual void Fire()
     {
         if (this.fired) return;
         if (this.ownRole == GameManager.Instance.currentTurn)
@@ -168,7 +168,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void SetFireAnim()
+    protected void SetFireAnim()
     {
         this.tankAnimator.SetBool("DemoFire", false);
         this.tankAnimator.SetTrigger("Fire");
@@ -225,10 +225,10 @@ public class Player : MonoBehaviour
         this.currentStatus = Status.Idle;
     }
 
-    private void lockMovingOnFire() => this.canMove = false;
-    private void unlockMove() => this.canMove = true;
+    protected void lockMovingOnFire() => this.canMove = false;
+    protected void unlockMove() => this.canMove = true;
 
-    public virtual void UpdateWinLoseStatus()
+    protected virtual void UpdateWinLoseStatus()
     {
         // TODO
     }
