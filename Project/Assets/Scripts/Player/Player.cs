@@ -51,6 +51,12 @@ public class Player : MonoBehaviour
     public bool fired = false;
     public bool canMove;
     public Vector2 velo;
+    public Transform detectorLow;
+    public Transform detectorMid;
+    public Vector2 detectorDirection;
+    public float verticalVelocity;
+    public float verticalJumpingVelocity;
+    public float verticalDefaultVelocity = 0.1f;
 
     protected virtual void Start()
     {
@@ -110,11 +116,20 @@ public class Player : MonoBehaviour
             return;
         }
 
+        if (this.DetectNearObstacle())
+        {
+            this.verticalVelocity = this.verticalJumpingVelocity;
+        }
+
+        else
+        {
+            this.verticalVelocity = this.verticalDefaultVelocity;
+        }
+
         if (this.MoveRight())
         {
             if (this.rigid2D.velocity.magnitude < 1)
-                //this.rigid2D.AddForce(new Vector2(10, 0.6f));
-                this.rigid2D.velocity = new Vector2(this.rigid2D.velocity.x + this.movingSpeed * Time.deltaTime, .1f);
+                this.rigid2D.velocity = new Vector2(this.rigid2D.velocity.x + this.movingSpeed * Time.deltaTime, this.verticalVelocity);
 
             this.movingState = MovingState.ToRight;
 
@@ -122,8 +137,7 @@ public class Player : MonoBehaviour
         else if (this.MoveLeft())
         {
             if (this.rigid2D.velocity.magnitude < 1)
-                //this.rigid2D.AddForce(new Vector2(-10, 0.6f));
-                this.rigid2D.velocity = new Vector2(this.rigid2D.velocity.x - this.movingSpeed * Time.deltaTime, .1f);
+                this.rigid2D.velocity = new Vector2(this.rigid2D.velocity.x - this.movingSpeed * Time.deltaTime, this.verticalVelocity);
 
             this.movingState = MovingState.ToLeft;
         }
@@ -131,6 +145,26 @@ public class Player : MonoBehaviour
         {
             this.movingState = MovingState.None;
         }
+    }
+
+    protected bool DetectNearObstacle()
+    {
+        if (this.detectorLow == null || this.detectorMid == null) return false;
+
+        if (this.faceDirection == FaceDirection.LeftRight)
+            this.detectorDirection = Vector2.right;
+        else
+            this.detectorDirection = Vector2.left;
+
+        RaycastHit2D hitLow = Physics2D.Raycast(this.detectorLow.transform.position, this.detectorDirection, 0.1f, LayerMask.GetMask("Obstacle"));
+        RaycastHit2D hitMid = Physics2D.Raycast(this.detectorMid.transform.position, this.detectorDirection, 0.1f, LayerMask.GetMask("Obstacle"));
+
+        if (hitLow.collider != null) Debug.Log("Low:" + hitLow.collider.ToString());
+        if (hitMid.collider != null) Debug.Log("Mid:" + hitMid.collider.ToString());
+        if (hitLow.collider != null && hitMid.collider == null)
+            return true;
+
+        return false;
     }
 
     protected virtual bool MoveLeft()
@@ -246,5 +280,6 @@ public class Player : MonoBehaviour
     {
         // TODO
     }
+
 
 }
