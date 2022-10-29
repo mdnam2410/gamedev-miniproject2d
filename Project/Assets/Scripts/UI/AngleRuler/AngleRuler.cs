@@ -78,4 +78,10 @@ public class AngleRuler : MonoBehaviour
     {
         this.gameObject.SetActive(true);
     }
+
+    public void SetAngle(float angle)
+    {
+        IncreaseAngle(angle - curAngle);
+        curAngle = angle;
+    }
 }
