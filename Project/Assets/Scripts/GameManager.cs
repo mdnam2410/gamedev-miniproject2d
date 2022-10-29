@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
     public UnityEvent OnPlayerShoot;
     public UnityEvent OnBulletDestroyed;
 
-    public float waitingTime = 2f;
+    public float waitingTime = 4f;
 
     private float dt;
 
@@ -174,6 +174,8 @@ public class GameManager : MonoBehaviour
 
         // reset valid action
         this.currentValidAction = ValidAction.All;
+
+
 
     }
 
