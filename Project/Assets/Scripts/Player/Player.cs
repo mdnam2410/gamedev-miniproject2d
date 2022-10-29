@@ -123,7 +123,7 @@ public class Player : MonoBehaviour
 
         else
         {
-            this.verticalVelocity = this.verticalDefaultVelocity;
+            this.verticalVelocity = this.verticalDefaultVelocity + this.verticalJumpingVelocity * Mathf.Sin(this.transform.eulerAngles.z * Mathf.PI / 180f) * 0.5f;
         }
 
         if (this.MoveRight())
@@ -152,9 +152,9 @@ public class Player : MonoBehaviour
         if (this.detectorLow == null || this.detectorMid == null) return false;
 
         if (this.faceDirection == FaceDirection.LeftRight)
-            this.detectorDirection = Vector2.right;
+            this.detectorDirection = new Vector2(Mathf.Cos(this.transform.eulerAngles.z * Mathf.PI / 180f), Mathf.Sin(this.transform.eulerAngles.z * Mathf.PI / 180f)) * 0.05f;
         else
-            this.detectorDirection = Vector2.left;
+            this.detectorDirection = new Vector2(-Mathf.Cos(this.transform.eulerAngles.z * Mathf.PI / 180f), -Mathf.Sin(this.transform.eulerAngles.z * Mathf.PI / 180f)) * 0.05f;
 
         RaycastHit2D hitLow = Physics2D.Raycast(this.detectorLow.transform.position, this.detectorDirection, 0.1f, LayerMask.GetMask("Obstacle"));
         RaycastHit2D hitMid = Physics2D.Raycast(this.detectorMid.transform.position, this.detectorDirection, 0.1f, LayerMask.GetMask("Obstacle"));
@@ -281,5 +281,12 @@ public class Player : MonoBehaviour
         // TODO
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(this.detectorMid.position, this.detectorMid.position + new Vector3(detectorDirection.x, detectorDirection.y, 0));
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawLine(this.detectorLow.position, this.detectorLow.position + new Vector3(detectorDirection.x, detectorDirection.y, 0));
+    }
 
 }
