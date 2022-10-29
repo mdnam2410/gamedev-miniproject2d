@@ -29,8 +29,8 @@ AnimationClip:
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 2.5
-        value: {x: 2, y: 2, z: 2}
+        time: 1.8333334
+        value: {x: 3, y: 3, z: 3}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -46,45 +46,45 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: f7db171ea04024d87b5651d7e0393f17, type: 3}
-    - time: 0.11666667
+    - time: 0.083333336
       value: {fileID: 21300000, guid: b663c30136cb949d99b85d8832c357bc, type: 3}
-    - time: 0.23333333
+    - time: 0.18333334
       value: {fileID: 21300000, guid: 923509e1c1aa34589966141b0e20bb09, type: 3}
-    - time: 0.35
+    - time: 0.26666668
       value: {fileID: 21300000, guid: b95b1588475124ea188fa2feaf27d6b9, type: 3}
-    - time: 0.5
+    - time: 0.38333333
       value: {fileID: 21300000, guid: 5e40811c6a22f48ed80e6274a58dc6da, type: 3}
-    - time: 0.6
+    - time: 0.45
       value: {fileID: 21300000, guid: 41ddd8d60973c4f5ead8f2080ff10e87, type: 3}
-    - time: 0.71666664
+    - time: 0.53333336
       value: {fileID: 21300000, guid: 49d36a6f4c48046718eb5a9ffbda1232, type: 3}
-    - time: 0.8666667
+    - time: 0.65
       value: {fileID: 21300000, guid: cdacd46c1a9444369a80b058a95bca02, type: 3}
-    - time: 0.95
+    - time: 0.71666664
       value: {fileID: 21300000, guid: c719159a1e20e48d183b21b9efb3b911, type: 3}
-    - time: 1.0833334
+    - time: 0.81666666
       value: {fileID: 21300000, guid: 2d86e08002d484b7486ccc8f6df69444, type: 3}
-    - time: 1.2166667
+    - time: 0.9166667
       value: {fileID: 21300000, guid: a6e52ec8ae4cf42dfad11ad4399c540d, type: 3}
-    - time: 1.35
+    - time: 1.0166667
       value: {fileID: 21300000, guid: 5819f64cc8c0f4d2494df86a71810c10, type: 3}
-    - time: 1.4666667
+    - time: 1.1
       value: {fileID: 21300000, guid: a93fa689011444e83aef59f390b3cc58, type: 3}
-    - time: 1.5833334
+    - time: 1.2
       value: {fileID: 21300000, guid: d408a228512754309ac62f00dc71b576, type: 3}
-    - time: 1.7
+    - time: 1.2833333
       value: {fileID: 21300000, guid: 031f6d067a56f407196ebfd4b273655c, type: 3}
-    - time: 1.8166667
+    - time: 1.3666667
       value: {fileID: 21300000, guid: ecf09a00eed0a412bbe966ff372ad25b, type: 3}
-    - time: 1.9333333
+    - time: 1.45
       value: {fileID: 21300000, guid: 0ad27a0e1337e479fa3a2500113f4a70, type: 3}
-    - time: 2.05
+    - time: 1.55
       value: {fileID: 21300000, guid: 5b383a9256b3a4ea99a6ccf50af7c40d, type: 3}
-    - time: 2.1666667
+    - time: 1.6333333
       value: {fileID: 21300000, guid: ba0ca292246c34aafaec07a0324b8d02, type: 3}
-    - time: 2.3
+    - time: 1.7333333
       value: {fileID: 21300000, guid: 1ae4f9ef06ff24f7d84508e57e13e395, type: 3}
-    - time: 2.4333334
+    - time: 1.8333334
       value: {fileID: 21300000, guid: ff38eda0a0a424115acfa5851f33aa54, type: 3}
     attribute: m_Sprite
     path: 
@@ -138,7 +138,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 2.5
+    m_StopTime: 1.85
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -167,8 +167,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 2.5
-        value: 2
+        time: 1.8333334
+        value: 3
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -195,8 +195,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 2.5
-        value: 2
+        time: 1.8333334
+        value: 3
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -223,8 +223,8 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 2.5
-        value: 2
+        time: 1.8333334
+        value: 3
         inSlope: 0
         outSlope: 0
         tangentMode: 136
