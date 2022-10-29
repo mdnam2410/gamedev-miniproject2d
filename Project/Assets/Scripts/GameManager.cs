@@ -175,6 +175,8 @@ public class GameManager : MonoBehaviour
         // reset valid action
         this.currentValidAction = ValidAction.All;
 
+
+
     }
 
     public void UpdateValidAction()

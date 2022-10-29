@@ -33,6 +33,7 @@ public class Bullet : MonoBehaviour
 
     public Rigidbody2D rbd;
     public Collider2D cld;
+    public Animator animator;
 
     public BulletStatus currentStatus;
     public CollisionType currentCollision;
@@ -46,6 +47,7 @@ public class Bullet : MonoBehaviour
     {
         this.rbd = GetComponent<Rigidbody2D>();
         this.cld = GetComponent<Collider2D>();
+        this.animator = GetComponent<Animator>();
         this.currentStatus = BulletStatus.Hidden;
         this.currentCollision = CollisionType.None;
         this.offsetToFirePos = this.transform.position - this.firePos.transform.position;
@@ -125,8 +127,13 @@ public class Bullet : MonoBehaviour
     {
         this.owner.target.Behit(this.damage);
         this.ExecuteSpecialEffect();
+        this.rbd.bodyType = RigidbodyType2D.Static;
+        this.cld.enabled = false;
+        this.animator.SetTrigger("Destroyed");
+        /*
         this.gameObject.SetActive(false);
         this.gameObject.transform.position = this.offsetToFirePos + this.firePos.position;
+        */
     }
 
     protected virtual void ExecuteSpecialEffect()
@@ -136,9 +143,13 @@ public class Bullet : MonoBehaviour
 
     protected virtual void DestroyByEnvironment()
     {
-        // TODO
+        this.rbd.bodyType = RigidbodyType2D.Static;
+        this.cld.enabled = false;
+        this.animator.SetTrigger("Destroyed");
+        /*
         this.gameObject.SetActive(false);
         this.gameObject.transform.position = this.offsetToFirePos + this.firePos.position;
+        */
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
