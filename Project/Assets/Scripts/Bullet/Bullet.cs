@@ -25,6 +25,7 @@ public class Bullet : MonoBehaviour
     public float mass;
     public float radius;
     public int damage;
+    public int damageBuff = 0;
     public Transform firePos;
     public Vector3 offsetToFirePos;
 
@@ -97,7 +98,16 @@ public class Bullet : MonoBehaviour
 
     protected virtual void HitTarget()
     {
-        this.owner.target.Behit(this.damage);
+        if (this.damageBuff != 0)
+        {
+            this.owner.target.Behit(this.damage + this.damageBuff);
+            this.damageBuff = 0;
+        }
+        else
+        {
+            this.owner.target.Behit(this.damage);
+        }
+        
         this.ExecuteSpecialEffect();
     }
 
@@ -170,5 +180,10 @@ public class Bullet : MonoBehaviour
             this.explodingSound.Stop();
         }
         this.explodingSound.Play();
+    }
+
+    public void AddDamageBuff(int buff)
+    {
+        this.damageBuff = buff;
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum BuffType
 {
@@ -29,11 +30,21 @@ public class BuffManager : MonoBehaviour
     public float minTimeRange;
     public List<GameObject> listBuff;
 
+    public UnityEvent OnBuffDestroyed;
+    public static BuffManager Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         isOccupiedPos = new bool[listPos.Count];
         leftSpawnTime = GetNextLeftTime();
+
+        this.OnBuffDestroyed.AddListener(this.BuffDestroy);
     }
 
     // Update is called once per frame
@@ -91,5 +102,10 @@ public class BuffManager : MonoBehaviour
     int GetNextBuffIndex()
     {
         return Random.Range(0, listBuff.Count);
+    }
+
+    void BuffDestroy()
+    {
+        buffNum--;
     }
 }

@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
     public HealthBar healthBar1;
     public HealthBar healthBar2;
     public AngleRuler angleRuler;
+    public CameraController cameraController;
 
     // Environment - wind
     public float windSpeed;
@@ -98,6 +99,19 @@ public class GameManager : MonoBehaviour
     public void InitPlayers()
     {
         // TODO
+        P1.SetHealthBar(healthBar1);
+        P2.SetHealthBar(healthBar2);
+
+        P1.gameObject.transform.position = GetPlayerPos(SpawningPlace.Instance.listPlace1);
+        P2.gameObject.transform.position = GetPlayerPos(SpawningPlace.Instance.listPlace2);
+
+        cameraController.FocusAtPos(P1.transform.position);
+    }
+
+    Vector3 GetPlayerPos(List<Transform>listPos)
+    {
+        int index = Random.Range(0, listPos.Count);
+        return listPos[index].position;
     }
 
     public void InitEnvironment()
@@ -120,7 +134,7 @@ public class GameManager : MonoBehaviour
         this.UpdateTurn();
         this.UpdateValidAction();
         this.UpdateEnvironment();
-        this.UpdateHpUI();
+        //this.UpdateHpUI();
     }
 
     public void CheckTimeout()
