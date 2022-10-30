@@ -101,6 +101,8 @@ public class SelectPlayerView : BaseView
                 break;
         }
 
+        InGameView.CurrentScene = GameDefine.DEFAULT_SCENE;
+        ViewManager.Instance.PopTop();
         ViewManager.Instance.ChangeMain(InGameView.Path);
         SceneManager.LoadScene(sceneToPlay, LoadSceneMode.Additive);
     }
