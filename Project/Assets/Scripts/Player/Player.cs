@@ -293,6 +293,7 @@ public class Player : MonoBehaviour
         this.bullet.gameObject.transform.rotation = Quaternion.identity;
         this.bullet.gameObject.SetActive(true);
         this.bullet.rbd.AddForce(this.forceVector + new Vector2(GameManager.Instance.windSpeed * GameManager.Instance.windForceScaleFactor, 0));
+        this.bullet.PlayFiringSound();
     }
 
     public virtual void Behit(int damage)

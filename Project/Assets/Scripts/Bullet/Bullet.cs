@@ -125,6 +125,7 @@ public class Bullet : MonoBehaviour
         this.cld.enabled = false;
         this.animator.SetTrigger("Destroyed");
 
+        this.PlayExplodingSound();
         GameManager.Instance.OnBulletDestroyed.Invoke();
     }
 
@@ -145,6 +146,27 @@ public class Bullet : MonoBehaviour
         this.cld.enabled = false;
         this.animator.SetTrigger("Destroyed");
 
+        this.PlayExplodingSound();
         GameManager.Instance.OnBulletDestroyed.Invoke();
+    }
+
+    public void PlayFiringSound()
+    {
+        if (this.firingSound == null) return;
+        if (this.firingSound.isPlaying)
+        {
+            this.firingSound.Stop();
+        }
+        this.firingSound.Play();
+    }
+
+    public void PlayExplodingSound()
+    {
+        if (this.explodingSound == null) return;
+        if (this.explodingSound.isPlaying)
+        {
+            this.explodingSound.Stop();
+        }
+        this.explodingSound.Play();
     }
 }
