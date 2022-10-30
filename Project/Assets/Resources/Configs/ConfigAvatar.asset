@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16c3dd1be621be841a57bc9ebe2b7a6d, type: 3}
+  m_Name: ConfigAvatar
+  m_EditorClassIdentifier: 
+  Data:
+  - Id: 0
+    Name: Player_F_04_15
+    Prefab: {fileID: 4302099848962753455, guid: 0abef98255c094f3395b58ef2c8ba5d8, type: 3}
+  - Id: 1
+    Name: Player_F_81_12
+    Prefab: {fileID: 2683243650670973104, guid: 1389c4e67f820416ca59d0ce7f25c8d3, type: 3}
+  - Id: 2
+    Name: Player_M_00_17
+    Prefab: {fileID: 5856081934966259049, guid: 63c75c3d93fda4df39a98335d11b616b, type: 3}

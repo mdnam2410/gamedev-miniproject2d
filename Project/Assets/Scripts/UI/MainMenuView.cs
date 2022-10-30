@@ -51,16 +51,14 @@ public class MainMenuView : BaseView
 
     public void OnClick_LoadVsBotMode()
     {
-        InGameView.CurrentScene = scene2;
-        ViewManager.Instance.ChangeMain(InGameView.Path);
-        SceneManager.LoadScene(scene2, LoadSceneMode.Additive);
+        var view = ViewManager.Instance.PushTop(SelectPlayerView.Path) as SelectPlayerView;
+        view.Init(GameManager.GameType.vsBot);
     }
 
     public void OnClick_LoadVSPlayerMode()
     {
-        InGameView.CurrentScene = scene1;
-        ViewManager.Instance.ChangeMain(InGameView.Path);
-        SceneManager.LoadScene(scene1, LoadSceneMode.Additive);
+        var view = ViewManager.Instance.PushTop(SelectPlayerView.Path) as SelectPlayerView;
+        view.Init(GameManager.GameType.vsPlayer);
     }
 
     void ShowHide(List<GameObject> gameObjects, bool value)
