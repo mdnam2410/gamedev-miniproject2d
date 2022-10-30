@@ -50,11 +50,11 @@ public class Bot : Player
     public float ForceEpsilon;
     public float AngleEpsilon = 0.05f;
     public bool FinishedAiming;
-    public Transform ObstacleDetector;
 
     protected override void Start()
     {
         this.hp = 100;
+        this.ownRole = GameManager.GameTurn.Bot;
         this.currentStatus = Status.Idle;
         this.movingState = MovingState.None;
         this.rigid2D = GetComponent<Rigidbody2D>();
@@ -70,7 +70,6 @@ public class Bot : Player
     public override void UpdateMove()
     {
         this.LookAtPlayer();
-        //this.DetectObstacle();
         this.Move();
         this.UpdateTankAnim();
     }
@@ -90,27 +89,6 @@ public class Bot : Player
         if (deltaX >= 0 && this.faceDirection == FaceDirection.LeftRight) return true;
         if (deltaX <= 0 && this.faceDirection == FaceDirection.RightLeft) return true;
         return false;
-    }
-
-    protected virtual void DetectObstacle()
-    {
-        if (!this.canMove) return;
-        RaycastHit2D obstacle = default;
-        if (this.Direction == BotMovingDirection.Right)
-        {
-            obstacle = Physics2D.Raycast(this.ObstacleDetector.transform.position, Vector2.right, .5f);
-        }
-        else if (this.Direction == BotMovingDirection.Left)
-        {
-            obstacle = Physics2D.Raycast(this.ObstacleDetector.transform.position, Vector2.left, .5f);
-        }
-
-        if (obstacle != default)
-        {
-            Debug.Log("Detect obstacle");
-            this.canMove = false;
-        }
-
     }
 
     protected override void Move()

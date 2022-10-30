@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
     public float verticalVelocity;
     public float verticalJumpingVelocity;
     public float verticalDefaultVelocity = 0.1f;
+    public float lockRotate;
 
     protected virtual void Start()
     {
@@ -65,6 +66,7 @@ public class Player : MonoBehaviour
         this.movingState = MovingState.None;
         this.rigid2D = GetComponent<Rigidbody2D>();
         this.canMove = true;
+        this.lockRotate = 0f;
 
         GameManager.Instance.OnTurnChanged.AddListener(this.OnTurnChange);
         ForceBar.Instance.OnPowerCompleted.AddListener(this.Fire);
@@ -74,7 +76,11 @@ public class Player : MonoBehaviour
     private void Update()
     {
         this.velo = this.rigid2D.velocity;
+
         if (GameManager.Instance == null) return;
+
+        this.PreventFalling();
+
         if (this.ownRole != GameManager.Instance.currentTurn) return;
 
         if (GameManager.Instance.currentValidAction == GameManager.ValidAction.All)
@@ -84,6 +90,36 @@ public class Player : MonoBehaviour
         else
         {
             this.tankAnimator.SetBool("Moving", false);
+        }
+    }
+
+    public virtual void PreventFalling()
+    {
+        this.lockRotate -= Time.deltaTime;
+        if (this.lockRotate > 0)
+        {
+            this.rigid2D.freezeRotation = true;
+        }
+        else
+        {
+            this.rigid2D.freezeRotation = false;
+        }
+
+        if (this.transform.localEulerAngles.z > 89f)
+        {
+            this.transform.localEulerAngles = new Vector3(this.transform.localEulerAngles.x, this.transform.localEulerAngles.y, 15);
+            this.rigid2D.velocity = Vector2.zero;
+            this.lockRotate = 1f;
+        }
+        else if (this.transform.localEulerAngles.z < -89f)
+        {
+            this.transform.localEulerAngles = new Vector3(this.transform.localEulerAngles.x, this.transform.localEulerAngles.y, -15);
+            this.rigid2D.velocity = Vector2.zero;
+            this.lockRotate = 1f;
+        }
+        else
+        {
+            this.rigid2D.freezeRotation = false;
         }
     }
 
@@ -128,7 +164,11 @@ public class Player : MonoBehaviour
 
         if (this.MoveRight())
         {
-            if (this.rigid2D.velocity.magnitude < 1)
+            if (this.rigid2D.velocity.x <= 0)
+            {
+                this.rigid2D.velocity = new Vector2(this.movingSpeed * Time.deltaTime, this.verticalVelocity);
+            }
+            else if (this.rigid2D.velocity.magnitude < 1)
                 this.rigid2D.velocity = new Vector2(this.rigid2D.velocity.x + this.movingSpeed * Time.deltaTime, this.verticalVelocity);
 
             this.movingState = MovingState.ToRight;
@@ -136,7 +176,11 @@ public class Player : MonoBehaviour
         }
         else if (this.MoveLeft())
         {
-            if (this.rigid2D.velocity.magnitude < 1)
+            if (this.rigid2D.velocity.x >= 0)
+            {
+                this.rigid2D.velocity = new Vector2(-this.movingSpeed * Time.deltaTime, this.verticalVelocity);
+            }
+            else if (this.rigid2D.velocity.magnitude < 1)
                 this.rigid2D.velocity = new Vector2(this.rigid2D.velocity.x - this.movingSpeed * Time.deltaTime, this.verticalVelocity);
 
             this.movingState = MovingState.ToLeft;
@@ -150,6 +194,7 @@ public class Player : MonoBehaviour
     protected bool DetectNearObstacle()
     {
         if (this.detectorLow == null || this.detectorMid == null) return false;
+        if (!this.isMovingToward()) return false;
 
         if (this.faceDirection == FaceDirection.LeftRight)
             this.detectorDirection = new Vector2(Mathf.Cos(this.transform.eulerAngles.z * Mathf.PI / 180f), Mathf.Sin(this.transform.eulerAngles.z * Mathf.PI / 180f)) * 0.05f;
@@ -198,8 +243,12 @@ public class Player : MonoBehaviour
 
     private bool isMovingToward()
     {
+        
         if (this.movingState == MovingState.ToLeft && this.faceDirection == FaceDirection.RightLeft) return true;
         if (this.movingState == MovingState.ToRight && this.faceDirection == FaceDirection.LeftRight) return true;
+        
+        //if (this.velo.x < 0 && this.faceDirection == FaceDirection.RightLeft) return true;
+        //else if (this.velo.x > 0 && this.faceDirection == FaceDirection.LeftRight) return true;
         return false;
     }
 
@@ -242,8 +291,10 @@ public class Player : MonoBehaviour
         this.bullet.currentCollision = Bullet.CollisionType.None;
         this.bullet.currentStatus = Bullet.BulletStatus.Flying;
         this.bullet.gameObject.transform.rotation = Quaternion.identity;
+        this.bullet.gameObject.transform.localScale = this.bullet.cachedScale;
         this.bullet.gameObject.SetActive(true);
         this.bullet.rbd.AddForce(this.forceVector + new Vector2(GameManager.Instance.windSpeed * GameManager.Instance.windForceScaleFactor, 0));
+        this.bullet.PlayFiringSound();
     }
 
     public virtual void Behit(int damage)
@@ -271,6 +322,7 @@ public class Player : MonoBehaviour
 
         this.canMove = true;
         this.currentStatus = Status.Idle;
+        this.lockRotate = 0f;
     }
 
     protected void lockMovingOnFire() => this.canMove = false;
