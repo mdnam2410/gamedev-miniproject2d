@@ -58,9 +58,9 @@ public class MainMenuView : BaseView
 
     public void OnClick_LoadVSPlayerMode()
     {
-        InGameView.CurrentScene = scene1;
-        ViewManager.Instance.ChangeMain(InGameView.Path);
-        SceneManager.LoadScene(scene1, LoadSceneMode.Additive);
+        var view = ViewManager.Instance.PushTop(SelectPlayerView.Path) as SelectPlayerView;
+        view.Init(GameManager.GameType.vsPlayer);
+        //SceneManager.LoadScene(scene1, LoadSceneMode.Additive);
     }
 
     void ShowHide(List<GameObject> gameObjects, bool value)
