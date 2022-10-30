@@ -8,27 +8,8 @@ public enum ViewLayer
     Top
 }
 
-public class ViewManager : MonoBehaviour
+public class ViewManager : MonoBehaviourSingletonPersistent<ViewManager>
 {
-    private ViewManager() { }
-    private static ViewManager _instance;
-    public static ViewManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = new ViewManager();
-            }
-            return _instance;
-        }
-    }
-
-    private void Awake()
-    {
-        _instance = this;
-    }
-
     [SerializeField] Transform main;
     [SerializeField] Transform top;
 
