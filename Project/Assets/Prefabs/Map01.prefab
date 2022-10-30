@@ -225,7 +225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798924265282692227}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -62.815845, y: -12.715265, z: -210.08456}
+  m_LocalPosition: {x: -62.815845, y: -12.715265, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1808242044805839742}
@@ -289,7 +289,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2201789286793928986}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -62.815845, y: -12.715265, z: -210.08456}
+  m_LocalPosition: {x: -62.815845, y: -12.715265, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7443971514404096492}
@@ -762,6 +762,9 @@ MonoBehaviour:
   - {fileID: 1707191371537962249, guid: 85e4114d2344d4800b42b85d2a389686, type: 3}
   - {fileID: 2372205585809111788, guid: b3d4c622cfb69409e92a90a4dfab9091, type: 3}
   - {fileID: 5613889359161403239, guid: 07a835a9a5a8941e188b9370cbd12b0f, type: 3}
+  OnBuffDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6723019055208799814
 GameObject:
   m_ObjectHideFlags: 0

@@ -29,7 +29,11 @@ public class Player : MonoBehaviour
     }
 
     public GameManager.GameTurn ownRole;
+
     public int hp;
+    public int maxHp = 100;
+    public float movingSpeed = 5;
+
     public Transform firePos;
     public Collider2D heroHead;
     public Collider2D tank;
@@ -39,8 +43,8 @@ public class Player : MonoBehaviour
     public Bullet bullet;
     public Status currentStatus;
     public Rigidbody2D rigid2D;
+    public HealthBar healthBar;
 
-    public float movingSpeed = 5;
     public MovingState movingState;
     public FaceDirection faceDirection;
 
@@ -58,6 +62,11 @@ public class Player : MonoBehaviour
     public float verticalJumpingVelocity;
     public float verticalDefaultVelocity = 0.1f;
     public float lockRotate;
+
+    public float shieldBuff = 0;
+    public float powerBuff = 0;
+    public float speedBuff = 0;
+
 
     protected virtual void Start()
     {
@@ -166,10 +175,10 @@ public class Player : MonoBehaviour
         {
             if (this.rigid2D.velocity.x <= 0)
             {
-                this.rigid2D.velocity = new Vector2(this.movingSpeed * Time.deltaTime, this.verticalVelocity);
+                this.rigid2D.velocity = new Vector2((this.movingSpeed + this.speedBuff) * Time.deltaTime, this.verticalVelocity);
             }
             else if (this.rigid2D.velocity.magnitude < 1)
-                this.rigid2D.velocity = new Vector2(this.rigid2D.velocity.x + this.movingSpeed * Time.deltaTime, this.verticalVelocity);
+                this.rigid2D.velocity = new Vector2(this.rigid2D.velocity.x + (this.movingSpeed + this.speedBuff)  * Time.deltaTime, this.verticalVelocity);
 
             this.movingState = MovingState.ToRight;
 
@@ -178,10 +187,10 @@ public class Player : MonoBehaviour
         {
             if (this.rigid2D.velocity.x >= 0)
             {
-                this.rigid2D.velocity = new Vector2(-this.movingSpeed * Time.deltaTime, this.verticalVelocity);
+                this.rigid2D.velocity = new Vector2(-(this.movingSpeed + this.speedBuff) * Time.deltaTime, this.verticalVelocity);
             }
             else if (this.rigid2D.velocity.magnitude < 1)
-                this.rigid2D.velocity = new Vector2(this.rigid2D.velocity.x - this.movingSpeed * Time.deltaTime, this.verticalVelocity);
+                this.rigid2D.velocity = new Vector2(this.rigid2D.velocity.x - (this.movingSpeed + this.speedBuff)  * Time.deltaTime, this.verticalVelocity);
 
             this.movingState = MovingState.ToLeft;
         }
@@ -288,6 +297,7 @@ public class Player : MonoBehaviour
     public virtual void ThrowBullet()
     {
         // this method called by StateMachineBehavior
+        this.bullet.AddDamageBuff((int)this.powerBuff);
         this.bullet.currentCollision = Bullet.CollisionType.None;
         this.bullet.currentStatus = Bullet.BulletStatus.Flying;
         this.bullet.gameObject.transform.rotation = Quaternion.identity;
@@ -299,8 +309,16 @@ public class Player : MonoBehaviour
 
     public virtual void Behit(int damage)
     {
+        if (shieldBuff != 0)
+        {
+            damage = (int)(damage * 100 / (100 + shieldBuff));
+            shieldBuff = 0;
+        }
+        
         this.hp -= damage;
+        this.healthBar.SetHealth(this.hp);
         this.heroHeadAnimator.SetTrigger("Behit");
+
         if (this.hp <= 0)
         {
             this.hp = 0;
@@ -322,7 +340,6 @@ public class Player : MonoBehaviour
 
         this.canMove = true;
         this.currentStatus = Status.Idle;
-        this.lockRotate = 0f;
     }
 
     protected void lockMovingOnFire() => this.canMove = false;
@@ -341,4 +358,51 @@ public class Player : MonoBehaviour
         Gizmos.DrawLine(this.detectorLow.position, this.detectorLow.position + new Vector3(detectorDirection.x, detectorDirection.y, 0));
     }
 
+    public void SetHealthBar(HealthBar healthBar)
+    {
+        this.healthBar = healthBar;
+        this.healthBar.SetMaxHealth(hp);
+    }
+
+    public void UpdateHp(int delta)
+    {
+        int newHp = hp + delta;
+
+        if (newHp > maxHp)
+        {
+            hp = maxHp;
+        }
+        else if (newHp < 0)
+        {
+            hp = 0;
+        }
+        else
+        {
+            hp = newHp; 
+        }
+
+        healthBar.SetHealth(hp);
+    }
+
+    public void AddBuff(BuffData buff)
+    {
+        switch (buff.buffType)
+        {
+            case BuffType.Speed:
+                speedBuff += buff.buffValue;
+                break;
+
+            case BuffType.Power:
+                powerBuff += buff.buffValue;
+                break;
+
+            case BuffType.Shield:
+                shieldBuff += buff.buffValue;
+                break;
+
+            case BuffType.Health:
+                UpdateHp((int)buff.buffValue);
+                break;
+        }
+    }
 }
