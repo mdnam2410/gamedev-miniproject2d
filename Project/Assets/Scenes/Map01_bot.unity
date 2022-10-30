@@ -362,7 +362,7 @@ MonoBehaviour:
   heroHeadAnimator: {fileID: 1671139119}
   tankAnimator: {fileID: 1156288350}
   ownTurn: 0
-  bullet: {fileID: 1156288348}
+  bullet: {fileID: 0}
   currentStatus: 0
   rigid2D: {fileID: 150292333}
   healthBar: {fileID: 0}
@@ -375,15 +375,19 @@ MonoBehaviour:
   fired: 0
   canMove: 0
   velo: {x: 0, y: 0}
-  detectorLow: {fileID: 0}
-  detectorMid: {fileID: 0}
-  detectorDirection: {x: 0, y: 0}
   verticalVelocity: 0
   verticalJumpingVelocity: 0
   verticalDefaultVelocity: 0
+  jumpTimeCooldown: 0
+  lockRotate: 0
   shieldBuff: 0
   powerBuff: 0
   speedBuff: 0
+  frontWheel: {fileID: 0}
+  backWheel: {fileID: 0}
+  OnBehit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &150292336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,7 +410,7 @@ MonoBehaviour:
   heroHeadAnimator: {fileID: 1671139119}
   tankAnimator: {fileID: 1156288350}
   ownTurn: 0
-  bullet: {fileID: 1156288348}
+  bullet: {fileID: 0}
   currentStatus: 0
   rigid2D: {fileID: 150292333}
   healthBar: {fileID: 0}
@@ -419,24 +423,31 @@ MonoBehaviour:
   fired: 0
   canMove: 0
   velo: {x: 0, y: 0}
-  detectorLow: {fileID: 0}
-  detectorMid: {fileID: 0}
-  detectorDirection: {x: 0, y: 0}
   verticalVelocity: 0
   verticalJumpingVelocity: 0
   verticalDefaultVelocity: 0
+  jumpTimeCooldown: 0
+  lockRotate: 0
   shieldBuff: 0
   powerBuff: 0
   speedBuff: 0
+  frontWheel: {fileID: 0}
+  backWheel: {fileID: 0}
+  OnBehit:
+    m_PersistentCalls:
+      m_Calls: []
   DirectionToTarget: {x: 0, y: 0}
   Direction: 0
   MovingTime: 3
   RemainMovingTime: 0
+  PreAimedAngle: 0
+  AngleModifyingFactor: 0
   ForceScaleFactor: 0.1
   ForceEpsilon: 0
   AngleEpsilon: 0
+  AimingSpeed: 20
+  StartAiming: 0
   FinishedAiming: 0
-  ObstacleDetector: {fileID: 0}
 --- !u!4 &150292337
 Transform:
   m_ObjectHideFlags: 0
@@ -1294,17 +1305,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5549890279663390734, guid: dac643e2f555bc24d91127d485998257, type: 3}
   m_PrefabInstance: {fileID: 7249275515608364341}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1143223861 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5692810793529172469, guid: e06cd6e5e182ae543957f0fb4da9789e, type: 3}
-  m_PrefabInstance: {fileID: 7394733717700243573}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f5aba1b60a9e942887407a6a5ef4e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1145213815
 GameObject:
   m_ObjectHideFlags: 0
@@ -1503,17 +1503,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd2db3a72de75d74cbfd20cacdfaa246, type: 3}
---- !u!114 &1156288348 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7215825731312600796, guid: dd2db3a72de75d74cbfd20cacdfaa246, type: 3}
-  m_PrefabInstance: {fileID: 1156288347}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f5aba1b60a9e942887407a6a5ef4e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1156288349 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7215825732374118344, guid: dd2db3a72de75d74cbfd20cacdfaa246, type: 3}
@@ -1989,17 +1978,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1076643561321252904, guid: 8ac64cda68d69bc40b1a97dd4365e17f, type: 3}
   m_PrefabInstance: {fileID: 9142278913992669578}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1966514288 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7215825731312600796, guid: dd2db3a72de75d74cbfd20cacdfaa246, type: 3}
-  m_PrefabInstance: {fileID: 1444851620807779596}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2f5aba1b60a9e942887407a6a5ef4e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2028867772 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7273760547194553029, guid: 89a5397ac317c6c43ab6409a3380e4e3, type: 3}
@@ -2890,7 +2868,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!50 &2999312011329293534
 Rigidbody2D:
   serializedVersion: 4
@@ -2934,7 +2912,7 @@ MonoBehaviour:
   heroHeadAnimator: {fileID: 1340711131}
   tankAnimator: {fileID: 500878641}
   ownTurn: 0
-  bullet: {fileID: 1143223861}
+  bullet: {fileID: 0}
   currentStatus: 0
   rigid2D: {fileID: 0}
   healthBar: {fileID: 0}
@@ -2947,15 +2925,19 @@ MonoBehaviour:
   fired: 0
   canMove: 0
   velo: {x: 0, y: 0}
-  detectorLow: {fileID: 1190967648}
-  detectorMid: {fileID: 2069492032}
-  detectorDirection: {x: 0, y: 0}
   verticalVelocity: 0
   verticalJumpingVelocity: 2
   verticalDefaultVelocity: 0.1
+  jumpTimeCooldown: 0
+  lockRotate: 0
   shieldBuff: 0
   powerBuff: 0
   speedBuff: 0
+  frontWheel: {fileID: 0}
+  backWheel: {fileID: 0}
+  OnBehit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &2999312011329293536
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3435,7 +3417,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &8083653060814176155
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3484,7 +3466,7 @@ MonoBehaviour:
   heroHeadAnimator: {fileID: 1475589340}
   tankAnimator: {fileID: 1034729846}
   ownTurn: 0
-  bullet: {fileID: 1966514288}
+  bullet: {fileID: 0}
   currentStatus: 0
   rigid2D: {fileID: 8083653060814175844}
   healthBar: {fileID: 0}
@@ -3497,24 +3479,31 @@ MonoBehaviour:
   fired: 0
   canMove: 0
   velo: {x: 0, y: 0}
-  detectorLow: {fileID: 860734142}
-  detectorMid: {fileID: 104875295}
-  detectorDirection: {x: 0, y: 0}
   verticalVelocity: 0
   verticalJumpingVelocity: 1
   verticalDefaultVelocity: 0.1
+  jumpTimeCooldown: 0
+  lockRotate: 0
   shieldBuff: 0
   powerBuff: 0
   speedBuff: 0
+  frontWheel: {fileID: 0}
+  backWheel: {fileID: 0}
+  OnBehit:
+    m_PersistentCalls:
+      m_Calls: []
   DirectionToTarget: {x: 0, y: 0}
   Direction: 0
   MovingTime: 5
   RemainMovingTime: 0
+  PreAimedAngle: 0
+  AngleModifyingFactor: 0
   ForceScaleFactor: 0.05
   ForceEpsilon: 20
   AngleEpsilon: 10
+  AimingSpeed: 20
+  StartAiming: 0
   FinishedAiming: 0
-  ObstacleDetector: {fileID: 860734142}
 --- !u!1001 &9142278913992669578
 PrefabInstance:
   m_ObjectHideFlags: 0

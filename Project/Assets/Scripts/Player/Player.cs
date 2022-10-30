@@ -418,6 +418,9 @@ public class Player : MonoBehaviour
         this.canMove = true;
         this.currentStatus = Status.Idle;
         GameManager.Instance.angleRuler.SetAngle(15f);
+
+        // anniele
+        this.speedBuff = 0;
     }
 
     protected void lockMovingOnFire() => this.canMove = false;

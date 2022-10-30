@@ -107,8 +107,10 @@ public class GameManager : MonoBehaviour
         this.OnTurnChanged.AddListener(this.ResetTurnValues);
         this.OnBulletDestroyed.AddListener(this.BulletDestroy);
 
+        /*
         this.P1.OnBehit.AddListener(damageIndicator.OnBehitCallback);
         this.P2.OnBehit.AddListener(damageIndicator.OnBehitCallback);
+        */
 
         this.mapSound.Play();
     }
@@ -140,7 +142,7 @@ public class GameManager : MonoBehaviour
         this.currentTurn = GameTurn.None;
 
         // modify later
-        int selection = 1;
+        int selection = 0;
 
         if (selection != 0)
         {

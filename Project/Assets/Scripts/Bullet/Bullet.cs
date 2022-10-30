@@ -163,6 +163,7 @@ public class Bullet : MonoBehaviour
             this.owner.target.Behit(this.damage);
         }
 
+        
         this.ExecuteSpecialEffect();
     }
 
