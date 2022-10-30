@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
         P1.gameObject.transform.position = GetPlayerPos(SpawningPlace.Instance.listPlace1);
         P2.gameObject.transform.position = GetPlayerPos(SpawningPlace.Instance.listPlace2);
 
-        cameraController.FocusAtPos(P1.transform.position);
+        //cameraController.FocusAtPos(P1.transform.position);
     }
 
     Vector3 GetPlayerPos(List<Transform>listPos)
