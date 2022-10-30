@@ -58,4 +58,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# macOS
+.DS_Store
+
+# Project specific
 UserSettings/EditorUserSettings.asset
