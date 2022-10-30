@@ -7,8 +7,7 @@ using UnityEngine;
 public class ConfigHeroData
 {
     public string Name;
-    public string SpritePath;
-    public string PrefabPath;
+    public GameObject Prefab;
 }
 
 [CreateAssetMenu(fileName = "ConfigHero", menuName = "Configs/ConfigHero", order = 1)]

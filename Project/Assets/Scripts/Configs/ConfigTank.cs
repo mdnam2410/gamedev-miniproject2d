@@ -6,7 +6,7 @@ using UnityEngine;
 public class ConfigTankData
 {
     public string Name;
-    public string PrefabPath;
+    public GameObject Prefab;
 }
 
 [CreateAssetMenu(fileName = "ConfigTank", menuName = "Configs/ConfigTank", order = 1)]
