@@ -127,4 +127,24 @@ public class Bullet : MonoBehaviour
 
         GameManager.Instance.OnBulletDestroyed.Invoke();
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (this.ownerColliders.Contains(collision.gameObject)) return;
+
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            this.HitTarget();
+        }
+        else
+        {
+            this.DestroyByEnvironment();
+        }
+
+        this.rbd.bodyType = RigidbodyType2D.Static;
+        this.cld.enabled = false;
+        this.animator.SetTrigger("Destroyed");
+
+        GameManager.Instance.OnBulletDestroyed.Invoke();
+    }
 }
