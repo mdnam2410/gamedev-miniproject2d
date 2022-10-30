@@ -12,4 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f094a510c07a5747b4d8a15dd2a7aae, type: 3}
   m_Name: ConfigTank
   m_EditorClassIdentifier: 
-  Data: []
+  Data:
+  - Name: Tank06
+    Prefab: {fileID: 3071625200904248708, guid: 4112b1729e28f1549b177cf1ae49a3d1, type: 3}
+  - Name: Tank07
+    Prefab: {fileID: 5036849246086967419, guid: 1a025d1e7a76c2946a6fa1ea4488365d, type: 3}
+  - Name: Tank12
+    Prefab: {fileID: 7215825732374118389, guid: dd2db3a72de75d74cbfd20cacdfaa246, type: 3}
+  - Name: Tank14
+    Prefab: {fileID: 1740685195469713457, guid: 12bcae3e1c5afa04ea1967cf525e8b23, type: 3}
+  - Name: Tank15
+    Prefab: {fileID: 5692810792599902489, guid: e06cd6e5e182ae543957f0fb4da9789e, type: 3}

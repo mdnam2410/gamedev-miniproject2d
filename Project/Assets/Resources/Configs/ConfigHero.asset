@@ -14,5 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Data:
   - Name: F_04
-    SpritePath: 
-    PrefabPath: Prefabs/Heros/F_04
+    Prefab: {fileID: 5549890279663390733, guid: dac643e2f555bc24d91127d485998257, type: 3}
+  - Name: F_81
+    Prefab: {fileID: 1076643561321252907, guid: 8ac64cda68d69bc40b1a97dd4365e17f, type: 3}
+  - Name: M_00
+    Prefab: {fileID: 7934151035797181208, guid: 72f6a8d95a84ad84d99a7f4995d47e86, type: 3}
+  - Name: M_28
+    Prefab: {fileID: 5206321398309860592, guid: b56408bcb21a67441b0493ff8086472b, type: 3}
