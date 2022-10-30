@@ -40,6 +40,7 @@ public class Bullet : MonoBehaviour
 
     public AudioSource firingSound;
     public AudioSource explodingSound;
+    public Vector3 cachedScale;
 
     // explosion video -> anim "Explode"
 
@@ -51,6 +52,7 @@ public class Bullet : MonoBehaviour
         this.currentStatus = BulletStatus.Hidden;
         this.currentCollision = CollisionType.None;
         this.offsetToFirePos = this.transform.position - this.firePos.transform.position;
+        this.cachedScale = this.transform.localScale;
         this.InitData();
     }
 

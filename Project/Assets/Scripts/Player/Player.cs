@@ -291,6 +291,7 @@ public class Player : MonoBehaviour
         this.bullet.currentCollision = Bullet.CollisionType.None;
         this.bullet.currentStatus = Bullet.BulletStatus.Flying;
         this.bullet.gameObject.transform.rotation = Quaternion.identity;
+        this.bullet.gameObject.transform.localScale = this.bullet.cachedScale;
         this.bullet.gameObject.SetActive(true);
         this.bullet.rbd.AddForce(this.forceVector + new Vector2(GameManager.Instance.windSpeed * GameManager.Instance.windForceScaleFactor, 0));
         this.bullet.PlayFiringSound();
