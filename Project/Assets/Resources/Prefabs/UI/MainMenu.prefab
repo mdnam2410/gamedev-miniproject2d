@@ -429,7 +429,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5385770707947122961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,6 +460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scene1: Map01
+  scene2: Map01_bot
   btnNewGame: {fileID: 5385770709698115606}
   btnVsBot: {fileID: 5385770709935878060}
   btnVsPlayer: {fileID: 5385770708041640864}
