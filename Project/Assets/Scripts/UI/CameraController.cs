@@ -37,6 +37,11 @@ public class CameraController : MonoBehaviour
         canvasDelta = MainCanvas.instance.transform.position - transform.position;
     }
 
+    public float zoomMultiplier = 1;
+    public float zoomSpeed = 30;
+
+    public Camera camera;
+
     // Update is called once per frame
     void Update()
     {

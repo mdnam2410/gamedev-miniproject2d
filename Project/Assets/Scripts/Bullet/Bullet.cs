@@ -215,4 +215,9 @@ public class Bullet : MonoBehaviour
     {
         this.damageBuff = buff;
     }
+
+    public void AddDamageBuff(int buff)
+    {
+        this.damageBuff = buff;
+    }
 }
