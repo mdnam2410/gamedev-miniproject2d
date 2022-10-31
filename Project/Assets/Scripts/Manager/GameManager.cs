@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
     public Text windSpeedUI;
     public float timeRandomChangeWindSpeed;
     public float cachedTimeRandomChangeWindSpeed;
+    public float windSpeedOfLastShot;
 
     public UnityEvent OnTurnChanged;
     public UnityEvent OnGameEnd = new UnityEvent();
@@ -102,8 +103,8 @@ public class GameManager : MonoBehaviour
         P1.SetHealthBar(healthBar1);
         P2.SetHealthBar(healthBar2);
 
-        P1.gameObject.transform.position = GetPlayerPos(SpawningPlace.Instance.listPlace1);
-        P2.gameObject.transform.position = GetPlayerPos(SpawningPlace.Instance.listPlace2);
+        //P1.gameObject.transform.position = GetPlayerPos(SpawningPlace.Instance.listPlace1);
+        //P2.gameObject.transform.position = GetPlayerPos(SpawningPlace.Instance.listPlace2);
 
         //cameraController.FocusAtPos(P1.transform.position);
     }
@@ -266,6 +267,8 @@ public class GameManager : MonoBehaviour
         if (this.windSpeedUI != null)
             this.windSpeedUI.text = windSpeed.ToString();
     }
+
+    public void SaveWindSpeed() => this.windSpeedOfLastShot = this.windSpeed;
 
     public void UpdateHpUI()
     {

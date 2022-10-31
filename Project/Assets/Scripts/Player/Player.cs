@@ -213,8 +213,6 @@ public class Player : MonoBehaviour
         RaycastHit2D hitLow = Physics2D.Raycast(this.detectorLow.transform.position, this.detectorDirection, 0.1f, LayerMask.GetMask("Obstacle"));
         RaycastHit2D hitMid = Physics2D.Raycast(this.detectorMid.transform.position, this.detectorDirection, 0.1f, LayerMask.GetMask("Obstacle"));
 
-        if (hitLow.collider != null) Debug.Log("Low:" + hitLow.collider.ToString());
-        if (hitMid.collider != null) Debug.Log("Mid:" + hitMid.collider.ToString());
         if (hitLow.collider != null && hitMid.collider == null)
             return true;
 
@@ -304,6 +302,7 @@ public class Player : MonoBehaviour
         this.bullet.gameObject.transform.localScale = this.bullet.cachedScale;
         this.bullet.gameObject.SetActive(true);
         this.bullet.rbd.AddForce(this.forceVector + new Vector2(GameManager.Instance.windSpeed * GameManager.Instance.windForceScaleFactor, 0));
+        GameManager.Instance.SaveWindSpeed(); // for bot using
         this.bullet.PlayFiringSound();
     }
 
@@ -340,6 +339,7 @@ public class Player : MonoBehaviour
 
         this.canMove = true;
         this.currentStatus = Status.Idle;
+        GameManager.Instance.angleRuler.SetAngle(15f);
     }
 
     protected void lockMovingOnFire() => this.canMove = false;
