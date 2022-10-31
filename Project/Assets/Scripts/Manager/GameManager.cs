@@ -57,6 +57,9 @@ public class GameManager : MonoBehaviour
     public bool timeout;
 
     // Players
+    public Transform tempTransform;
+    public GameObject P1Prefab;
+    public GameObject P2Prefab;
     public Player P1;
     public Player P2;
     public Player currentPlayer;
@@ -82,30 +85,65 @@ public class GameManager : MonoBehaviour
     public float waitingTime = 4f;
 
     private float dt;
+    public ConfigAvatar configAvatar;
+    public Transform demoTransform1;
+    public Transform demoTransform2;
+
+
 
     private void Start()
     {
+        this.DemoLoadingData();
         this.InitPlayers();
         this.InitEnvironment();
-        //this.currentTurn = GameTurn.P1;
-        //this.currentPlayer = this.P1;
-        this.windSpeed = 0;
-        if (this.windSpeedUI != null)
-            this.windSpeedUI.text = "0";
+        this.currentTurn = GameTurn.P1;
+        this.currentPlayer = this.P1;
+
 
         this.OnTurnChanged.AddListener(this.ResetTurnValues);
         this.OnBulletDestroyed.AddListener(this.BulletDestroy);
     }
 
+    private void DemoLoadingData()
+    {
+        string s = GameStartData.Instance.MapName;
+        GameStartData.Instance.P1 = configAvatar.Data[0];
+        GameStartData.Instance.P2 = configAvatar.Data[1];
+        GameStartData.Instance.gameType = GameType.vsPlayer;
+        GameStartData.Instance.MapName = "";
+    }
+
     public void InitPlayers()
     {
-        // TODO
-        P1.SetHealthBar(healthBar1);
-        P2.SetHealthBar(healthBar2);
+        this.gameType = GameStartData.Instance.gameType;
+        this.currentTurn = GameTurn.None;
+
+        this.P1 = Instantiate(GameStartData.Instance.P1.Prefab, this.transform).GetComponent<Player>();
+        this.P2 = Instantiate(GameStartData.Instance.P2.Prefab, this.transform).GetComponent<Player>();
+        //this.P1.gameObject.transform.position = GetPlayerPos(SpawningPlace.Instance.listPlace1);
+        //this.P2.gameObject.transform.position = GetPlayerPos(SpawningPlace.Instance.listPlace2);
+        this.P1.gameObject.transform.position = this.demoTransform1.position;
+        this.P2.gameObject.transform.position = this.demoTransform2.position;
+
+        this.P1.ownRole = GameTurn.P1;
+        this.P2.ownRole = GameTurn.P2;
+        if (this.gameType == GameType.vsBot) this.P2.ownRole = GameTurn.Bot;
+
+        this.P1.faceDirection = Player.FaceDirection.LeftRight;
+        this.P1.transform.localScale = new Vector3(1f, this.P1.transform.localScale.y, this.P1.transform.localScale.z);
+        this.P2.faceDirection = Player.FaceDirection.RightLeft;
+        this.P2.transform.localScale = new Vector3(-1f, this.P2.transform.localScale.y, this.P2.transform.localScale.z);
+
+        this.P1.target = P2;
+        this.P2.target = P1;
+        this.currentPlayer = this.P1;
+        this.currentTurn = GameTurn.P1;
+
+        this.P1.SetHealthBar(this.healthBar1);
+        this.P2.SetHealthBar(this.healthBar2);
 
         //P1.gameObject.transform.position = GetPlayerPos(SpawningPlace.Instance.listPlace1);
         //P2.gameObject.transform.position = GetPlayerPos(SpawningPlace.Instance.listPlace2);
-
         //cameraController.FocusAtPos(P1.transform.position);
     }
 
@@ -117,7 +155,11 @@ public class GameManager : MonoBehaviour
 
     public void InitEnvironment()
     {
-        // TODO
+        this.windSpeed = 0;
+        if (this.windSpeedUI != null)
+            this.windSpeedUI.text = "0";
+        this.totalTimeOfTurn = 61;
+        this.remainingTimeOfTurn = 61;
     }
 
     public void SetData(GameType gameType, GameTurn gameTurn)
