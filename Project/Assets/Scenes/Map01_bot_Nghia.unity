@@ -6203,6 +6203,9 @@ MonoBehaviour:
   scrollSpeed: 15
   maxX: 6
   minX: -6
+  zoomMultiplier: 1
+  zoomSpeed: 30
+  camera: {fileID: 0}
 --- !u!20 &1540010641
 Camera:
   m_ObjectHideFlags: 0
@@ -6430,6 +6433,8 @@ MonoBehaviour:
   mass: 1
   radius: 2
   damage: 10
+  partialDamageRate: 0.5
+  damageBuff: 0
   firePos: {fileID: 3540015641383805643}
   offsetToFirePos: {x: 0, y: 0, z: 0}
   owner: {fileID: 8083653060814176156}
@@ -8523,8 +8528,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 1
-  radius: 2
+  radius: 1
   damage: 10
+  partialDamageRate: 0.5
+  damageBuff: 0
   firePos: {fileID: 7135825465369098177}
   offsetToFirePos: {x: 0, y: 0, z: 0}
   owner: {fileID: 8083653059990427442}
@@ -9466,6 +9473,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ownRole: 1
   hp: 100
+  maxHp: 100
+  movingSpeed: 10
   firePos: {fileID: 7135825465369098177}
   heroHead: {fileID: 4463027458404460802}
   tank: {fileID: 7135825464930524165}
@@ -9475,7 +9484,7 @@ MonoBehaviour:
   bullet: {fileID: 3540015640930523470}
   currentStatus: 0
   rigid2D: {fileID: 8083653059990427443}
-  movingSpeed: 10
+  healthBar: {fileID: 0}
   movingState: 0
   faceDirection: 0
   forceVector: {x: 0, y: 0}
@@ -9492,6 +9501,9 @@ MonoBehaviour:
   verticalJumpingVelocity: 0
   verticalDefaultVelocity: 0.1
   lockRotate: 0
+  shieldBuff: 0
+  powerBuff: 0
+  speedBuff: 0
 --- !u!50 &8083653059990427443
 Rigidbody2D:
   serializedVersion: 4
@@ -9610,6 +9622,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ownRole: 3
   hp: 0
+  maxHp: 100
+  movingSpeed: 2
   firePos: {fileID: 3540015641383805643}
   heroHead: {fileID: 8285592626032978052}
   tank: {fileID: 3540015641297553679}
@@ -9619,7 +9633,7 @@ MonoBehaviour:
   bullet: {fileID: 8083653061453013968}
   currentStatus: 0
   rigid2D: {fileID: 8083653060814175844}
-  movingSpeed: 3
+  healthBar: {fileID: 0}
   movingState: 0
   faceDirection: 1
   forceVector: {x: 0, y: 0}
@@ -9633,16 +9647,23 @@ MonoBehaviour:
   detectorMid: {fileID: 1371781181}
   detectorDirection: {x: 0, y: 0}
   verticalVelocity: 0
-  verticalJumpingVelocity: 2
+  verticalJumpingVelocity: 1
   verticalDefaultVelocity: 0.1
   lockRotate: 0
+  shieldBuff: 0
+  powerBuff: 0
+  speedBuff: 0
   DirectionToTarget: {x: 0, y: 0}
   Direction: 0
-  MovingTime: 5
+  MovingTime: 3
   RemainMovingTime: 0
+  PreAimedAngle: 0
+  AngleModifyingFactor: 5
   ForceScaleFactor: 0.05
   ForceEpsilon: 20
-  AngleEpsilon: 10
+  AngleEpsilon: 5
+  AimingSpeed: 20
+  StartAiming: 0
   FinishedAiming: 0
 --- !u!114 &8083653061453013968
 MonoBehaviour:
@@ -9659,6 +9680,8 @@ MonoBehaviour:
   mass: 1
   radius: 2
   damage: 10
+  partialDamageRate: 0.5
+  damageBuff: 0
   firePos: {fileID: 3540015641383805643}
   offsetToFirePos: {x: 0, y: 0, z: 0}
   owner: {fileID: 8083653060814176156}

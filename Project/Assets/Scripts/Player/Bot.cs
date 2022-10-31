@@ -46,9 +46,14 @@ public class Bot : Player
     public BotMovingDirection Direction;
     public float MovingTime = 3f;
     public float RemainMovingTime;
+
+    public float PreAimedAngle;
+    public float AngleModifyingFactor;
     public float ForceScaleFactor = 0.1f;
     public float ForceEpsilon;
-    public float AngleEpsilon = 0.05f;
+    public float AngleEpsilon = 5f;
+    public float AimingSpeed = 20f;
+    public bool StartAiming;
     public bool FinishedAiming;
 
     protected override void Start()
@@ -61,6 +66,7 @@ public class Bot : Player
         this.canMove = true;
         this.RemainMovingTime = this.MovingTime;
         this.Direction = BotMovingDirection.None;
+        this.StartAiming = false;
         this.FinishedAiming = false;
 
         GameManager.Instance.OnTurnChanged.AddListener(this.OnTurnChange);
@@ -122,6 +128,7 @@ public class Bot : Player
         if (this.ownRole == GameManager.Instance.currentTurn)
         {
             this.CalculateForceVector();
+
             if (this.FinishedAiming)
             {
                 this.SetFireAnim();
@@ -138,20 +145,37 @@ public class Bot : Player
     }
     private void SimulateAiming()
     {
-        if (Mathf.Abs(this.angle - this.target.angle) < this.AngleEpsilon)
+        this.CalculatePreAimedAngle();
+        this.SimulateAdjustingAngle();
+    }
+
+    private void SimulateAdjustingAngle()
+    {
+        if (Mathf.Abs(this.angle - this.PreAimedAngle) < this.AngleEpsilon)
         {
             this.FinishedAiming = true;
         }
-        else if (this.angle < this.target.angle)
+        else if (this.angle < this.PreAimedAngle)
         {
-            GameManager.Instance.angleRuler.IncreaseAngle(Time.deltaTime);
+            GameManager.Instance.angleRuler.IncreaseAngle(Time.deltaTime * this.AimingSpeed);
             this.angle = GameManager.Instance.angleRuler.curAngle;
         }
         else
         {
-            GameManager.Instance.angleRuler.IncreaseAngle(-Time.deltaTime);
+            GameManager.Instance.angleRuler.IncreaseAngle(-Time.deltaTime * this.AimingSpeed);
             this.angle = GameManager.Instance.angleRuler.curAngle;
         }
+    }
+
+    private void CalculatePreAimedAngle()
+    {
+        if (this.StartAiming) return;
+
+        this.PreAimedAngle = this.target.angle + this.DirectionToTarget.y * this.AngleModifyingFactor;
+        this.PreAimedAngle = Mathf.Clamp(this.PreAimedAngle, this.target.angle - 15f, this.target.angle + 15f);
+        this.PreAimedAngle = Mathf.Clamp(this.PreAimedAngle, 0f, 90f);
+        GameManager.Instance.angleRuler.SetAngle(UnityEngine.Random.Range(0f, 30f));
+        this.StartAiming = true;
     }
 
     private void SimulateGetForce()
@@ -162,8 +186,8 @@ public class Bot : Player
         {
             this.angle = 180f - this.angle;
         }
-        //this.force = this.target.force * (1f + this.DirectionToTarget.y * this.ForceScaleFactor);
-        this.force = this.target.force;
+
+        this.force = this.target.force + (GameManager.Instance.windSpeed - GameManager.Instance.windSpeedOfLastShot) * GameManager.Instance.windForceScaleFactor;
         this.forceVector = new Vector2(Mathf.Cos(this.angle * Mathf.PI / 180f), Mathf.Sin(this.angle * Mathf.PI / 180f)) * this.force;
     }
 
@@ -177,6 +201,7 @@ public class Bot : Player
         this.canMove = true;
         this.angle = 0;
         this.currentStatus = Status.Idle;
+        this.StartAiming = false;
         this.FinishedAiming = false;
         this.Direction = (BotMovingDirection)(UnityEngine.Random.Range(0, 3));
         this.RemainMovingTime = this.MovingTime;

@@ -23,8 +23,9 @@ public class Bullet : MonoBehaviour
     }
 
     public float mass;
-    public float radius;
+    public float radius = 2;
     public int damage;
+    public float partialDamageRate = 0.5f;
     public int damageBuff = 0;
     public Transform firePos;
     public Vector3 offsetToFirePos;
@@ -65,7 +66,6 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         this.UpdateRotation();
-        //this.UpdateCollision();
     }
 
     public virtual void UpdatePosition()
@@ -80,20 +80,75 @@ public class Bullet : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 360 * Time.deltaTime);
     }
 
-    protected virtual void UpdateCollision()
-    {
-        if (this.currentCollision == CollisionType.None) return;
 
-        if (this.currentCollision == CollisionType.Target)
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (this.ownerColliders.Contains(collision.gameObject)) return;
+
+        if (collision.gameObject.tag.Equals("Player"))
         {
             this.HitTarget();
         }
         else
         {
-            this.DestroyByEnvironment();
+            Collider2D[] collidersAround = Physics2D.OverlapCircleAll(this.transform.position, this.radius);
+
+            for (int i = 0; i < collidersAround.Length; i++)
+            {
+                if (TryHittingTargetAround(collidersAround[i]))
+                {
+                    break;
+                }
+            }
         }
 
+        this.rbd.bodyType = RigidbodyType2D.Static;
+        this.cld.enabled = false;
+        this.animator.SetTrigger("Destroyed");
+        this.PlayExplodingSound();
         GameManager.Instance.OnBulletDestroyed.Invoke();
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (this.ownerColliders.Contains(collision.gameObject)) return;
+
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            this.HitTarget();
+        }
+        else
+        {
+            Collider2D[] collidersAround = Physics2D.OverlapCircleAll(this.transform.position, this.radius);
+
+            for (int i = 0; i < collidersAround.Length; i++)
+            {
+                if (TryHittingTargetAround(collidersAround[i]))
+                {
+                    break;
+                }
+            }
+        }
+
+        this.rbd.bodyType = RigidbodyType2D.Static;
+        this.cld.enabled = false;
+        this.animator.SetTrigger("Destroyed");
+        this.PlayExplodingSound();
+        GameManager.Instance.OnBulletDestroyed.Invoke();
+    }
+
+    protected virtual bool TryHittingTargetAround(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            if (!this.ownerColliders.Contains(collision.gameObject))
+            {
+                this.HitTargetPartially();
+                return true;
+            }
+        }
+        return false;
     }
 
     protected virtual void HitTarget()
@@ -107,8 +162,23 @@ public class Bullet : MonoBehaviour
         {
             this.owner.target.Behit(this.damage);
         }
-        
+
         this.ExecuteSpecialEffect();
+    }
+
+    protected virtual void HitTargetPartially()
+    {
+        if (this.damageBuff != 0)
+        {
+            this.owner.target.Behit((int)((this.damage + this.damageBuff) * this.partialDamageRate));
+            this.damageBuff = 0;
+        }
+        else
+        {
+            this.owner.target.Behit((int)(this.damage * this.partialDamageRate));
+        }
+
+        Debug.Log("Hit target partially");
     }
 
     protected virtual void ExecuteSpecialEffect()
@@ -118,48 +188,6 @@ public class Bullet : MonoBehaviour
 
     protected virtual void DestroyByEnvironment()
     {
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (this.ownerColliders.Contains(collision.gameObject)) return;
-
-        if (collision.gameObject.tag.Equals("Player"))
-        {
-            this.HitTarget();
-        }
-        else
-        {
-            this.DestroyByEnvironment();
-        }
-
-        this.rbd.bodyType = RigidbodyType2D.Static;
-        this.cld.enabled = false;
-        this.animator.SetTrigger("Destroyed");
-
-        this.PlayExplodingSound();
-        GameManager.Instance.OnBulletDestroyed.Invoke();
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (this.ownerColliders.Contains(collision.gameObject)) return;
-
-        if (collision.gameObject.tag.Equals("Player"))
-        {
-            this.HitTarget();
-        }
-        else
-        {
-            this.DestroyByEnvironment();
-        }
-
-        this.rbd.bodyType = RigidbodyType2D.Static;
-        this.cld.enabled = false;
-        this.animator.SetTrigger("Destroyed");
-
-        this.PlayExplodingSound();
-        GameManager.Instance.OnBulletDestroyed.Invoke();
     }
 
     public void PlayFiringSound()
