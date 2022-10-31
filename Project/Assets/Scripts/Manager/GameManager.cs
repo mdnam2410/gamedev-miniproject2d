@@ -58,8 +58,8 @@ public class GameManager : MonoBehaviour
 
     // Players
     public Transform tempTransform;
-    public GameObject P1Prefab;
-    public GameObject P2Prefab;
+    public PlayerInfo PlayerInfo1;
+    public PlayerInfo PlayerInfo2;
     public Player P1;
     public Player P2;
     public Player currentPlayer;
@@ -93,7 +93,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        this.DemoLoadingData();
+        this.LoadGameConfigData();
         this.InitPlayers();
         this.InitEnvironment();
         this.currentTurn = GameTurn.P1;
@@ -104,12 +104,24 @@ public class GameManager : MonoBehaviour
         this.OnBulletDestroyed.AddListener(this.BulletDestroy);
     }
 
-    private void DemoLoadingData()
+    private void LoadGameConfigData()
     {
-        GameStartData.Instance.P1 = configAvatar.Data[0];
-        GameStartData.Instance.P2 = configAvatar.Data[2];
-        GameStartData.Instance.gameType = GameType.vsPlayer;
-        GameStartData.Instance.MapName = "";
+        // modify later
+        int selection = 1;
+
+        if (selection != 0 )
+        {
+            GameStartData.Instance.P1 = this.configAvatar.GetFromId(GameConfig.Instance.PlayerA.AvatarId);
+            GameStartData.Instance.P2 = this.configAvatar.GetFromId(GameConfig.Instance.PlayerB.AvatarId);
+            GameStartData.Instance.MapName = GameConfig.Instance.MapName;
+        }
+        else
+        {
+            GameStartData.Instance.P1 = configAvatar.Data[0];
+            GameStartData.Instance.P2 = configAvatar.Data[1];
+            GameStartData.Instance.gameType = GameType.vsPlayer;
+            GameStartData.Instance.MapName = "";
+        }
     }
 
     public void InitPlayers()
@@ -117,12 +129,28 @@ public class GameManager : MonoBehaviour
         this.gameType = GameStartData.Instance.gameType;
         this.currentTurn = GameTurn.None;
 
-        this.P1 = Instantiate(GameStartData.Instance.P1.Prefab, this.transform).GetComponent<Player>();
-        this.P2 = Instantiate(GameStartData.Instance.P2.Prefab, this.transform).GetComponent<Player>();
-        //this.P1.gameObject.transform.position = GetPlayerPos(SpawningPlace.Instance.listPlace1);
-        //this.P2.gameObject.transform.position = GetPlayerPos(SpawningPlace.Instance.listPlace2);
-        this.P1.gameObject.transform.position = this.demoTransform1.position;
-        this.P2.gameObject.transform.position = this.demoTransform2.position;
+        // modify later
+        int selection = 1;
+
+        if (selection != 0)
+        {
+            this.P1 = Instantiate(GameStartData.Instance.P1.Prefab, this.transform).GetComponent<Player>();
+            this.P2 = Instantiate(GameStartData.Instance.P2.Prefab, this.transform).GetComponent<Player>();
+            this.P1.gameObject.transform.position = this.demoTransform1.position;
+            this.P2.gameObject.transform.position = this.demoTransform2.position;
+        }
+        else
+        {
+            Transform tp1 = this.GetPlayerTransform(SpawningPlace.Instance.listPlace1);
+            Transform tp2 = this.GetPlayerTransform(SpawningPlace.Instance.listPlace2);
+
+            this.P1 = Instantiate(GameStartData.Instance.P1.Prefab, tp1).GetComponent<Player>();
+            this.P2 = Instantiate(GameStartData.Instance.P2.Prefab, tp2).GetComponent<Player>();
+            this.P1.gameObject.transform.position = tp1.position;
+            this.P2.gameObject.transform.position = tp2.position;
+        }
+
+
 
         this.P1.ownRole = GameTurn.P1;
         this.P2.ownRole = GameTurn.P2;
@@ -140,13 +168,15 @@ public class GameManager : MonoBehaviour
 
         this.P1.SetHealthBar(this.healthBar1);
         this.P2.SetHealthBar(this.healthBar2);
-
-        //P1.gameObject.transform.position = GetPlayerPos(SpawningPlace.Instance.listPlace1);
-        //P2.gameObject.transform.position = GetPlayerPos(SpawningPlace.Instance.listPlace2);
-        //cameraController.FocusAtPos(P1.transform.position);
     }
 
-    Vector3 GetPlayerPos(List<Transform>listPos)
+    Transform GetPlayerTransform(List<Transform> listTransform)
+    {
+        int index = Random.Range(0, listTransform.Count);
+        return listTransform[index];
+    }
+
+    Vector3 GetPlayerPos(List<Transform> listPos)
     {
         int index = Random.Range(0, listPos.Count);
         return listPos[index].position;
