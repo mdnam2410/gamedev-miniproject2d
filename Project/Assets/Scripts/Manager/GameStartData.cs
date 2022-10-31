@@ -22,5 +22,5 @@ public class GameStartData
     public GameManager.GameType gameType;
     public ConfigAvatarData P1;
     public ConfigAvatarData P2;
-    public string MapName;
+    public string MapName = "";
 }
