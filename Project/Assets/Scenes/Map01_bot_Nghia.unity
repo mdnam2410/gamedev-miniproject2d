@@ -4314,10 +4314,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8083653060814176156}
     - target: {fileID: 5701465755692188179, guid: 5e16a360cebf86a4e94a290d4e531cfa, type: 3}
-      propertyPath: gameType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5701465755692188179, guid: 5e16a360cebf86a4e94a290d4e531cfa, type: 3}
       propertyPath: angleRuler
       value: 
       objectReference: {fileID: 28694053}
@@ -4330,18 +4326,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2028867772}
     - target: {fileID: 5701465755692188179, guid: 5e16a360cebf86a4e94a290d4e531cfa, type: 3}
-      propertyPath: currentTurn
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5701465755692188179, guid: 5e16a360cebf86a4e94a290d4e531cfa, type: 3}
-      propertyPath: waitingTime
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5701465755692188179, guid: 5e16a360cebf86a4e94a290d4e531cfa, type: 3}
-      propertyPath: configAvatar
-      value: 
-      objectReference: {fileID: 11400000, guid: ffc67c85834ea8141a7c1f17360c6941, type: 2}
-    - target: {fileID: 5701465755692188179, guid: 5e16a360cebf86a4e94a290d4e531cfa, type: 3}
       propertyPath: currentPlayer
       value: 
       objectReference: {fileID: 8083653059990427442}
@@ -4353,18 +4337,6 @@ PrefabInstance:
       propertyPath: demoTransform2
       value: 
       objectReference: {fileID: 755625633}
-    - target: {fileID: 5701465755692188179, guid: 5e16a360cebf86a4e94a290d4e531cfa, type: 3}
-      propertyPath: totalTimeOfTurn
-      value: 61
-      objectReference: {fileID: 0}
-    - target: {fileID: 5701465755692188179, guid: 5e16a360cebf86a4e94a290d4e531cfa, type: 3}
-      propertyPath: validTimeForMoving
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 5701465755692188179, guid: 5e16a360cebf86a4e94a290d4e531cfa, type: 3}
-      propertyPath: remainingTimeOfTurn
-      value: 100000
-      objectReference: {fileID: 0}
     - target: {fileID: 5701465755692188180, guid: 5e16a360cebf86a4e94a290d4e531cfa, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -7469,6 +7441,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3615272710834565069, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3615272710834565069, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.18
+      objectReference: {fileID: 0}
     - target: {fileID: 6930122694965717508, guid: cea950ff3b9b0804f967eaec919f19f7, type: 3}
       propertyPath: m_Name
       value: PF Village Props - Chest Golden

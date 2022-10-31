@@ -43,27 +43,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d85af023339fdc4cbd580883fddcbab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalTimeOfTurn: 31
-  remainingTimeOfTurn: 0
-  validTimeForMoving: 15
+  totalTimeOfTurn: 61
+  remainingTimeOfTurn: 100000
+  validTimeForMoving: 30
   validTimeForShooting: 0
   windForceScaleFactor: 10
   timeCount: 0
-  gameType: 1
+  gameType: 0
   currentTurn: 1
   currentValidAction: 0
   endTurn: 0
   timeout: 0
+  tempTransform: {fileID: 0}
+  P1Prefab: {fileID: 0}
+  P2Prefab: {fileID: 0}
   P1: {fileID: 0}
   P2: {fileID: 0}
   currentPlayer: {fileID: 0}
   healthBar1: {fileID: 0}
   healthBar2: {fileID: 0}
   angleRuler: {fileID: 0}
+  cameraController: {fileID: 0}
   windSpeed: 0
   windSpeedUI: {fileID: 0}
   timeRandomChangeWindSpeed: 7
   cachedTimeRandomChangeWindSpeed: 0
+  windSpeedOfLastShot: 0
   OnTurnChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -76,4 +81,7 @@ MonoBehaviour:
   OnBulletDestroyed:
     m_PersistentCalls:
       m_Calls: []
-  waitingTime: 3
+  waitingTime: 4
+  configAvatar: {fileID: 11400000, guid: ffc67c85834ea8141a7c1f17360c6941, type: 2}
+  demoTransform1: {fileID: 0}
+  demoTransform2: {fileID: 0}

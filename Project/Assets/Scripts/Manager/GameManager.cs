@@ -106,9 +106,8 @@ public class GameManager : MonoBehaviour
 
     private void DemoLoadingData()
     {
-        string s = GameStartData.Instance.MapName;
         GameStartData.Instance.P1 = configAvatar.Data[0];
-        GameStartData.Instance.P2 = configAvatar.Data[1];
+        GameStartData.Instance.P2 = configAvatar.Data[2];
         GameStartData.Instance.gameType = GameType.vsPlayer;
         GameStartData.Instance.MapName = "";
     }
