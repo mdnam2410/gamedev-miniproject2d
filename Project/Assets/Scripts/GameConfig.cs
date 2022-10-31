@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerInfo
 {
     public GameManager.GameTurn Role;
-    public string Avatar;
+    public int AvatarId;
 }
 
 public class GameConfig
@@ -29,6 +29,7 @@ public class GameConfig
         PlayerB = new PlayerInfo();
     }
 
+    public string MapName = GameDefine.DEFAULT_SCENE;
     public GameManager.GameType GameType;
 
     /// <summary>
@@ -40,4 +41,9 @@ public class GameConfig
     /// Player B will be bot if game type is vs bot, and will be player 2 if game type is vs other human player
     /// </summary>
     public PlayerInfo PlayerB;
+
+    public void PrintDebugInfo()
+    {
+        Debug.Log($"[GameConfig] Game type: {GameType}, player A: {PlayerA.AvatarId}, player B: {PlayerB.AvatarId}");
+    }
 }
