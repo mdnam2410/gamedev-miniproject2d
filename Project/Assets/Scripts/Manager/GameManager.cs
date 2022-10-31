@@ -57,6 +57,9 @@ public class GameManager : MonoBehaviour
     public bool timeout;
 
     // Players
+    public Transform tempTransform;
+    public GameObject P1Prefab;
+    public GameObject P2Prefab;
     public Player P1;
     public Player P2;
     public Player currentPlayer;
@@ -89,9 +92,7 @@ public class GameManager : MonoBehaviour
         this.InitEnvironment();
         //this.currentTurn = GameTurn.P1;
         //this.currentPlayer = this.P1;
-        this.windSpeed = 0;
-        if (this.windSpeedUI != null)
-            this.windSpeedUI.text = "0";
+
 
         this.OnTurnChanged.AddListener(this.ResetTurnValues);
         this.OnBulletDestroyed.AddListener(this.BulletDestroy);
@@ -99,13 +100,28 @@ public class GameManager : MonoBehaviour
 
     public void InitPlayers()
     {
-        // TODO
-        P1.SetHealthBar(healthBar1);
-        P2.SetHealthBar(healthBar2);
+        this.gameType = GameStartData.Instance.gameType;
+        this.currentTurn = GameTurn.None;
+
+        this.P1 = Instantiate(GameStartData.Instance.P1.Prefab, this.transform).GetComponent<Player>();
+        this.P1.gameObject.transform.position = GetPlayerPos(SpawningPlace.Instance.listPlace1);
+        this.P2 = Instantiate(GameStartData.Instance.P2.Prefab, this.transform).GetComponent<Player>();
+        this.P2.gameObject.transform.position = GetPlayerPos(SpawningPlace.Instance.listPlace2);
+        
+        this.P1.ownRole = GameTurn.P1;
+        this.P2.ownRole = GameTurn.P2;
+        if (this.gameType == GameType.vsBot) this.P2.ownRole = GameTurn.Bot;
+
+        this.P1.faceDirection = Player.FaceDirection.LeftRight;
+        this.P1.transform.localScale = new Vector3(1f, this.P1.transform.localScale.y, this.P1.transform.lossyScale.z);
+        this.P2.faceDirection = Player.FaceDirection.RightLeft;
+        this.P2.transform.localScale = new Vector3(-1f, this.P2.transform.localScale.y, this.P2.transform.lossyScale.z);
+
+        this.P1.SetHealthBar(this.healthBar1);
+        this.P2.SetHealthBar(this.healthBar2);
 
         //P1.gameObject.transform.position = GetPlayerPos(SpawningPlace.Instance.listPlace1);
         //P2.gameObject.transform.position = GetPlayerPos(SpawningPlace.Instance.listPlace2);
-
         //cameraController.FocusAtPos(P1.transform.position);
     }
 
@@ -117,7 +133,9 @@ public class GameManager : MonoBehaviour
 
     public void InitEnvironment()
     {
-        // TODO
+        this.windSpeed = 0;
+        if (this.windSpeedUI != null)
+            this.windSpeedUI.text = "0";
     }
 
     public void SetData(GameType gameType, GameTurn gameTurn)
