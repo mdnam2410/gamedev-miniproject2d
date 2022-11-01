@@ -45,3 +45,11 @@ MonoBehaviour:
     Power: 5
     Health: 4
     SpecialAbility: WIDE EXPLOSION RANGE
+  - Id: 3
+    Name: Player_M_26_06
+    Prefab: {fileID: 2810329466074893296, guid: 05239fbaf11324b829121ff8ae508ead, type: 3}
+    Sprite: {fileID: 21300000, guid: 2aeebb6b9d668429c9e97f9414592268, type: 3}
+    Speed: 3
+    Power: 5
+    Health: 4
+    SpecialAbility: WIDE EXPLOSION RANGE
