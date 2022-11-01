@@ -6,14 +6,18 @@ public enum CameraStatus
 {
     Start,
     Normal,
-    BulletFlying
+    FocusBullet,
+    FocusPlayer,
 }
 
 public class CameraController : MonoBehaviour
 {
     public float scrollSpeed = 15;
+
     public float maxX;
     public float minX;
+    public float maxY;
+    public float minY;
 
     public float zoomMultiplier = 1;
     public float zoomSpeed = 30;
@@ -21,41 +25,64 @@ public class CameraController : MonoBehaviour
     public CameraStatus status = CameraStatus.Normal;
 
     public GameObject focusedObject = null;
-
+    public Vector3 focusDistance;
+    public Vector3 playerDelta;
+    public Vector3 canvasDelta;
+    public float remainingTime;
     public Camera camera;
+
+    private void Start()
+    {
+        GameManager.Instance.OnBulletDestroyed.AddListener(this.EndFocusBullet);
+        canvasDelta = MainCanvas.instance.transform.position - transform.position;
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (status == CameraStatus.BulletFlying)
+        if (status == CameraStatus.FocusBullet)
         {
-            Bullet bullet = focusedObject.GetComponent<Bullet>();
-            Vector2 velo = bullet.rbd.velocity;
-            Vector3 vector = new Vector3(velo.x, velo.y, -10);
-            float delta = Time.deltaTime * scrollSpeed;
-
-            Debug.Log(transform.position.ToString());
-            Debug.Log(focusedObject.transform.position.ToString());
-
-            MoveCamera(vector, delta);
-        }
-
-        else if (Input.mousePosition.x >= Screen.width * 0.95)
-        {
-            float delta = Time.deltaTime * scrollSpeed;
-            if (transform.position.x + delta < maxX)
+            if (focusedObject)
             {
-                MoveCamera(Vector3.right, delta);
+                Vector3 tmp = focusedObject.transform.position + focusDistance;
+                Vector3 newPos = GetValidPosition(tmp);
+                transform.position = newPos;
+                MainCanvas.instance.transform.position = newPos + canvasDelta;
             }
         }
-        else if (Input.mousePosition.x <= Screen.width * 0.05)
+        else if (status == CameraStatus.FocusPlayer)
         {
-            float delta = Time.deltaTime * scrollSpeed;
-            if (transform.position.x - delta > minX)
+            if (remainingTime > 0)
             {
-                MoveCamera(Vector3.left, delta);
+                float deltaTime = Time.deltaTime;
+                MoveCamera(playerDelta, deltaTime);
+                remainingTime -= deltaTime;
+            }
+            else
+            {
+                status = CameraStatus.Normal;
             }
         }
+        else if (status == CameraStatus.Normal)
+        {
+            if (Input.mousePosition.x >= Screen.width * 0.95)
+            {
+                float delta = Time.deltaTime * scrollSpeed;
+                if (transform.position.x + delta < maxX)
+                {
+                    MoveCamera(Vector3.right, delta);
+                }
+            }
+            else if (Input.mousePosition.x <= Screen.width * 0.05)
+            {
+                float delta = Time.deltaTime * scrollSpeed;
+                if (transform.position.x - delta > minX)
+                {
+                    MoveCamera(Vector3.left, delta);
+                }
+            }
+        }
+        
     }
 
     public void MoveCamera(Vector3 vector, float delta)
@@ -67,12 +94,52 @@ public class CameraController : MonoBehaviour
     public void FocusBullet(GameObject bullet)
     {
         focusedObject = bullet;
-        status = CameraStatus.BulletFlying;
+        focusDistance = transform.position - bullet.transform.position;
+        status = CameraStatus.FocusBullet;
+    }
+
+    public void FocusPlayer(GameObject player)
+    {
+        Vector3 pos = player.transform.position;
+        Vector3 newPos = GetValidPosition(new Vector3(pos.x, pos.y, -10));
+        playerDelta = newPos - transform.position;
+        remainingTime = 1;
+
+        status = CameraStatus.FocusPlayer;
+    }
+
+    Vector3 GetValidPosition(Vector3 pos)
+    {
+        float newX = pos.x;
+        if (pos.x > maxX)
+        {
+            newX = maxX;
+        }
+        else if (pos.x < minX)
+        {
+            newX = minX;
+        }
+
+        float newY = pos.y;
+        if (pos.y > maxY)
+        {
+            newY = maxY;
+        }
+        else if (pos.y < minY)
+        {
+            newY = minY;
+        }
+
+        return new Vector3(newX, newY, pos.z);
     }
 
     public void FocusAtPos(Vector3 pos)
     {
         camera.orthographicSize = camera.orthographicSize / 2;
         transform.position = new Vector3(pos.x, pos.y, transform.position.z);
+    }
+    void EndFocusBullet()
+    {
+        status = CameraStatus.Normal;
     }
 }
