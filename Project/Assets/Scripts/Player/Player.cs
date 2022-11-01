@@ -55,12 +55,14 @@ public class Player : MonoBehaviour
     public bool fired = false;
     public bool canMove;
     public Vector2 velo;
+    /*
     public Transform detectorLow;
     public Transform detectorMid;
     public RaycastHit2D hitLow;
     public RaycastHit2D hitMid;
     public Vector2 detectorDirection;
     public float obstacleDetectionRange;
+    */
     public float verticalVelocity;
     public float verticalJumpingVelocity;
     public float verticalDefaultVelocity;
@@ -110,7 +112,7 @@ public class Player : MonoBehaviour
 
         if (GameManager.Instance == null) return;
 
-        //this.PreventFalling();
+        //this.PreventFalling2();
 
         if (this.ownRole != GameManager.Instance.currentTurn) return;
 
@@ -139,12 +141,14 @@ public class Player : MonoBehaviour
 
         if (this.transform.localEulerAngles.z > 89f)
         {
+            Debug.Log("More than 89 degree");
             this.transform.localEulerAngles = new Vector3(this.transform.localEulerAngles.x, this.transform.localEulerAngles.y, 15);
             this.rigid2D.velocity = Vector2.zero;
             this.lockRotate = 1f;
         }
         else if (this.transform.localEulerAngles.z < -89f)
         {
+            Debug.Log("Less than -89 degree");
             this.transform.localEulerAngles = new Vector3(this.transform.localEulerAngles.x, this.transform.localEulerAngles.y, -15);
             this.rigid2D.velocity = Vector2.zero;
             this.lockRotate = 1f;
@@ -152,6 +156,21 @@ public class Player : MonoBehaviour
         else
         {
             this.rigid2D.freezeRotation = false;
+        }
+    }
+
+    public virtual void PreventFalling2()
+    {
+        if (this.transform.localEulerAngles.z > 150f)
+        {
+            Debug.Log("More than 150 degree");
+            this.transform.localEulerAngles = new Vector3(this.transform.localEulerAngles.x, this.transform.localEulerAngles.y, 15);
+        }
+
+        else if (this.transform.localEulerAngles.z < -150f)
+        {
+            Debug.Log("Less than -150 degree");
+            this.transform.localEulerAngles = new Vector3(this.transform.localEulerAngles.x, this.transform.localEulerAngles.y, -15);
         }
     }
 
@@ -252,7 +271,7 @@ public class Player : MonoBehaviour
             this.movingState = MovingState.None;
         }
     }
-
+    /*
     protected bool DetectNearLowObstacle()
     {
         if (this.detectorLow == null || this.detectorMid == null) return false;
@@ -273,6 +292,7 @@ public class Player : MonoBehaviour
 
         return false;
     }
+    */
 
     protected virtual bool MoveLeft()
     {
@@ -403,14 +423,6 @@ public class Player : MonoBehaviour
     protected virtual void UpdateWinLoseStatus()
     {
         // TODO
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawLine(this.detectorMid.position, this.detectorMid.position + new Vector3(detectorDirection.x, detectorDirection.y, 0));
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawLine(this.detectorLow.position, this.detectorLow.position + new Vector3(detectorDirection.x, detectorDirection.y, 0));
     }
 
     public void SetHealthBar(HealthBar healthBar)
