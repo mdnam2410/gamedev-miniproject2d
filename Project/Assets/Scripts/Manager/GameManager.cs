@@ -89,6 +89,8 @@ public class GameManager : MonoBehaviour
     public Transform demoTransform1;
     public Transform demoTransform2;
 
+    public AudioSource mapSound;
+
 
 
     private void Start()
@@ -102,6 +104,8 @@ public class GameManager : MonoBehaviour
 
         this.OnTurnChanged.AddListener(this.ResetTurnValues);
         this.OnBulletDestroyed.AddListener(this.BulletDestroy);
+
+        this.mapSound.Play();
     }
 
     private void LoadGameConfigData()
