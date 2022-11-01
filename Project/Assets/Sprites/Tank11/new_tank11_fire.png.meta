@@ -1,0 +1,600 @@
+fileFormatVersion: 2
+guid: 2c14305e7f2665a4ab5b296d1bc3baae
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2418218266231625480
+    second: new_tank11_fire_0
+  - first:
+      213: -1727412279174758482
+    second: new_tank11_fire_1
+  - first:
+      213: -7475843393612369753
+    second: new_tank11_fire_2
+  - first:
+      213: -296969131450904154
+    second: new_tank11_fire_3
+  - first:
+      213: -2417699370110086302
+    second: new_tank11_fire_4
+  - first:
+      213: -6285819003973948620
+    second: new_tank11_fire_5
+  - first:
+      213: -6033476153329855412
+    second: new_tank11_fire_6
+  - first:
+      213: -39047755279436296
+    second: new_tank11_fire_7
+  - first:
+      213: -2847946820801380646
+    second: new_tank11_fire_8
+  - first:
+      213: -2598173694956297797
+    second: new_tank11_fire_9
+  - first:
+      213: -8419637911436999783
+    second: new_tank11_fire_10
+  - first:
+      213: -9140564151824832300
+    second: new_tank11_fire_11
+  - first:
+      213: 7779088512072160014
+    second: new_tank11_fire_12
+  - first:
+      213: -9150815008540712106
+    second: new_tank11_fire_13
+  - first:
+      213: -4894767657425318834
+    second: new_tank11_fire_14
+  - first:
+      213: 3573542755166420826
+    second: new_tank11_fire_15
+  - first:
+      213: 3530408072494289996
+    second: new_tank11_fire_16
+  - first:
+      213: -1786132883238164661
+    second: new_tank11_fire_17
+  - first:
+      213: 1434947151945281673
+    second: new_tank11_fire_18
+  - first:
+      213: -7330848905064290961
+    second: new_tank11_fire_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: new_tank11_fire_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 105
+        height: 110
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 807d81c63bc3f8120800000000000000
+      internalID: 2418218266231625480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_tank11_fire_1
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 0
+        width: 107
+        height: 110
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eaff32f2faff608e0800000000000000
+      internalID: -1727412279174758482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_tank11_fire_2
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 0
+        width: 110
+        height: 110
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a0b84fca08704890800000000000000
+      internalID: -7475843393612369753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_tank11_fire_3
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 0
+        width: 109
+        height: 110
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a1dc9af524f0ebf0800000000000000
+      internalID: -296969131450904154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_tank11_fire_4
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 0
+        width: 111
+        height: 110
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26317ee7b3b927ed0800000000000000
+      internalID: -2417699370110086302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_tank11_fire_5
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 0
+        width: 110
+        height: 110
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43babb96be844c8a0800000000000000
+      internalID: -6285819003973948620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_tank11_fire_6
+      rect:
+        serializedVersion: 2
+        x: 977
+        y: 0
+        width: 111
+        height: 110
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c44dbffb769c44ca0800000000000000
+      internalID: -6033476153329855412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_tank11_fire_7
+      rect:
+        serializedVersion: 2
+        x: 1140
+        y: 0
+        width: 113
+        height: 110
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f5fa410646457ff0800000000000000
+      internalID: -39047755279436296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_tank11_fire_8
+      rect:
+        serializedVersion: 2
+        x: 1303
+        y: 0
+        width: 113
+        height: 110
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ade3eee947f0a78d0800000000000000
+      internalID: -2847946820801380646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_tank11_fire_9
+      rect:
+        serializedVersion: 2
+        x: 1469
+        y: 0
+        width: 112
+        height: 110
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb1ad574ace61fbd0800000000000000
+      internalID: -2598173694956297797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_tank11_fire_10
+      rect:
+        serializedVersion: 2
+        x: 1631
+        y: 0
+        width: 113
+        height: 110
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 993c26fbdef672b80800000000000000
+      internalID: -8419637911436999783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_tank11_fire_11
+      rect:
+        serializedVersion: 2
+        x: 1794
+        y: 0
+        width: 113
+        height: 110
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d8afcb2551362180800000000000000
+      internalID: -9140564151824832300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_tank11_fire_12
+      rect:
+        serializedVersion: 2
+        x: 1907
+        y: 0
+        width: 143
+        height: 110
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e03126e49cfd4fb60800000000000000
+      internalID: 7779088512072160014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_tank11_fire_13
+      rect:
+        serializedVersion: 2
+        x: 2069
+        y: 0
+        width: 144
+        height: 110
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6532e9a9b36c10180800000000000000
+      internalID: -9150815008540712106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_tank11_fire_14
+      rect:
+        serializedVersion: 2
+        x: 2232
+        y: 0
+        width: 143
+        height: 110
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4cc719cfba421cb0800000000000000
+      internalID: -4894767657425318834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_tank11_fire_15
+      rect:
+        serializedVersion: 2
+        x: 2401
+        y: 0
+        width: 140
+        height: 110
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5f7d5fc336c79130800000000000000
+      internalID: 3573542755166420826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_tank11_fire_16
+      rect:
+        serializedVersion: 2
+        x: 2575
+        y: 0
+        width: 132
+        height: 110
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c449131ef678ef030800000000000000
+      internalID: 3530408072494289996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_tank11_fire_17
+      rect:
+        serializedVersion: 2
+        x: 2756
+        y: 0
+        width: 111
+        height: 110
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b47e1f42b916637e0800000000000000
+      internalID: -1786132883238164661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_tank11_fire_18
+      rect:
+        serializedVersion: 2
+        x: 2917
+        y: 0
+        width: 110
+        height: 110
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 980382ff4d4f9e310800000000000000
+      internalID: 1434947151945281673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: new_tank11_fire_19
+      rect:
+        serializedVersion: 2
+        x: 3077
+        y: 0
+        width: 105
+        height: 110
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f65e497e2c7934a90800000000000000
+      internalID: -7330848905064290961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
