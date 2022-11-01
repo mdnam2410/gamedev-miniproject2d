@@ -57,15 +57,26 @@ public class Player : MonoBehaviour
     public Vector2 velo;
     public Transform detectorLow;
     public Transform detectorMid;
+    public RaycastHit2D hitLow;
+    public RaycastHit2D hitMid;
     public Vector2 detectorDirection;
+    public float obstacleDetectionRange;
     public float verticalVelocity;
     public float verticalJumpingVelocity;
-    public float verticalDefaultVelocity = 0.1f;
+    public float verticalDefaultVelocity;
+    public float jumpTimeCooldown;
     public float lockRotate;
 
     public float shieldBuff = 0;
     public float powerBuff = 0;
     public float speedBuff = 0;
+
+    public WheelJoint2D frontWheel;
+    public WheelJoint2D backWheel;
+    public JointMotor2D forwardSpeed;
+    public JointMotor2D backwardSpeed;
+    public JointMotor2D frontStopSpeed;
+    public JointMotor2D backStopSpeed;
 
 
     protected virtual void Start()
@@ -76,6 +87,17 @@ public class Player : MonoBehaviour
         this.rigid2D = GetComponent<Rigidbody2D>();
         this.canMove = true;
         this.lockRotate = 0f;
+        this.jumpTimeCooldown = 2f;
+
+        if (this.frontWheel != null)
+            this.frontWheel.useMotor = false;
+        if (this.backWheel != null)
+        this.backWheel.useMotor = false; ;
+        this.frontStopSpeed.motorSpeed = 0.001f;
+        this.frontStopSpeed.maxMotorTorque = 0.001f;
+        this.backStopSpeed.motorSpeed = -0.001f;
+        this.backStopSpeed.maxMotorTorque = -0.001f;
+
 
         GameManager.Instance.OnTurnChanged.AddListener(this.OnTurnChange);
         ForceBar.Instance.OnPowerCompleted.AddListener(this.Fire);
@@ -88,7 +110,7 @@ public class Player : MonoBehaviour
 
         if (GameManager.Instance == null) return;
 
-        this.PreventFalling();
+        //this.PreventFalling();
 
         if (this.ownRole != GameManager.Instance.currentTurn) return;
 
@@ -98,6 +120,7 @@ public class Player : MonoBehaviour
         }
         else
         {
+            this.StopMoving();
             this.tankAnimator.SetBool("Moving", false);
         }
     }
@@ -132,6 +155,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    public virtual void StopMoving()
+    {
+        this.frontWheel.motor = this.frontStopSpeed;
+        this.backWheel.motor = this.backStopSpeed;
+    }
+
     public virtual void UpdateMove()
     {
         this.UpdateFaceDirection();
@@ -160,61 +189,87 @@ public class Player : MonoBehaviour
             this.movingState = MovingState.None;
             return;
         }
-
-        if (this.DetectNearObstacle())
+        /*
+        if (this.DetectNearLowObstacle() && this.jumpTimeCooldown <= 0)
         {
             this.verticalVelocity = this.verticalJumpingVelocity;
+            this.jumpTimeCooldown = 2f;
+            Debug.Log("Detect: " + this.hitLow.collider.gameObject.ToString());
         }
 
         else
         {
             this.verticalVelocity = this.verticalDefaultVelocity + this.verticalJumpingVelocity * Mathf.Sin(this.transform.eulerAngles.z * Mathf.PI / 180f) * 0.5f;
+            this.jumpTimeCooldown -= Time.deltaTime;
         }
-
+        
+        this.verticalVelocity = this.verticalDefaultVelocity + this.verticalJumpingVelocity * Mathf.Sin(this.transform.eulerAngles.z * Mathf.PI / 180f) * 0.5f;
+        */
         if (this.MoveRight())
         {
+            /*
             if (this.rigid2D.velocity.x <= 0)
             {
                 this.rigid2D.velocity = new Vector2((this.movingSpeed + this.speedBuff) * Time.deltaTime, this.verticalVelocity);
             }
             else if (this.rigid2D.velocity.magnitude < 1)
                 this.rigid2D.velocity = new Vector2(this.rigid2D.velocity.x + (this.movingSpeed + this.speedBuff)  * Time.deltaTime, this.verticalVelocity);
+            */
+            this.forwardSpeed.motorSpeed = this.movingSpeed;
+            this.forwardSpeed.maxMotorTorque = this.movingSpeed * 2;
+            this.frontWheel.motor = this.forwardSpeed;
+            this.backWheel.motor = this.forwardSpeed;
+            this.frontWheel.useMotor = true;
+            this.backWheel.useMotor = true;
 
             this.movingState = MovingState.ToRight;
-
         }
         else if (this.MoveLeft())
         {
+            /*
             if (this.rigid2D.velocity.x >= 0)
             {
                 this.rigid2D.velocity = new Vector2(-(this.movingSpeed + this.speedBuff) * Time.deltaTime, this.verticalVelocity);
             }
             else if (this.rigid2D.velocity.magnitude < 1)
                 this.rigid2D.velocity = new Vector2(this.rigid2D.velocity.x - (this.movingSpeed + this.speedBuff)  * Time.deltaTime, this.verticalVelocity);
+            */
+            this.backwardSpeed.motorSpeed = -this.movingSpeed;
+            this.backwardSpeed.maxMotorTorque = this.movingSpeed * 2;
+            this.frontWheel.motor = this.backwardSpeed;
+            this.backWheel.motor = this.backwardSpeed;
+            this.frontWheel.useMotor = true;
+            this.backWheel.useMotor = true;
 
             this.movingState = MovingState.ToLeft;
         }
         else
         {
+            this.frontWheel.motor = this.frontStopSpeed;
+            this.backWheel.motor = this.backStopSpeed;
+            this.frontWheel.useMotor = true;
+            this.backWheel.useMotor = true;
             this.movingState = MovingState.None;
         }
     }
 
-    protected bool DetectNearObstacle()
+    protected bool DetectNearLowObstacle()
     {
         if (this.detectorLow == null || this.detectorMid == null) return false;
         if (!this.isMovingToward()) return false;
 
         if (this.faceDirection == FaceDirection.LeftRight)
-            this.detectorDirection = new Vector2(Mathf.Cos(this.transform.eulerAngles.z * Mathf.PI / 180f), Mathf.Sin(this.transform.eulerAngles.z * Mathf.PI / 180f)) * 0.05f;
+            this.detectorDirection = new Vector2(Mathf.Cos(this.transform.eulerAngles.z * Mathf.PI / 180f), Mathf.Sin(this.transform.eulerAngles.z * Mathf.PI / 180f)) * this.obstacleDetectionRange;
         else
-            this.detectorDirection = new Vector2(-Mathf.Cos(this.transform.eulerAngles.z * Mathf.PI / 180f), -Mathf.Sin(this.transform.eulerAngles.z * Mathf.PI / 180f)) * 0.05f;
+            this.detectorDirection = new Vector2(-Mathf.Cos(this.transform.eulerAngles.z * Mathf.PI / 180f), -Mathf.Sin(this.transform.eulerAngles.z * Mathf.PI / 180f)) * this.obstacleDetectionRange;
 
-        RaycastHit2D hitLow = Physics2D.Raycast(this.detectorLow.transform.position, this.detectorDirection, 0.1f, LayerMask.GetMask("Obstacle"));
-        RaycastHit2D hitMid = Physics2D.Raycast(this.detectorMid.transform.position, this.detectorDirection, 0.1f, LayerMask.GetMask("Obstacle"));
+        this.hitLow = Physics2D.Raycast(this.detectorLow.transform.position, this.detectorDirection, this.obstacleDetectionRange, LayerMask.GetMask("Obstacle"));
+        this.hitMid = Physics2D.Raycast(this.detectorMid.transform.position, this.detectorDirection, this.obstacleDetectionRange, LayerMask.GetMask("Obstacle"));
 
         if (hitLow.collider != null && hitMid.collider == null)
+        {
             return true;
+        }
 
         return false;
     }

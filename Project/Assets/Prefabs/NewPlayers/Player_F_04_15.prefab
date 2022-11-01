@@ -50,6 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ownRole: 1
   hp: 100
+  maxHp: 100
+  movingSpeed: 10
   firePos: {fileID: 863766982394631108}
   heroHead: {fileID: 5847438758658474590}
   tank: {fileID: 863766982014688049}
@@ -59,7 +61,7 @@ MonoBehaviour:
   bullet: {fileID: 4302099847752130290}
   currentStatus: 0
   rigid2D: {fileID: 0}
-  movingSpeed: 10
+  healthBar: {fileID: 0}
   movingState: 0
   faceDirection: 0
   forceVector: {x: 0, y: 0}
@@ -72,10 +74,14 @@ MonoBehaviour:
   detectorLow: {fileID: 7328172259559718024}
   detectorMid: {fileID: 7328172258385954491}
   detectorDirection: {x: 0, y: 0}
+  obstacleDetectionRange: 0.05
   verticalVelocity: 0
   verticalJumpingVelocity: 1.2
-  verticalDefaultVelocity: 0.2
+  verticalDefaultVelocity: 0.1
   lockRotate: 0
+  shieldBuff: 0
+  powerBuff: 0
+  speedBuff: 0
 --- !u!50 &4302099848962753452
 Rigidbody2D:
   serializedVersion: 4
