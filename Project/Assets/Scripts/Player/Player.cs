@@ -381,6 +381,8 @@ public class Player : MonoBehaviour
         this.bullet.rbd.AddForce(this.forceVector + new Vector2(GameManager.Instance.windSpeed * GameManager.Instance.windForceScaleFactor, 0));
         GameManager.Instance.SaveWindSpeed(); // for bot using
         this.bullet.PlayFiringSound();
+        
+        GameManager.Instance.cameraController.FocusBullet(this.bullet.gameObject);
     }
 
     public virtual void Behit(int damage)
