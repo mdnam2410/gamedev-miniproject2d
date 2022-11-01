@@ -17,7 +17,7 @@ MonoBehaviour:
     Name: Player_F_04_15
     Prefab: {fileID: 4302099848962753455, guid: 0abef98255c094f3395b58ef2c8ba5d8, type: 3}
     Sprite: {fileID: 21300000, guid: 709b8fc7e25b94461aff8cd34d3501ad, type: 3}
-    Speed: 5
+    Speed: 4
     Power: 4
     Health: 4
     SpecialAbility: HORSE
@@ -53,11 +53,11 @@ MonoBehaviour:
     Power: 5
     Health: 4
     SpecialAbility: WIDE EXPLOSION RANGE
-  - Id: 3
-    Name: Player_M_26_06
-    Prefab: {fileID: 2810329466074893296, guid: 05239fbaf11324b829121ff8ae508ead, type: 3}
-    Sprite: {fileID: 21300000, guid: 2aeebb6b9d668429c9e97f9414592268, type: 3}
-    Speed: 3
-    Power: 5
+  - Id: 5
+    Name: Player_M_28_08
+    Prefab: {fileID: 6296057915855409240, guid: 17a7c16ee843783458454d917df2c3f5, type: 3}
+    Sprite: {fileID: 21300000, guid: ff4563cee20bcc9489c25094529ea83b, type: 3}
+    Speed: 5
+    Power: 3
     Health: 4
-    SpecialAbility: WIDE EXPLOSION RANGE
+    SpecialAbility: SUPER SPEED/demo
