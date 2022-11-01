@@ -16,7 +16,7 @@ MonoBehaviour:
   - Id: 0
     Name: Player_F_04_15
     Prefab: {fileID: 4302099848962753455, guid: 0abef98255c094f3395b58ef2c8ba5d8, type: 3}
-    Sprite: {fileID: 21300000, guid: acb0328024075d544aaa617678f43cc4, type: 3}
+    Sprite: {fileID: 21300000, guid: 709b8fc7e25b94461aff8cd34d3501ad, type: 3}
     Speed: 5
     Power: 4
     Health: 4
@@ -24,7 +24,7 @@ MonoBehaviour:
   - Id: 1
     Name: Player_F_81_12
     Prefab: {fileID: 2683243650670973104, guid: 1389c4e67f820416ca59d0ce7f25c8d3, type: 3}
-    Sprite: {fileID: 21300000, guid: 5390437fd5e8a0148b0c6c8398e30b30, type: 3}
+    Sprite: {fileID: 21300000, guid: be7452a5aa86d48928faee9202d0f08a, type: 3}
     Speed: 2
     Power: 5
     Health: 5
@@ -32,7 +32,23 @@ MonoBehaviour:
   - Id: 2
     Name: Player_M_00_17
     Prefab: {fileID: 5856081934966259049, guid: 63c75c3d93fda4df39a98335d11b616b, type: 3}
-    Sprite: {fileID: 21300000, guid: 7b7b9616772fe5c45bd89fbeb3ded6eb, type: 3}
+    Sprite: {fileID: 21300000, guid: f38dee93009ee462bb9a7ea6e17e1711, type: 3}
+    Speed: 3
+    Power: 5
+    Health: 4
+    SpecialAbility: WIDE EXPLOSION RANGE
+  - Id: 3
+    Name: Player_M_26_06
+    Prefab: {fileID: 2810329466074893296, guid: 05239fbaf11324b829121ff8ae508ead, type: 3}
+    Sprite: {fileID: 21300000, guid: 2aeebb6b9d668429c9e97f9414592268, type: 3}
+    Speed: 3
+    Power: 5
+    Health: 4
+    SpecialAbility: WIDE EXPLOSION RANGE
+  - Id: 3
+    Name: Player_M_26_06
+    Prefab: {fileID: 2810329466074893296, guid: 05239fbaf11324b829121ff8ae508ead, type: 3}
+    Sprite: {fileID: 21300000, guid: 2aeebb6b9d668429c9e97f9414592268, type: 3}
     Speed: 3
     Power: 5
     Health: 4
