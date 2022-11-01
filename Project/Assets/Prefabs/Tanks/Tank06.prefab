@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3071625200904248710}
   - component: {fileID: 3071625200904248709}
   m_Layer: 0
-  m_Name: Tank06_available
+  m_Name: Tank06
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
