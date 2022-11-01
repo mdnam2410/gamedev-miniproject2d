@@ -9,6 +9,11 @@ public class ConfigAvatarData
     public string Name;
     public GameObject Prefab;
     public Sprite Sprite;
+
+    public int Speed;
+    public int Power;
+    public int Health;
+    public string SpecialAbility;
 }
 
 

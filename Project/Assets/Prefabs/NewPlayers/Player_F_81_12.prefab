@@ -50,8 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ownRole: 1
-  hp: 100
-  maxHp: 100
+  hp: 200
+  maxHp: 200
   movingSpeed: 150
   firePos: {fileID: 3897204908677968316}
   heroHead: {fileID: 7565475149133737855}
@@ -316,6 +316,10 @@ PrefabInstance:
       propertyPath: owner
       value: 
       objectReference: {fileID: 2683243650670973263}
+    - target: {fileID: 3892483685830326913, guid: dd2db3a72de75d74cbfd20cacdfaa246, type: 3}
+      propertyPath: damage
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 3892483685830326913, guid: dd2db3a72de75d74cbfd20cacdfaa246, type: 3}
       propertyPath: ownerColliders.Array.size
       value: 2

@@ -430,6 +430,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5856081934966259051}
     - target: {fileID: 5036849245203237015, guid: 1a025d1e7a76c2946a6fa1ea4488365d, type: 3}
+      propertyPath: damage
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5036849245203237015, guid: 1a025d1e7a76c2946a6fa1ea4488365d, type: 3}
+      propertyPath: radius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5036849245203237015, guid: 1a025d1e7a76c2946a6fa1ea4488365d, type: 3}
       propertyPath: ownerColliders.Array.size
       value: 2
       objectReference: {fileID: 0}

@@ -52,7 +52,7 @@ MonoBehaviour:
   ownRole: 1
   hp: 100
   maxHp: 100
-  movingSpeed: 400
+  movingSpeed: 500
   firePos: {fileID: 863766982394631108}
   heroHead: {fileID: 5847438758658474590}
   tank: {fileID: 0}
