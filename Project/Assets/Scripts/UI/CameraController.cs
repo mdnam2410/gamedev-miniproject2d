@@ -40,6 +40,10 @@ public class CameraController : MonoBehaviour
     public float zoomMultiplier = 1;
     public float zoomSpeed = 30;
 
+    public CameraStatus status = CameraStatus.Normal;
+
+    public GameObject focusedObject = null;
+
     public Camera camera;
 
     // Update is called once per frame
