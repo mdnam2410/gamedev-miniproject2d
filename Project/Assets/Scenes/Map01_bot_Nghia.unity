@@ -4300,6 +4300,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8083653060814176156}
     - target: {fileID: 5701465755692188179, guid: 5e16a360cebf86a4e94a290d4e531cfa, type: 3}
+      propertyPath: mapSound
+      value: 
+      objectReference: {fileID: 1032911983}
+    - target: {fileID: 5701465755692188179, guid: 5e16a360cebf86a4e94a290d4e531cfa, type: 3}
       propertyPath: angleRuler
       value: 
       objectReference: {fileID: 28694053}
@@ -4822,6 +4826,72 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 2756778543401539848, guid: 282d10bd840f2244d993130a17f23515, type: 3}
   m_PrefabInstance: {fileID: 972649263}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1032911982
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 650062793764899220, guid: 00a843e3b6c49df4997e75ea42647c1a, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1604838442808903384, guid: 00a843e3b6c49df4997e75ea42647c1a, type: 3}
+      propertyPath: m_Name
+      value: StageSound_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195045652838911794, guid: 00a843e3b6c49df4997e75ea42647c1a, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195045652838911794, guid: 00a843e3b6c49df4997e75ea42647c1a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.53251743
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195045652838911794, guid: 00a843e3b6c49df4997e75ea42647c1a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.6296838
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195045652838911794, guid: 00a843e3b6c49df4997e75ea42647c1a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.285211
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195045652838911794, guid: 00a843e3b6c49df4997e75ea42647c1a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195045652838911794, guid: 00a843e3b6c49df4997e75ea42647c1a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195045652838911794, guid: 00a843e3b6c49df4997e75ea42647c1a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195045652838911794, guid: 00a843e3b6c49df4997e75ea42647c1a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195045652838911794, guid: 00a843e3b6c49df4997e75ea42647c1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195045652838911794, guid: 00a843e3b6c49df4997e75ea42647c1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2195045652838911794, guid: 00a843e3b6c49df4997e75ea42647c1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 00a843e3b6c49df4997e75ea42647c1a, type: 3}
+--- !u!82 &1032911983 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 650062793764899220, guid: 00a843e3b6c49df4997e75ea42647c1a, type: 3}
+  m_PrefabInstance: {fileID: 1032911982}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1087704955
 GameObject:
@@ -9535,13 +9605,17 @@ MonoBehaviour:
   detectorLow: {fileID: 1504578639}
   detectorMid: {fileID: 26414948}
   detectorDirection: {x: 0, y: 0}
+  obstacleDetectionRange: 0
   verticalVelocity: 0
   verticalJumpingVelocity: 0
   verticalDefaultVelocity: 0.1
+  jumpTimeCooldown: 0
   lockRotate: 0
   shieldBuff: 0
   powerBuff: 0
   speedBuff: 0
+  frontWheel: {fileID: 0}
+  backWheel: {fileID: 0}
 --- !u!50 &8083653059990427443
 Rigidbody2D:
   serializedVersion: 4
@@ -9684,13 +9758,17 @@ MonoBehaviour:
   detectorLow: {fileID: 664421699}
   detectorMid: {fileID: 1371781181}
   detectorDirection: {x: 0, y: 0}
+  obstacleDetectionRange: 0
   verticalVelocity: 0
   verticalJumpingVelocity: 1
   verticalDefaultVelocity: 0.1
+  jumpTimeCooldown: 0
   lockRotate: 0
   shieldBuff: 0
   powerBuff: 0
   speedBuff: 0
+  frontWheel: {fileID: 0}
+  backWheel: {fileID: 0}
   DirectionToTarget: {x: 0, y: 0}
   Direction: 0
   MovingTime: 3
