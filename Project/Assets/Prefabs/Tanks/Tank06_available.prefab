@@ -301,6 +301,8 @@ MonoBehaviour:
   mass: 1
   radius: 2
   damage: 10
+  partialDamageRate: 0.5
+  damageBuff: 0
   firePos: {fileID: 3071625201553125512}
   offsetToFirePos: {x: 0, y: 0, z: 0}
   owner: {fileID: 0}
@@ -310,10 +312,12 @@ MonoBehaviour:
   - {fileID: 0}
   rbd: {fileID: 3071625201136384034}
   cld: {fileID: 3071625201136384035}
+  animator: {fileID: 0}
   currentStatus: 0
   currentCollision: 0
   firingSound: {fileID: 0}
   explodingSound: {fileID: 0}
+  cachedScale: {x: 0, y: 0, z: 0}
 --- !u!1 &3071625201553125559
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +329,7 @@ GameObject:
   - component: {fileID: 3071625201553125512}
   m_Layer: 0
   m_Name: FirePos
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
