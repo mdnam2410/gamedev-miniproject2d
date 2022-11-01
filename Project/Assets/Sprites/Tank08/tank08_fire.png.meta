@@ -1,0 +1,480 @@
+fileFormatVersion: 2
+guid: 2d00998c499eb7a42ac1094f4e777d45
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8067211905617832920
+    second: tank08_fire_0
+  - first:
+      213: 2307693490105907726
+    second: tank08_fire_1
+  - first:
+      213: 2164927366344349902
+    second: tank08_fire_2
+  - first:
+      213: 2789767006340914267
+    second: tank08_fire_3
+  - first:
+      213: -3237356900405582859
+    second: tank08_fire_4
+  - first:
+      213: -4729666618506696670
+    second: tank08_fire_5
+  - first:
+      213: -1482121868188448431
+    second: tank08_fire_6
+  - first:
+      213: 4875538797037030583
+    second: tank08_fire_7
+  - first:
+      213: -5037436275099444057
+    second: tank08_fire_8
+  - first:
+      213: -612711271245166605
+    second: tank08_fire_9
+  - first:
+      213: -6424070244381169356
+    second: tank08_fire_10
+  - first:
+      213: -5158751240735242236
+    second: tank08_fire_11
+  - first:
+      213: 2710124621282359087
+    second: tank08_fire_12
+  - first:
+      213: -4104272809332022949
+    second: tank08_fire_13
+  - first:
+      213: -2427074799841975196
+    second: tank08_fire_14
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tank08_fire_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 71
+        height: 90
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 824d8d583818b0090800000000000000
+      internalID: -8067211905617832920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_fire_1
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 0
+        width: 75
+        height: 90
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0a7e38a003960020800000000000000
+      internalID: 2307693490105907726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_fire_2
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 0
+        width: 80
+        height: 90
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec81a7b28fd5b0e10800000000000000
+      internalID: 2164927366344349902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_fire_3
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 0
+        width: 73
+        height: 90
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5c1e0bbf4e37b620800000000000000
+      internalID: 2789767006340914267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_fire_4
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 0
+        width: 75
+        height: 90
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f36a242d099213d0800000000000000
+      internalID: -3237356900405582859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_fire_5
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 0
+        width: 72
+        height: 90
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 228a2e1f449dc5eb0800000000000000
+      internalID: -4729666618506696670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_fire_6
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 0
+        width: 69
+        height: 90
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1590ac473027e6be0800000000000000
+      internalID: -1482121868188448431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_fire_7
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 0
+        width: 69
+        height: 90
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bc070644b469a340800000000000000
+      internalID: 4875538797037030583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_fire_8
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 0
+        width: 69
+        height: 90
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7acd704b56e671ab0800000000000000
+      internalID: -5037436275099444057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_fire_9
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 0
+        width: 69
+        height: 90
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f7cd8758563f77f0800000000000000
+      internalID: -612711271245166605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_fire_10
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 0
+        width: 71
+        height: 90
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 439e08f162e19d6a0800000000000000
+      internalID: -6424070244381169356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_fire_11
+      rect:
+        serializedVersion: 2
+        x: 879
+        y: 0
+        width: 71
+        height: 90
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 408ce5b241f6868b0800000000000000
+      internalID: -5158751240735242236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_fire_12
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 0
+        width: 71
+        height: 90
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f273394fbfb4c9520800000000000000
+      internalID: 2710124621282359087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_fire_13
+      rect:
+        serializedVersion: 2
+        x: 1039
+        y: 0
+        width: 69
+        height: 90
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b51687210a1ba07c0800000000000000
+      internalID: -4104272809332022949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_fire_14
+      rect:
+        serializedVersion: 2
+        x: 1119
+        y: 0
+        width: 68
+        height: 90
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 464ed18245c415ed0800000000000000
+      internalID: -2427074799841975196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

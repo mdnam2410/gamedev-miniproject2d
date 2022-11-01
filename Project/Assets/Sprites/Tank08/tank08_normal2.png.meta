@@ -1,0 +1,600 @@
+fileFormatVersion: 2
+guid: f1d80abfd44954d49bd1d45eb79fb292
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1633273006533103796
+    second: tank08_normal2_0
+  - first:
+      213: 6329679365022104254
+    second: tank08_normal2_1
+  - first:
+      213: -1602698815005837497
+    second: tank08_normal2_2
+  - first:
+      213: 6352452612621128989
+    second: tank08_normal2_3
+  - first:
+      213: 8924081444514307602
+    second: tank08_normal2_4
+  - first:
+      213: 1189368847031566046
+    second: tank08_normal2_5
+  - first:
+      213: 5935940774938533261
+    second: tank08_normal2_6
+  - first:
+      213: 2079706973295930414
+    second: tank08_normal2_7
+  - first:
+      213: 3214182934886539382
+    second: tank08_normal2_8
+  - first:
+      213: 4682492148433879657
+    second: tank08_normal2_9
+  - first:
+      213: 5914186609166458512
+    second: tank08_normal2_10
+  - first:
+      213: 4138520925361531808
+    second: tank08_normal2_11
+  - first:
+      213: -8232145875804503797
+    second: tank08_normal2_12
+  - first:
+      213: -747860702273679222
+    second: tank08_normal2_13
+  - first:
+      213: -8465062313285670195
+    second: tank08_normal2_14
+  - first:
+      213: -4081330546063172936
+    second: tank08_normal2_15
+  - first:
+      213: 1021335418704413200
+    second: tank08_normal2_16
+  - first:
+      213: 6288422120902111540
+    second: tank08_normal2_17
+  - first:
+      213: 221409367831174084
+    second: tank08_normal2_18
+  - first:
+      213: 8059122524408778560
+    second: tank08_normal2_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tank08_normal2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 81
+        height: 86
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b0d3af552d8aa610800000000000000
+      internalID: 1633273006533103796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_normal2_1
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 0
+        width: 82
+        height: 86
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eba334ea8d987d750800000000000000
+      internalID: 6329679365022104254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_normal2_2
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 0
+        width: 82
+        height: 86
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74733a15be112c9e0800000000000000
+      internalID: -1602698815005837497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_normal2_3
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 0
+        width: 84
+        height: 86
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d15d8c39ef1782850800000000000000
+      internalID: 6352452612621128989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_normal2_4
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 0
+        width: 82
+        height: 86
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21e1eeebac4b8db70800000000000000
+      internalID: 8924081444514307602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_normal2_5
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 0
+        width: 82
+        height: 86
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ede7b323aac718010800000000000000
+      internalID: 1189368847031566046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_normal2_6
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 0
+        width: 82
+        height: 86
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8dd7f15fa2b06250800000000000000
+      internalID: 5935940774938533261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_normal2_7
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 0
+        width: 82
+        height: 86
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2ce434397a9cdc10800000000000000
+      internalID: 2079706973295930414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_normal2_8
+      rect:
+        serializedVersion: 2
+        x: 671
+        y: 0
+        width: 82
+        height: 86
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 670e80d89521b9c20800000000000000
+      internalID: 3214182934886539382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_normal2_9
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 0
+        width: 82
+        height: 86
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96205f2dccd8bf040800000000000000
+      internalID: 4682492148433879657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_normal2_10
+      rect:
+        serializedVersion: 2
+        x: 839
+        y: 0
+        width: 82
+        height: 86
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09e1db6e269631250800000000000000
+      internalID: 5914186609166458512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_normal2_11
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 0
+        width: 82
+        height: 86
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0abe1b3dadafe6930800000000000000
+      internalID: 4138520925361531808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_normal2_12
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 0
+        width: 82
+        height: 86
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b01c97511fa81cd80800000000000000
+      internalID: -8232145875804503797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_normal2_13
+      rect:
+        serializedVersion: 2
+        x: 1091
+        y: 0
+        width: 82
+        height: 86
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a80d08357a01f95f0800000000000000
+      internalID: -747860702273679222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_normal2_14
+      rect:
+        serializedVersion: 2
+        x: 1173
+        y: 0
+        width: 84
+        height: 86
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcaaf070dae068a80800000000000000
+      internalID: -8465062313285670195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_normal2_15
+      rect:
+        serializedVersion: 2
+        x: 1259
+        y: 0
+        width: 82
+        height: 86
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ba14fefd733c57c0800000000000000
+      internalID: -4081330546063172936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_normal2_16
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 0
+        width: 82
+        height: 86
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 012c66ce6238c2e00800000000000000
+      internalID: 1021335418704413200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_normal2_17
+      rect:
+        serializedVersion: 2
+        x: 1427
+        y: 0
+        width: 82
+        height: 86
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 431341af996f44750800000000000000
+      internalID: 6288422120902111540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_normal2_18
+      rect:
+        serializedVersion: 2
+        x: 1511
+        y: 0
+        width: 82
+        height: 86
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cb558f95aa921300800000000000000
+      internalID: 221409367831174084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank08_normal2_19
+      rect:
+        serializedVersion: 2
+        x: 1595
+        y: 0
+        width: 81
+        height: 86
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04f0cb4ac31c7df60800000000000000
+      internalID: 8059122524408778560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

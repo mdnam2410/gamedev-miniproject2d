@@ -1,0 +1,600 @@
+fileFormatVersion: 2
+guid: 3d2d8dbfd63e19b45a644c729a506cc6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6484033678335144829
+    second: tank11_idle_0
+  - first:
+      213: -7330446706509822249
+    second: tank11_idle_1
+  - first:
+      213: -4313233950009869479
+    second: tank11_idle_2
+  - first:
+      213: 3497603247593273884
+    second: tank11_idle_3
+  - first:
+      213: -1492732428579001951
+    second: tank11_idle_4
+  - first:
+      213: -2220851761268419568
+    second: tank11_idle_5
+  - first:
+      213: -8414640313276595426
+    second: tank11_idle_6
+  - first:
+      213: 4529698141754174692
+    second: tank11_idle_7
+  - first:
+      213: -3171343997730138403
+    second: tank11_idle_8
+  - first:
+      213: 7984512918789507900
+    second: tank11_idle_9
+  - first:
+      213: 1833580527875820960
+    second: tank11_idle_10
+  - first:
+      213: 7643862920595397413
+    second: tank11_idle_11
+  - first:
+      213: -3049808997424898074
+    second: tank11_idle_12
+  - first:
+      213: 3617314953136185845
+    second: tank11_idle_13
+  - first:
+      213: 4807990276089099197
+    second: tank11_idle_14
+  - first:
+      213: 5218758938834106550
+    second: tank11_idle_15
+  - first:
+      213: 1606013014215642644
+    second: tank11_idle_16
+  - first:
+      213: 7689596352378275738
+    second: tank11_idle_17
+  - first:
+      213: -1211121842480789500
+    second: tank11_idle_18
+  - first:
+      213: -2037492803741661108
+    second: tank11_idle_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tank11_idle_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 104
+        height: 106
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38c0a2339b51406a0800000000000000
+      internalID: -6484033678335144829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank11_idle_1
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 0
+        width: 106
+        height: 106
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d6cc8d0f85054a90800000000000000
+      internalID: -7330446706509822249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank11_idle_2
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 0
+        width: 106
+        height: 106
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95bb18033905424c0800000000000000
+      internalID: -4313233950009869479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank11_idle_3
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 0
+        width: 108
+        height: 106
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1abc026f9bf98030800000000000000
+      internalID: 3497603247593273884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank11_idle_4
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 0
+        width: 108
+        height: 106
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a9a7d9d3cfb84be0800000000000000
+      internalID: -1492732428579001951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank11_idle_5
+      rect:
+        serializedVersion: 2
+        x: 548
+        y: 0
+        width: 110
+        height: 106
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0149bc6f613fd21e0800000000000000
+      internalID: -2220851761268419568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank11_idle_6
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 0
+        width: 110
+        height: 106
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e13877eb731393b80800000000000000
+      internalID: -8414640313276595426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank11_idle_7
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 110
+        height: 106
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ec2107e578bcde30800000000000000
+      internalID: 4529698141754174692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank11_idle_8
+      rect:
+        serializedVersion: 2
+        x: 878
+        y: 0
+        width: 110
+        height: 106
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd65ab2cf6f1df3d0800000000000000
+      internalID: -3171343997730138403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank11_idle_9
+      rect:
+        serializedVersion: 2
+        x: 988
+        y: 0
+        width: 110
+        height: 106
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3b47f42230bece60800000000000000
+      internalID: 7984512918789507900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank11_idle_10
+      rect:
+        serializedVersion: 2
+        x: 1098
+        y: 0
+        width: 108
+        height: 106
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ad8c1f76cf227910800000000000000
+      internalID: 1833580527875820960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank11_idle_11
+      rect:
+        serializedVersion: 2
+        x: 1208
+        y: 0
+        width: 108
+        height: 106
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52b5eddc3d4741a60800000000000000
+      internalID: 7643862920595397413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank11_idle_12
+      rect:
+        serializedVersion: 2
+        x: 1318
+        y: 0
+        width: 106
+        height: 106
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6efd2bb10e6eca5d0800000000000000
+      internalID: -3049808997424898074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank11_idle_13
+      rect:
+        serializedVersion: 2
+        x: 1428
+        y: 0
+        width: 106
+        height: 106
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f12466d8c8433230800000000000000
+      internalID: 3617314953136185845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank11_idle_14
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 0
+        width: 106
+        height: 106
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db3b2d9aea969b240800000000000000
+      internalID: 4807990276089099197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank11_idle_15
+      rect:
+        serializedVersion: 2
+        x: 1648
+        y: 0
+        width: 106
+        height: 106
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b8f99dca91cc6840800000000000000
+      internalID: 5218758938834106550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank11_idle_16
+      rect:
+        serializedVersion: 2
+        x: 1758
+        y: 0
+        width: 106
+        height: 106
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41e4af0d354b94610800000000000000
+      internalID: 1606013014215642644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank11_idle_17
+      rect:
+        serializedVersion: 2
+        x: 1868
+        y: 0
+        width: 106
+        height: 106
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9785a9242fe6ba60800000000000000
+      internalID: 7689596352378275738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank11_idle_18
+      rect:
+        serializedVersion: 2
+        x: 1978
+        y: 0
+        width: 106
+        height: 106
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 408473fd91b313fe0800000000000000
+      internalID: -1211121842480789500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tank11_idle_19
+      rect:
+        serializedVersion: 2
+        x: 2088
+        y: 0
+        width: 104
+        height: 106
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c484090171f59b3e0800000000000000
+      internalID: -2037492803741661108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
