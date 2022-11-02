@@ -15,12 +15,7 @@ public class Buff : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
-            Player owner = collision.gameObject.GetComponent<Player>();
-            if (owner == null)
-            {
-                owner = collision.gameObject.GetComponent<PlayerRef>().owner;
-            }
-
+            Player owner = collision.gameObject.GetComponent<PlayerRef>().owner;
             owner.AddBuff(buffData);
             //Debug.Log($"Buff {this.ToString()}");
             BuffManager.Instance.OnBuffDestroyed.Invoke();

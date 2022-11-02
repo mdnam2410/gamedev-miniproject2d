@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6296057915855409246}
   - component: {fileID: 6296057915855409247}
   - component: {fileID: 6296057915855409244}
+  - component: {fileID: 7736390181849712510}
   m_Layer: 0
   m_Name: Player_M_28_08
   m_TagString: Player
@@ -102,7 +103,6 @@ MonoBehaviour:
   movingSpeed: 600
   firePos: {fileID: 7024165173114965360}
   heroHead: {fileID: 4149854833291638010}
-  tank: {fileID: 0}
   heroHeadAnimator: {fileID: 4149854833291638008}
   tankAnimator: {fileID: 7024165173511685508}
   ownTurn: 1
@@ -132,6 +132,19 @@ MonoBehaviour:
   OnBehit:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7736390181849712510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6296057915855409240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ceaeceea162544da2c5a5f9defaf9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 6296057915855409244}
 --- !u!1001 &1968045527632098914
 PrefabInstance:
   m_ObjectHideFlags: 0

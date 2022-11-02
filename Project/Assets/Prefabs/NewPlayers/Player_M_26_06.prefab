@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2810329466074893298}
   - component: {fileID: 6567001705385551964}
   - component: {fileID: 7033231643036147668}
+  - component: {fileID: 788789551607219704}
   m_Layer: 0
   m_Name: Player_M_26_06
   m_TagString: Player
@@ -55,7 +56,6 @@ MonoBehaviour:
   movingSpeed: 300
   firePos: {fileID: 2328767406323781877}
   heroHead: {fileID: 4973841604085731706}
-  tank: {fileID: 0}
   heroHeadAnimator: {fileID: 4973841604085731704}
   tankAnimator: {fileID: 2328767405893942757}
   ownTurn: 1
@@ -132,6 +132,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &788789551607219704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2810329466074893296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ceaeceea162544da2c5a5f9defaf9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 2810329466074893298}
 --- !u!1001 &788670098328641661
 PrefabInstance:
   m_ObjectHideFlags: 0
