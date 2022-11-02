@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
     public HealthBar healthBar2;
     public AngleRuler angleRuler;
     public CameraController cameraController;
+    public PlayerIndicator playerIndicator;
 
     // Environment - wind
     public float windSpeed;
@@ -115,6 +116,7 @@ public class GameManager : MonoBehaviour
 
         if (selection != 0 )
         {
+            GameStartData.Instance.gameType = GameConfig.Instance.GameType;
             GameStartData.Instance.P1 = this.configAvatar.GetFromId(GameConfig.Instance.PlayerA.AvatarId);
             GameStartData.Instance.P2 = this.configAvatar.GetFromId(GameConfig.Instance.PlayerB.AvatarId);
             GameStartData.Instance.MapName = GameConfig.Instance.MapName;
@@ -308,12 +310,14 @@ public class GameManager : MonoBehaviour
         if (this.currentTurn == GameTurn.P1)
         {
             this.SetPositionForAngleRuler(P1);
+            this.SetPlayerIndicator(P1);
         }
         else
         {
             this.SetPositionForAngleRuler(P2);
+            this.SetPlayerIndicator(P2);
         }
-        
+
     }
 
     public void SetPositionForAngleRuler(Player player)
@@ -323,6 +327,16 @@ public class GameManager : MonoBehaviour
         Vector3 scale = this.angleRuler.transform.localScale;
         float xScale = player.transform.localScale.x;
         this.angleRuler.transform.localScale = new Vector3(-Mathf.Abs(scale.x) * xScale / Mathf.Abs(xScale), scale.y, scale.z);
+    }
+
+    public void SetPlayerIndicator(Player player)
+    {
+        // Position
+        var headPosition = player.heroHead.transform.position;
+        this.playerIndicator.transform.position = headPosition + Vector3.up * 0.5f;
+
+        // Name
+        this.playerIndicator.SetName(GameDefine.GetPlayerDisplayName(this.gameType, this.currentTurn));
     }
 
     public void UpdateEnvironment()
