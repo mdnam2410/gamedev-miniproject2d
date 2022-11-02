@@ -61,7 +61,7 @@ MonoBehaviour:
   ownTurn: 1
   bullet: {fileID: 982014632240100041}
   currentStatus: 0
-  rigid2D: {fileID: 0}
+  rigid2D: {fileID: 7033231643036147668}
   healthBar: {fileID: 0}
   movingState: 0
   faceDirection: 0
@@ -82,6 +82,9 @@ MonoBehaviour:
   speedBuff: 0
   frontWheel: {fileID: 8071034163447439789}
   backWheel: {fileID: 5251532284423784636}
+  OnBehit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &6567001705385551964
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -212,6 +215,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2810329466074893297}
     m_Modifications:
+    - target: {fileID: 1893851223081221516, guid: 3c4ef8a29bdff864bb564afc4b10af58, type: 3}
+      propertyPath: owner
+      value: 
+      objectReference: {fileID: 2810329466074893298}
     - target: {fileID: 6308592869853683852, guid: 3c4ef8a29bdff864bb564afc4b10af58, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -295,7 +302,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1721775437864783271, guid: d726368300385144bbd7a0893973ebf9, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6043661048125822122, guid: d726368300385144bbd7a0893973ebf9, type: 3}
       propertyPath: m_LocalPosition.x

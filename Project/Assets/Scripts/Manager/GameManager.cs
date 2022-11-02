@@ -91,8 +91,6 @@ public class GameManager : MonoBehaviour
     public Transform demoTransform1;
     public Transform demoTransform2;
 
-    public AudioSource mapSound;
-
 
 
     private void Start()
@@ -114,7 +112,6 @@ public class GameManager : MonoBehaviour
         this.P2.OnBehit.AddListener(damageIndicator.OnBehitCallback);
         */
 
-        this.mapSound.Play();
     }
 
     private void LoadGameConfigData()

@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class Bullet : MonoBehaviour
 {
+    public static List<string> ignoreTags = new List<string> { "Buff" };
     public enum BulletStatus
     {
         Hidden,
@@ -84,13 +85,16 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (this.ownerColliders.Contains(collision.gameObject)) return;
+        if (Bullet.ignoreTags.Contains(collision.gameObject.tag)) return;
 
         if (collision.gameObject.tag.Equals("Player"))
         {
             this.HitTarget();
+            Debug.Log("Hit target");
         }
         else
         {
+            Debug.Log("Bullet destroyed by " + collision.gameObject.ToString());
             Collider2D[] collidersAround = Physics2D.OverlapCircleAll(this.transform.position, this.radius);
 
             for (int i = 0; i < collidersAround.Length; i++)
@@ -113,13 +117,16 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (this.ownerColliders.Contains(collision.gameObject)) return;
+        if (Bullet.ignoreTags.Contains(collision.gameObject.tag)) return;
 
         if (collision.gameObject.tag.Equals("Player"))
         {
             this.HitTarget();
+            Debug.Log("Hit target");
         }
         else
         {
+            Debug.Log("Bullet destroyed by " + collision.gameObject.ToString());
             Collider2D[] collidersAround = Physics2D.OverlapCircleAll(this.transform.position, this.radius);
 
             for (int i = 0; i < collidersAround.Length; i++)

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2283144661588095087}
   m_Layer: 0
   m_Name: Player_F_07_11
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,7 +61,7 @@ MonoBehaviour:
   ownTurn: 1
   bullet: {fileID: 1896284669162255893}
   currentStatus: 0
-  rigid2D: {fileID: 0}
+  rigid2D: {fileID: 2283144661588095087}
   healthBar: {fileID: 0}
   movingState: 0
   faceDirection: 0
@@ -82,6 +82,9 @@ MonoBehaviour:
   speedBuff: 0
   frontWheel: {fileID: 6360325838152377586}
   backWheel: {fileID: 6964615202781220323}
+  OnBehit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &2283144661588095084
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -453,6 +456,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2283144661588095074}
     m_Modifications:
+    - target: {fileID: 1253755037483206745, guid: 488c0aba033cfe14699c2c3940553962, type: 3}
+      propertyPath: owner
+      value: 
+      objectReference: {fileID: 2283144661588095085}
     - target: {fileID: 3312170473177049453, guid: 488c0aba033cfe14699c2c3940553962, type: 3}
       propertyPath: m_Name
       value: F_17

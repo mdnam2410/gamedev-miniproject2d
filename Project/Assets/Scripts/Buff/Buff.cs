@@ -22,6 +22,7 @@ public class Buff : MonoBehaviour
             }
 
             owner.AddBuff(buffData);
+            //Debug.Log($"Buff {this.ToString()}");
             BuffManager.Instance.OnBuffDestroyed.Invoke();
             this.gameObject.SetActive(false);
         }

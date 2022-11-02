@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6296057915855409244}
   m_Layer: 0
   m_Name: Player_M_28_08
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
   ownTurn: 1
   bullet: {fileID: 3745660492933196163}
   currentStatus: 0
-  rigid2D: {fileID: 0}
+  rigid2D: {fileID: 6296057915855409247}
   healthBar: {fileID: 0}
   movingState: 0
   faceDirection: 0
@@ -129,6 +129,9 @@ MonoBehaviour:
   speedBuff: 0
   frontWheel: {fileID: 27670705608872608}
   backWheel: {fileID: 4071654676137819057}
+  OnBehit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1968045527632098914
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -241,9 +244,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6296057915855409241}
     m_Modifications:
+    - target: {fileID: 1504656268244865014, guid: d726368300385144bbd7a0893973ebf9, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1721775437864783271, guid: d726368300385144bbd7a0893973ebf9, type: 3}
       propertyPath: m_Name
       value: Wheels
+      objectReference: {fileID: 0}
+    - target: {fileID: 4086195700617762427, guid: d726368300385144bbd7a0893973ebf9, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6043661048125822122, guid: d726368300385144bbd7a0893973ebf9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -365,6 +376,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6296057915855409241}
     m_Modifications:
+    - target: {fileID: 5032291957904894254, guid: b56408bcb21a67441b0493ff8086472b, type: 3}
+      propertyPath: owner
+      value: 
+      objectReference: {fileID: 6296057915855409244}
     - target: {fileID: 5206321398309860592, guid: b56408bcb21a67441b0493ff8086472b, type: 3}
       propertyPath: m_Name
       value: M_28
