@@ -107,8 +107,12 @@ public class GameManager : MonoBehaviour
         this.OnTurnChanged.AddListener(this.ResetTurnValues);
         this.OnBulletDestroyed.AddListener(this.BulletDestroy);
 
+        this.cameraController.FocusPlayer(P1.gameObject);
+
+        /*
         this.P1.OnBehit.AddListener(damageIndicator.OnBehitCallback);
         this.P2.OnBehit.AddListener(damageIndicator.OnBehitCallback);
+        */
 
         this.mapSound.Play();
     }
@@ -140,7 +144,7 @@ public class GameManager : MonoBehaviour
         this.currentTurn = GameTurn.None;
 
         // modify later
-        int selection = 1;
+        int selection = 0;
 
         if (selection != 0)
         {
@@ -307,6 +311,8 @@ public class GameManager : MonoBehaviour
 
         if (this.currentPlayer == this.P1) this.currentPlayer = this.P2;
         else this.currentPlayer = this.P1;
+
+        this.cameraController.FocusPlayer(this.currentPlayer.gameObject);
     }
 
     public void UpdateTurnUI()
