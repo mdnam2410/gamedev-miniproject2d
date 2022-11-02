@@ -43,7 +43,11 @@ public class Bot : Player
     public float AngleEpsilon = 5f;
     public float AimingSpeed = 20f;
     public bool StartAiming;
+    public bool StartAdjust;
     public bool FinishedAiming;
+    public PathFinder pathFinder;
+    public bool pathFound;
+    public bool usedPathFinder;
 
     protected override void Start()
     {
@@ -56,12 +60,17 @@ public class Bot : Player
         this.RemainMovingTime = this.MovingTime;
         this.Direction = BotMovingDirection.None;
         this.StartAiming = false;
+        this.StartAdjust = false;
         this.FinishedAiming = false;
 
         this.AngleModifyingFactor = 5f;
         this.ForceScaleFactor = 1f;
         this.AngleEpsilon = 5f;
-        this.AimingSpeed = 20f;
+        this.AimingSpeed = 5f;
+        this.pathFinder.OnFindPathComplete.AddListener(this.Fire);
+        this.pathFound = false;
+        this.usedPathFinder = false;
+
 
         GameManager.Instance.OnTurnChanged.AddListener(this.OnTurnChange);
         //ForceBar.Instance.OnPowerCompleted.AddListener(this.Fire);
@@ -77,6 +86,24 @@ public class Bot : Player
         if (this.Direction == BotMovingDirection.None)
         {
             this.StopMoving();
+        }
+
+        if (this.pathFound && !this.FinishedAiming)
+        {
+            this.PreAimedAngle = this.pathFinder.angle;
+            if (this.PreAimedAngle > 90f && this.PreAimedAngle < 180f)
+                this.PreAimedAngle = 180f - this.PreAimedAngle;
+            this.force = this.pathFinder.force;
+            this.SimulateAiming();
+        }
+
+        if (this.FinishedAiming && !this.fired)
+        {
+            this.CalculateForceVector();
+            this.SetFireAnim();
+            this.fired = true;
+            this.currentStatus = Status.Attacking;
+            GameManager.Instance.OnPlayerShoot.Invoke();
         }
     }
 
@@ -108,7 +135,13 @@ public class Bot : Player
         {
             this.movingState = MovingState.None;
             this.Direction = BotMovingDirection.None;
-            this.Fire();
+            if (!this.pathFound && !this.usedPathFinder)
+            {
+                this.usedPathFinder = true;
+                this.UsePathFinder();
+            }
+            
+            //this.Fire();
         }
     }
 
@@ -128,7 +161,10 @@ public class Bot : Player
         this.Direction = BotMovingDirection.None;
     }
 
-
+    public void UsePathFinder()
+    {
+        this.pathFinder.FindPath(Mathf.Atan(Mathf.Abs(this.DirectionToTarget.y / this.DirectionToTarget.x)) * 180f / Mathf.PI);
+    }
     public override void Fire()
     {
         if (this.fired) return;
@@ -136,28 +172,16 @@ public class Bot : Player
         {
             this.CalculateForceVector();
 
-            if (this.FinishedAiming)
-            {
-                this.SetFireAnim();
-                this.fired = true;
-                this.currentStatus = Status.Attacking;
-                GameManager.Instance.OnPlayerShoot.Invoke();
-            }
         }
-    }
-    protected override void CalculateForceVector()
-    {
-        this.SimulateAiming();
-        this.SimulateGetForce();
     }
     private void SimulateAiming()
     {
-        this.CalculatePreAimedAngle();
-        this.SimulateAdjustingAngle();
-    }
+        if (this.FinishedAiming) return;
+        if (this.PreAimedAngle > 95f || this.PreAimedAngle < -20f)
+        {
+            this.FinishedAiming = true;
+        }
 
-    private void SimulateAdjustingAngle()
-    {
         if (Mathf.Abs(this.angle - this.PreAimedAngle) < this.AngleEpsilon)
         {
             this.FinishedAiming = true;
@@ -174,37 +198,21 @@ public class Bot : Player
         }
     }
 
-    private void CalculatePreAimedAngle()
+
+    private void CalculateForceVector()
     {
-        if (this.StartAiming) return;
-        if (this.DirectionToTarget.x == 0)
-        {
-            this.DirectionToTarget = new Vector2(0.001f, this.DirectionToTarget.y);
-        }
-
-        this.PreAimedAngle = Mathf.Atan(Mathf.Abs(this.DirectionToTarget.y / this.DirectionToTarget.x)) * 180f / Mathf.PI;
-        if (this.DirectionToTarget.y < 0) this.PreAimedAngle = 0;
-        this.PreAimedAngle += UnityEngine.Random.Range(5f, 15f);
-        this.PreAimedAngle = Mathf.Clamp(this.PreAimedAngle, -5f, 90f);
-        //this.PreAimedAngle = this.target.angle + this.DirectionToTarget.y * this.AngleModifyingFactor;
-        //this.PreAimedAngle = Mathf.Clamp(this.PreAimedAngle, this.target.angle - 30f, this.target.angle + 30f);
-        //this.PreAimedAngle = Mathf.Clamp(this.PreAimedAngle, 0f, 90f);
-        GameManager.Instance.angleRuler.SetAngle(UnityEngine.Random.Range(0f, 30f));
-        this.StartAiming = true;
-    }
-
-    private void SimulateGetForce()
-    {
-        if (!this.FinishedAiming) return;
-
         if (this.faceDirection == FaceDirection.RightLeft)
         {
             this.angle = 180f - this.angle;
         }
-
+        /*
         this.force = this.target.force + (GameManager.Instance.windSpeed - GameManager.Instance.windSpeedOfLastShot) * GameManager.Instance.windForceScaleFactor;
         if (this.DirectionToTarget.y < 0) this.force *= UnityEngine.Random.Range(0.7f, 1f);
-        else this.force *= UnityEngine.Random.Range(1f, 3f);
+        else this.force *= UnityEngine.Random.Range(1f, 2f);
+        */
+        this.angle = this.PreAimedAngle;
+        if (this.faceDirection == FaceDirection.RightLeft) this.angle = 180f - this.angle;
+        this.force = this.pathFinder.force;
         this.forceVector = new Vector2(Mathf.Cos(this.angle * Mathf.PI / 180f), Mathf.Sin(this.angle * Mathf.PI / 180f)) * this.force;
     }
 
@@ -217,11 +225,16 @@ public class Bot : Player
 
         this.canMove = true;
         this.angle = 0;
+        GameManager.Instance.angleRuler.SetAngle(UnityEngine.Random.Range(15f, 80f));
         this.currentStatus = Status.Idle;
         this.StartAiming = false;
+        this.StartAdjust = false;
         this.FinishedAiming = false;
         this.Direction = (BotMovingDirection)(UnityEngine.Random.Range(0, 3));
         this.RemainMovingTime = this.MovingTime;
+        this.MovingTime = UnityEngine.Random.Range(0.5f, 2f);
+        this.pathFound = false;
+        this.usedPathFinder = false;
     }
 
     public override void UpdateHp(int delta)
