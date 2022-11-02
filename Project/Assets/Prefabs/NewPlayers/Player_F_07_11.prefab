@@ -10,8 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2283144661588095074}
   - component: {fileID: 2283144661588095085}
+  - component: {fileID: 2244109362608827154}
   - component: {fileID: 2283144661588095084}
   - component: {fileID: 2283144661588095087}
+  - component: {fileID: 7942997471539756624}
   m_Layer: 0
   m_Name: Player_F_07_11
   m_TagString: Player
@@ -55,7 +57,6 @@ MonoBehaviour:
   movingSpeed: 200
   firePos: {fileID: 2719540873868355928}
   heroHead: {fileID: 6838397026534136727}
-  tank: {fileID: 0}
   heroHeadAnimator: {fileID: 6838397026534136725}
   tankAnimator: {fileID: 2719540873463439788}
   ownTurn: 1
@@ -85,6 +86,65 @@ MonoBehaviour:
   OnBehit:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2244109362608827154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2283144661588095086}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1167f88191fa29429422446570b30c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownRole: 0
+  hp: 100
+  maxHp: 100
+  movingSpeed: 200
+  firePos: {fileID: 2719540873868355928}
+  heroHead: {fileID: 6838397026534136727}
+  heroHeadAnimator: {fileID: 6838397026534136725}
+  tankAnimator: {fileID: 2719540873463439788}
+  ownTurn: 3
+  bullet: {fileID: 1896284669162255893}
+  currentStatus: 0
+  rigid2D: {fileID: 2283144661588095087}
+  healthBar: {fileID: 0}
+  movingState: 0
+  faceDirection: 0
+  forceVector: {x: 0, y: 0}
+  target: {fileID: 0}
+  angle: 45
+  force: 200
+  fired: 0
+  canMove: 0
+  velo: {x: 0, y: 0}
+  verticalVelocity: 0
+  verticalJumpingVelocity: 2
+  verticalDefaultVelocity: 0.05
+  jumpTimeCooldown: 3
+  lockRotate: 3
+  shieldBuff: 0
+  powerBuff: 0
+  speedBuff: 0
+  frontWheel: {fileID: 6360325838152377586}
+  backWheel: {fileID: 6964615202781220323}
+  OnBehit:
+    m_PersistentCalls:
+      m_Calls: []
+  DirectionToTarget: {x: 0, y: 0}
+  Direction: 0
+  MovingTime: 3
+  RemainMovingTime: 0
+  PreAimedAngle: 0
+  AngleModifyingFactor: 0
+  ForceScaleFactor: 0.1
+  ForceEpsilon: 0
+  AngleEpsilon: 5
+  AimingSpeed: 20
+  StartAiming: 0
+  FinishedAiming: 0
 --- !u!61 &2283144661588095084
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -132,6 +192,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7942997471539756624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2283144661588095086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3ceaeceea162544da2c5a5f9defaf9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 2283144661588095085}
 --- !u!1001 &1100623970969458195
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -282,6 +355,10 @@ PrefabInstance:
     - target: {fileID: 9071819606062871448, guid: c7b4a81cae8f1894db386eed85a0769b, type: 3}
       propertyPath: m_Name
       value: Tank11
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071819606062871450, guid: c7b4a81cae8f1894db386eed85a0769b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 9071819606062871451, guid: c7b4a81cae8f1894db386eed85a0769b, type: 3}
       propertyPath: m_RootOrder
@@ -507,6 +584,14 @@ PrefabInstance:
     - target: {fileID: 3312170473177049454, guid: 488c0aba033cfe14699c2c3940553962, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3312170473708957742, guid: 488c0aba033cfe14699c2c3940553962, type: 3}
+      propertyPath: m_SortingOrder
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 3312170473983546689, guid: 488c0aba033cfe14699c2c3940553962, type: 3}
+      propertyPath: m_SortingOrder
+      value: 256
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 488c0aba033cfe14699c2c3940553962, type: 3}

@@ -29,24 +29,13 @@ public class Bot : Player
         Right
     }
 
-    public struct TurnInfo
-    {
-        public Vector2 BotPos;
-        public Vector2 PlayerPos;
-        public Vector2 ExplosionPos;
-        public float Force;
-        public float Angle;
-        public float WindSpeed;
-        public float TimeExplosion;
-    };
 
-    public TurnInfo LastTurnInfo;
 
+    [Header("BOT")]
     public Vector2 DirectionToTarget;
     public BotMovingDirection Direction;
     public float MovingTime = 3f;
     public float RemainMovingTime;
-
     public float PreAimedAngle;
     public float AngleModifyingFactor;
     public float ForceScaleFactor = 0.1f;
@@ -69,6 +58,11 @@ public class Bot : Player
         this.StartAiming = false;
         this.FinishedAiming = false;
 
+        this.AngleModifyingFactor = 5f;
+        this.ForceScaleFactor = 1f;
+        this.AngleEpsilon = 5f;
+        this.AimingSpeed = 20f;
+
         GameManager.Instance.OnTurnChanged.AddListener(this.OnTurnChange);
         //ForceBar.Instance.OnPowerCompleted.AddListener(this.Fire);
         //ForceBar.Instance.OnPowerCompleted.AddListener(this.lockMovingOnFire);
@@ -78,6 +72,12 @@ public class Bot : Player
         this.LookAtPlayer();
         this.Move();
         this.UpdateTankAnim();
+        if (this.StartAiming)
+            this.Direction = BotMovingDirection.None;
+        if (this.Direction == BotMovingDirection.None)
+        {
+            this.StopMoving();
+        }
     }
 
     private void LookAtPlayer()
@@ -107,6 +107,7 @@ public class Bot : Player
         else
         {
             this.movingState = MovingState.None;
+            this.Direction = BotMovingDirection.None;
             this.Fire();
         }
     }
@@ -119,6 +120,12 @@ public class Bot : Player
     protected override bool MoveLeft()
     {
         return this.Direction == BotMovingDirection.Left;
+    }
+
+    public override void StopMoving()
+    {
+        base.StopMoving();
+        this.Direction = BotMovingDirection.None;
     }
 
 
@@ -170,10 +177,18 @@ public class Bot : Player
     private void CalculatePreAimedAngle()
     {
         if (this.StartAiming) return;
+        if (this.DirectionToTarget.x == 0)
+        {
+            this.DirectionToTarget = new Vector2(0.001f, this.DirectionToTarget.y);
+        }
 
-        this.PreAimedAngle = this.target.angle + this.DirectionToTarget.y * this.AngleModifyingFactor;
-        this.PreAimedAngle = Mathf.Clamp(this.PreAimedAngle, this.target.angle - 15f, this.target.angle + 15f);
-        this.PreAimedAngle = Mathf.Clamp(this.PreAimedAngle, 0f, 90f);
+        this.PreAimedAngle = Mathf.Atan(Mathf.Abs(this.DirectionToTarget.y / this.DirectionToTarget.x)) * 180f / Mathf.PI;
+        if (this.DirectionToTarget.y < 0) this.PreAimedAngle = 0;
+        this.PreAimedAngle += UnityEngine.Random.Range(5f, 15f);
+        this.PreAimedAngle = Mathf.Clamp(this.PreAimedAngle, -5f, 90f);
+        //this.PreAimedAngle = this.target.angle + this.DirectionToTarget.y * this.AngleModifyingFactor;
+        //this.PreAimedAngle = Mathf.Clamp(this.PreAimedAngle, this.target.angle - 30f, this.target.angle + 30f);
+        //this.PreAimedAngle = Mathf.Clamp(this.PreAimedAngle, 0f, 90f);
         GameManager.Instance.angleRuler.SetAngle(UnityEngine.Random.Range(0f, 30f));
         this.StartAiming = true;
     }
@@ -188,6 +203,8 @@ public class Bot : Player
         }
 
         this.force = this.target.force + (GameManager.Instance.windSpeed - GameManager.Instance.windSpeedOfLastShot) * GameManager.Instance.windForceScaleFactor;
+        if (this.DirectionToTarget.y < 0) this.force *= UnityEngine.Random.Range(0.7f, 1f);
+        else this.force *= UnityEngine.Random.Range(1f, 3f);
         this.forceVector = new Vector2(Mathf.Cos(this.angle * Mathf.PI / 180f), Mathf.Sin(this.angle * Mathf.PI / 180f)) * this.force;
     }
 
@@ -205,5 +222,25 @@ public class Bot : Player
         this.FinishedAiming = false;
         this.Direction = (BotMovingDirection)(UnityEngine.Random.Range(0, 3));
         this.RemainMovingTime = this.MovingTime;
+    }
+
+    public override void UpdateHp(int delta)
+    {
+        int newHp = hp + delta;
+
+        if (newHp > maxHp)
+        {
+            hp = maxHp;
+        }
+        else if (newHp < 0)
+        {
+            hp = 0;
+        }
+        else
+        {
+            hp = newHp;
+        }
+
+        this.healthBar.SetHealth(hp);
     }
 }

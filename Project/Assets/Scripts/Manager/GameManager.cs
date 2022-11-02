@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour
     public PlayerInfo PlayerInfo2;
     public Player P1;
     public Player P2;
+    public Bot P2Bot;
     public Player currentPlayer;
 
     // UIs
@@ -133,6 +134,10 @@ public class GameManager : MonoBehaviour
             GameStartData.Instance.gameType = GameType.vsPlayer;
             GameStartData.Instance.MapName = "";
         }
+
+
+        // test only
+        GameStartData.Instance.gameType = GameType.vsBot;
     }
 
     public void InitPlayers()
@@ -140,47 +145,93 @@ public class GameManager : MonoBehaviour
         this.gameType = GameStartData.Instance.gameType;
         this.currentTurn = GameTurn.None;
 
-        // modify later
-        int selection = 0;
+        Transform tp1 = this.GetPlayerTransform(SpawningPlace.Instance.listPlace1);
+        Transform tp2 = this.GetPlayerTransform(SpawningPlace.Instance.listPlace2);
+        GameObject obj1 = Instantiate(GameStartData.Instance.P1.Prefab, tp1);
+        GameObject obj2 = Instantiate(GameStartData.Instance.P2.Prefab, tp2);
 
-        if (selection != 0)
+        this.P1 = EnableExactPlayerComponent(obj1);
+        PlayerRef[] playerRefArr1 = this.P1.GetComponentsInChildren<PlayerRef>();
+        for (int i = 0; i < playerRefArr1.Length; i++)
         {
-            this.P1 = Instantiate(GameStartData.Instance.P1.Prefab, this.transform).GetComponent<Player>();
-            this.P2 = Instantiate(GameStartData.Instance.P2.Prefab, this.transform).GetComponent<Player>();
-            this.P1.gameObject.transform.position = this.demoTransform1.position;
-            this.P2.gameObject.transform.position = this.demoTransform2.position;
+            playerRefArr1[i].owner = this.P1;
         }
+
+        if (this.gameType == GameType.vsPlayer)
+            this.P2 = EnableExactPlayerComponent(obj2);
         else
+            this.P2 = EnableExactBotComponent(obj2);
+        PlayerRef[] playerRefArr2 = this.P2.GetComponentsInChildren<PlayerRef>();
+        for (int i = 0; i < playerRefArr2.Length; i++)
         {
-            Transform tp1 = this.GetPlayerTransform(SpawningPlace.Instance.listPlace1);
-            Transform tp2 = this.GetPlayerTransform(SpawningPlace.Instance.listPlace2);
-
-            this.P1 = Instantiate(GameStartData.Instance.P1.Prefab, tp1).GetComponent<Player>();
-            this.P2 = Instantiate(GameStartData.Instance.P2.Prefab, tp2).GetComponent<Player>();
-            this.P1.gameObject.transform.position = tp1.position;
-            this.P2.gameObject.transform.position = tp2.position;
+            playerRefArr2[i].owner = this.P2Bot;
         }
+        this.P2Bot.bullet.owner = this.P2Bot;
 
+        this.P1.gameObject.transform.position = tp1.position;
+        this.P2.gameObject.transform.position = tp2.position;
 
+        this.P1.healthBar = this.healthBar1;
+        this.P2.healthBar = this.healthBar2;
 
         this.P1.ownRole = GameTurn.P1;
         this.P2.ownRole = GameTurn.P2;
         if (this.gameType == GameType.vsBot) this.P2.ownRole = GameTurn.Bot;
-
         this.P1.faceDirection = Player.FaceDirection.LeftRight;
         this.P1.transform.localScale = new Vector3(1f, this.P1.transform.localScale.y, this.P1.transform.localScale.z);
         this.P2.faceDirection = Player.FaceDirection.RightLeft;
         this.P2.transform.localScale = new Vector3(-1f, this.P2.transform.localScale.y, this.P2.transform.localScale.z);
-
         this.P1.target = P2;
         this.P2.target = P1;
         this.currentPlayer = this.P1;
         this.currentTurn = GameTurn.P1;
-
-        this.P1.SetHealthBar(this.healthBar1);
-        this.P2.SetHealthBar(this.healthBar2);
     }
 
+
+    private Player EnableExactPlayerComponent(GameObject gameObject)
+    {
+        int index = 0;
+        Player[] playerArr = gameObject.GetComponents<Player>();
+        for (int i = 0; i < playerArr.Length; i++)
+        {
+            Player player = playerArr[i];
+
+            if (player is Bot)
+            {
+                player.enabled = false;
+            }
+            else
+            {
+                player.enabled = true;
+                index = i;
+            }
+
+        }
+        return playerArr[index];
+    }
+
+    private Player EnableExactBotComponent(GameObject gameObject)
+    {
+        int index = 0;
+        Player[] playerArr = gameObject.GetComponents<Player>();
+        for (int i = 0; i < playerArr.Length; i++)
+        {
+            Player player = playerArr[i];
+
+            if (player is Bot bot)
+            {
+                this.P2Bot = bot;
+                player.enabled = true;
+                index = i;
+            }
+            else
+            {
+                player.enabled = false;
+            }
+
+        }
+        return playerArr[index];
+    }
     Transform GetPlayerTransform(List<Transform> listTransform)
     {
         int index = Random.Range(0, listTransform.Count);

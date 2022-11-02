@@ -37,7 +37,6 @@ public class Player : MonoBehaviour
 
     public Transform firePos;
     public Collider2D heroHead;
-    public Collider2D tank;
     public Animator heroHeadAnimator;
     public Animator tankAnimator;
     public GameManager.GameTurn ownTurn;
@@ -442,13 +441,13 @@ public class Player : MonoBehaviour
         // TODO
     }
 
-    public void SetHealthBar(HealthBar healthBar)
+    public virtual void SetHealthBar(HealthBar healthBar)
     {
         this.healthBar = healthBar;
         this.healthBar.SetMaxHealth(hp);
     }
 
-    public void UpdateHp(int delta)
+    public virtual void UpdateHp(int delta)
     {
         int newHp = hp + delta;
 
@@ -465,7 +464,7 @@ public class Player : MonoBehaviour
             hp = newHp; 
         }
 
-        healthBar.SetHealth(hp);
+        this.healthBar.SetHealth(hp);
     }
 
     public void AddBuff(BuffData buff)
