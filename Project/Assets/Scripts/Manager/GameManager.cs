@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
     public AngleRuler angleRuler;
     public CameraController cameraController;
     public PlayerIndicator playerIndicator;
+    public DamageIndicator damageIndicator;
 
     // Environment - wind
     public float windSpeed;
@@ -105,6 +106,9 @@ public class GameManager : MonoBehaviour
 
         this.OnTurnChanged.AddListener(this.ResetTurnValues);
         this.OnBulletDestroyed.AddListener(this.BulletDestroy);
+
+        this.P1.OnBehit.AddListener(damageIndicator.OnBehitCallback);
+        this.P2.OnBehit.AddListener(damageIndicator.OnBehitCallback);
 
         this.mapSound.Play();
     }

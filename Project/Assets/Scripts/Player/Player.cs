@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -80,6 +81,7 @@ public class Player : MonoBehaviour
     public JointMotor2D frontStopSpeed;
     public JointMotor2D backStopSpeed;
 
+    public UnityEvent<Player, int> OnBehit = new UnityEvent<Player, int>();
 
     protected virtual void Start()
     {
@@ -390,6 +392,7 @@ public class Player : MonoBehaviour
         }
         
         this.hp -= damage;
+        OnBehit.Invoke(this, damage);
         this.healthBar.SetHealth(this.hp);
         this.heroHeadAnimator.SetTrigger("Behit");
 
