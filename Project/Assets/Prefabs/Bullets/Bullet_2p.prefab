@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6402823397755826806
 Transform:
   m_ObjectHideFlags: 0
@@ -157,6 +157,8 @@ MonoBehaviour:
   mass: 1
   radius: 2
   damage: 10
+  partialDamageRate: 0.5
+  damageBuff: 0
   firePos: {fileID: 0}
   offsetToFirePos: {x: 0, y: 0, z: 0}
   owner: {fileID: 0}
@@ -171,3 +173,4 @@ MonoBehaviour:
   currentCollision: 0
   firingSound: {fileID: 0}
   explodingSound: {fileID: 0}
+  cachedScale: {x: 0, y: 0, z: 0}
