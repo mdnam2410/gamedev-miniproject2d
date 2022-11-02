@@ -83,11 +83,6 @@ public class Player : MonoBehaviour
 
     public UnityEvent<Player, int> OnBehit = new UnityEvent<Player, int>();
 
-    public float shieldBuff = 0;
-    public float powerBuff = 0;
-    public float speedBuff = 0;
-
-
     protected virtual void Start()
     {
         this.hp = 100;
