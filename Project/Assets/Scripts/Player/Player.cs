@@ -93,7 +93,6 @@ public class Player : MonoBehaviour
         this.hp = 100;
         this.currentStatus = Status.Idle;
         this.movingState = MovingState.None;
-        this.rigid2D = GetComponent<Rigidbody2D>();
         this.canMove = true;
         this.lockRotate = 0f;
         this.jumpTimeCooldown = 2f;
@@ -427,7 +426,17 @@ public class Player : MonoBehaviour
         GameManager.Instance.angleRuler.SetAngle(15f);
 
         // anniele
+        this.ResetBuffs();
+    }
+
+    private void ResetBuffs()
+    {
+        // Only reset speed and power
+        // Shield reset later
+        // HP no need reset
+        this.movingSpeed -= this.speedBuff;
         this.speedBuff = 0;
+        this.powerBuff = 0;
     }
 
     protected void lockMovingOnFire() => this.canMove = false;
@@ -470,6 +479,7 @@ public class Player : MonoBehaviour
         {
             case BuffType.Speed:
                 speedBuff += buff.buffValue;
+                this.movingSpeed += buff.buffValue;
                 break;
 
             case BuffType.Power:

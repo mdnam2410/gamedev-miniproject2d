@@ -61,7 +61,7 @@ MonoBehaviour:
   ownTurn: 0
   bullet: {fileID: 4302099847752130290}
   currentStatus: 0
-  rigid2D: {fileID: 0}
+  rigid2D: {fileID: 4302099848962753452}
   healthBar: {fileID: 0}
   movingState: 0
   faceDirection: 0
@@ -72,10 +72,6 @@ MonoBehaviour:
   fired: 0
   canMove: 0
   velo: {x: 0, y: 0}
-  detectorLow: {fileID: 7328172259559718024}
-  detectorMid: {fileID: 7328172258385954491}
-  detectorDirection: {x: 0, y: 0}
-  obstacleDetectionRange: 0.05
   verticalVelocity: 0
   verticalJumpingVelocity: 1.2
   verticalDefaultVelocity: 0.1
@@ -86,6 +82,9 @@ MonoBehaviour:
   speedBuff: 0
   frontWheel: {fileID: 2683984848471624078}
   backWheel: {fileID: 2151682653285146783}
+  OnBehit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &4302099848962753452
 Rigidbody2D:
   serializedVersion: 4
