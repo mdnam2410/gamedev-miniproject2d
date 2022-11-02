@@ -37,24 +37,6 @@ public class CameraController : MonoBehaviour
         canvasDelta = MainCanvas.instance.transform.position - transform.position;
     }
 
-    public float zoomMultiplier = 1;
-    public float zoomSpeed = 30;
-
-    public CameraStatus status = CameraStatus.Normal;
-
-    public GameObject focusedObject = null;
-    public Vector3 focusDistance;
-    public Vector3 playerDelta;
-    public Vector3 canvasDelta;
-    public float remainingTime;
-    public Camera camera;
-
-    private void Start()
-    {
-        GameManager.Instance.OnBulletDestroyed.AddListener(this.EndFocusBullet);
-        canvasDelta = MainCanvas.instance.transform.position - transform.position;
-    }
-
     // Update is called once per frame
     void Update()
     {
