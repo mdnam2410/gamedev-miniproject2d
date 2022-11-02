@@ -9,9 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6296057915855409241}
+  - component: {fileID: 6296057915855409244}
+  - component: {fileID: 5100737347408449639}
   - component: {fileID: 6296057915855409246}
   - component: {fileID: 6296057915855409247}
-  - component: {fileID: 6296057915855409244}
   - component: {fileID: 7736390181849712510}
   m_Layer: 0
   m_Name: Player_M_28_08
@@ -38,53 +39,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &6296057915855409246
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6296057915855409240}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.40615487, y: 0.374376}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.80392504, y: 0.34928524}
-  m_EdgeRadius: 0
---- !u!50 &6296057915855409247
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6296057915855409240}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 12
-  m_AngularDrag: 1
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &6296057915855409244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +86,112 @@ MonoBehaviour:
   OnBehit:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &5100737347408449639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6296057915855409240}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1167f88191fa29429422446570b30c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownRole: 3
+  hp: 80
+  maxHp: 80
+  movingSpeed: 600
+  firePos: {fileID: 7024165173114965360}
+  heroHead: {fileID: 4149854833291638010}
+  heroHeadAnimator: {fileID: 4149854833291638008}
+  tankAnimator: {fileID: 7024165173511685508}
+  ownTurn: 3
+  bullet: {fileID: 3745660492933196163}
+  currentStatus: 0
+  rigid2D: {fileID: 6296057915855409247}
+  healthBar: {fileID: 0}
+  movingState: 0
+  faceDirection: 0
+  forceVector: {x: 0, y: 0}
+  target: {fileID: 0}
+  angle: 45
+  force: 200
+  fired: 0
+  canMove: 0
+  velo: {x: 0, y: 0}
+  verticalVelocity: 0
+  verticalJumpingVelocity: 2
+  verticalDefaultVelocity: 0.05
+  jumpTimeCooldown: 0
+  lockRotate: 0
+  shieldBuff: 0
+  powerBuff: 0
+  speedBuff: 0
+  frontWheel: {fileID: 27670705608872608}
+  backWheel: {fileID: 4071654676137819057}
+  OnBehit:
+    m_PersistentCalls:
+      m_Calls: []
+  DirectionToTarget: {x: 0, y: 0}
+  Direction: 0
+  MovingTime: 3
+  RemainMovingTime: 0
+  PreAimedAngle: 0
+  AngleModifyingFactor: 0
+  ForceScaleFactor: 0.1
+  ForceEpsilon: 0
+  AngleEpsilon: 5
+  AimingSpeed: 20
+  StartAiming: 0
+  FinishedAiming: 0
+--- !u!61 &6296057915855409246
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6296057915855409240}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.40615487, y: 0.374376}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.80392504, y: 0.34928524}
+  m_EdgeRadius: 0
+--- !u!50 &6296057915855409247
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6296057915855409240}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 12
+  m_AngularDrag: 1
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &7736390181849712510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,6 +501,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5206321398579251420, guid: b56408bcb21a67441b0493ff8086472b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 5206321398858050995, guid: b56408bcb21a67441b0493ff8086472b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 256
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b56408bcb21a67441b0493ff8086472b, type: 3}
 --- !u!4 &4149854831659314619 stripped
@@ -517,6 +585,10 @@ PrefabInstance:
     - target: {fileID: 2113433670960913490, guid: 93be327230609e9448651ebfddbdec8b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2113433670960913491, guid: 93be327230609e9448651ebfddbdec8b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 128
       objectReference: {fileID: 0}
     - target: {fileID: 2113433670960913502, guid: 93be327230609e9448651ebfddbdec8b, type: 3}
       propertyPath: owner

@@ -72,6 +72,12 @@ public class Bot : Player
         this.LookAtPlayer();
         this.Move();
         this.UpdateTankAnim();
+        if (this.StartAiming)
+            this.Direction = BotMovingDirection.None;
+        if (this.Direction == BotMovingDirection.None)
+        {
+            this.StopMoving();
+        }
     }
 
     private void LookAtPlayer()
@@ -101,6 +107,7 @@ public class Bot : Player
         else
         {
             this.movingState = MovingState.None;
+            this.Direction = BotMovingDirection.None;
             this.Fire();
         }
     }
@@ -113,6 +120,12 @@ public class Bot : Player
     protected override bool MoveLeft()
     {
         return this.Direction == BotMovingDirection.Left;
+    }
+
+    public override void StopMoving()
+    {
+        base.StopMoving();
+        this.Direction = BotMovingDirection.None;
     }
 
 
@@ -169,9 +182,8 @@ public class Bot : Player
             this.DirectionToTarget = new Vector2(0.001f, this.DirectionToTarget.y);
         }
 
-        this.PreAimedAngle = Mathf.Atan2(this.DirectionToTarget.y, this.DirectionToTarget.x) * 180f / Mathf.PI;
-        if (this.PreAimedAngle < -5f) this.PreAimedAngle = -5f;
-        else if (this.PreAimedAngle > 90f) this.PreAimedAngle = 180f - this.PreAimedAngle;
+        this.PreAimedAngle = Mathf.Atan(Mathf.Abs(this.DirectionToTarget.y / this.DirectionToTarget.x)) * 180f / Mathf.PI;
+        if (this.DirectionToTarget.y < 0) this.PreAimedAngle = 0;
         this.PreAimedAngle += UnityEngine.Random.Range(5f, 15f);
         this.PreAimedAngle = Mathf.Clamp(this.PreAimedAngle, -5f, 90f);
         //this.PreAimedAngle = this.target.angle + this.DirectionToTarget.y * this.AngleModifyingFactor;
@@ -191,6 +203,8 @@ public class Bot : Player
         }
 
         this.force = this.target.force + (GameManager.Instance.windSpeed - GameManager.Instance.windSpeedOfLastShot) * GameManager.Instance.windForceScaleFactor;
+        if (this.DirectionToTarget.y < 0) this.force *= UnityEngine.Random.Range(0.7f, 1f);
+        else this.force *= UnityEngine.Random.Range(1f, 3f);
         this.forceVector = new Vector2(Mathf.Cos(this.angle * Mathf.PI / 180f), Mathf.Sin(this.angle * Mathf.PI / 180f)) * this.force;
     }
 
