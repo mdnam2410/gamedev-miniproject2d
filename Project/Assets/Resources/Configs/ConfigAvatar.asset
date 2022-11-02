@@ -55,7 +55,7 @@ MonoBehaviour:
     SpecialAbility: WIDE EXPLOSION RANGE
   - Id: 5
     Name: Player_M_28_08
-    Prefab: {fileID: 6296057915855409240, guid: 17a7c16ee843783458454d917df2c3f5, type: 3}
+    Prefab: {fileID: 6296057915855409240, guid: 9dc8e7aed0ff02140bc38c58a6b29d6b, type: 3}
     Sprite: {fileID: 21300000, guid: ff4563cee20bcc9489c25094529ea83b, type: 3}
     Speed: 5
     Power: 3
