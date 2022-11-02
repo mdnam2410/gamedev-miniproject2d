@@ -13,6 +13,8 @@ public enum CameraStatus
 public class CameraController : MonoBehaviour
 {
     public float scrollSpeed = 15;
+    public Transform topRight;
+    public Transform bottomLeft;
 
     public float maxX;
     public float minX;
@@ -35,6 +37,11 @@ public class CameraController : MonoBehaviour
     {
         GameManager.Instance.OnBulletDestroyed.AddListener(this.EndFocusBullet);
         canvasDelta = MainCanvas.instance.transform.position - transform.position;
+
+        maxX = topRight.position.x;
+        minX = bottomLeft.position.x;
+        maxY = topRight.position.y;
+        minY = bottomLeft.position.y;
     }
 
     // Update is called once per frame
@@ -79,6 +86,22 @@ public class CameraController : MonoBehaviour
                 if (transform.position.x - delta > minX)
                 {
                     MoveCamera(Vector3.left, delta);
+                }
+            }
+            else if (Input.mousePosition.y >= Screen.height * 0.95)
+            {
+                float delta = Time.deltaTime * scrollSpeed;
+                if (transform.position.y + delta < maxY)
+                {
+                    MoveCamera(Vector3.up, delta);
+                }
+            }
+            else if (Input.mousePosition.y <= Screen.height * 0.05)
+            {
+                float delta = Time.deltaTime * scrollSpeed;
+                if (transform.position.y - delta > minY)
+                {
+                    MoveCamera(Vector3.down, delta);
                 }
             }
         }
