@@ -4965,7 +4965,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 650062793764899220, guid: 00a843e3b6c49df4997e75ea42647c1a, type: 3}
       propertyPath: m_PlayOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1604838442808903384, guid: 00a843e3b6c49df4997e75ea42647c1a, type: 3}
       propertyPath: m_Name
@@ -8627,7 +8627,6 @@ MonoBehaviour:
   movingSpeed: 10
   firePos: {fileID: 7135825465369098177}
   heroHead: {fileID: 4463027458404460802}
-  tank: {fileID: 7135825464930524165}
   heroHeadAnimator: {fileID: 4463027458404460803}
   tankAnimator: {fileID: 7135825464930524166}
   ownTurn: 1
@@ -8779,7 +8778,6 @@ MonoBehaviour:
   movingSpeed: 2
   firePos: {fileID: 3540015641383805643}
   heroHead: {fileID: 8285592626032978052}
-  tank: {fileID: 3540015641297553679}
   heroHeadAnimator: {fileID: 8285592626032978053}
   tankAnimator: {fileID: 3540015641297553676}
   ownTurn: 0
@@ -8820,7 +8818,11 @@ MonoBehaviour:
   AngleEpsilon: 5
   AimingSpeed: 20
   StartAiming: 0
+  StartAdjust: 0
   FinishedAiming: 0
+  pathFinder: {fileID: 0}
+  pathFound: 0
+  usedPathFinder: 0
 --- !u!114 &8083653061453013968
 MonoBehaviour:
   m_ObjectHideFlags: 0

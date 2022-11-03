@@ -11,20 +11,23 @@ public class FinderMissile : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag.Equals("Finder")) return;
+        if (collision.gameObject.tag.Equals("Buff")) return;
         float distance = (collision.transform.position - pathFinder.target.transform.position).magnitude;
         this.pathFinder.ReceiveResultFromMissile(distance, this.angle, this.force);
-        Debug.Log("Destroy by " + collision.ToString());
-        Debug.Log(pathFinder.count);
+        //Debug.Log("Destroy by " + collision.ToString());
+        //Debug.Log(pathFinder.count);
         Destroy(this.gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Finder")) return;
+        if (collision.gameObject.tag.Equals("Buff")) return;
+
         float distance = (collision.transform.position - pathFinder.target.transform.position).magnitude;
         this.pathFinder.ReceiveResultFromMissile(distance, this.angle, this.force);
-        Debug.Log("Destroy by " + collision.ToString());
-        Debug.Log(pathFinder.count);
+        //Debug.Log("Destroy by " + collision.ToString());
+        //Debug.Log(pathFinder.count);
         Destroy(this.gameObject);
     }
 }
