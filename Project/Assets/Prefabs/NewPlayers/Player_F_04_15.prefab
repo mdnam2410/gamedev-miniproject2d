@@ -284,7 +284,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ad091f0f0da498f4abd130e2b4007fd4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6cad4d0b0d1f8c5478dbf145692c0ee2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -381,7 +381,7 @@ GameObject:
   - component: {fileID: 7394740662318420476}
   - component: {fileID: 3859041682375118387}
   m_Layer: 0
-  m_Name: fire_magichorse
+  m_Name: spellcaster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -411,7 +411,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d7bbda6168e9c5f458eadfd23a382a86, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5250e17e3314f014f9e7ae660af32fff, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
     public float windSpeedOfLastShot;
     public int windForceScaleFactor = 10;
     public ConfigAvatar configAvatar;
-    public AudioSource mapSound;
 
     public int timeCount;
     public GameType gameType;
@@ -270,7 +269,7 @@ public class GameManager : MonoBehaviour
         this.UpdateTurn();
         this.UpdateValidAction();
         this.UpdateEnvironment();
-        this.UpdateBackgroundSound();
+        //this.UpdateBackgroundSound();
         //this.UpdateHpUI();
     }
 
@@ -467,6 +466,7 @@ public class GameManager : MonoBehaviour
         ViewManager.Instance.PushTop(EndGameView.Path);
     }
 
+    /*
     public void UpdateBackgroundSound()
     {
         if (!this.mapSound.isPlaying)
@@ -474,5 +474,5 @@ public class GameManager : MonoBehaviour
             this.mapSound.Stop();
             this.mapSound.Play();
         }
-    }
+    }\*/
 }
