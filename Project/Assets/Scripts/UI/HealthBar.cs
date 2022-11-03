@@ -7,6 +7,7 @@ public class HealthBar : MonoBehaviour
 {
     public Slider slider;
     public Text text;
+    public TMPro.TMP_Text playerName;
 
     public void SetMaxHealth(int health)
     {
@@ -22,6 +23,8 @@ public class HealthBar : MonoBehaviour
 
         UpdateText();
     }
+
+    public void SetPlayerName(string name) => playerName.text = name;
 
     private void UpdateText()
     {

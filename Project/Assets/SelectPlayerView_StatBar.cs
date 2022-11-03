@@ -28,7 +28,8 @@ public class SelectPlayerView_StatBar : MonoBehaviour
 
     public void SetStat(float value)
     {
-        StartCoroutine(SetStatCoroutine(value));
+        if (gameObject.activeInHierarchy)
+            StartCoroutine(SetStatCoroutine(value));
     }
 
     public IEnumerator SetStatCoroutine(float value)
