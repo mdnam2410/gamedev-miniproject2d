@@ -41,7 +41,7 @@ public class Bot : Player
     public float ForceScaleFactor = 0.1f;
     public float ForceEpsilon;
     public float AngleEpsilon = 5f;
-    public float AimingSpeed = 20f;
+    private float AimingSpeed = 20f;
     public bool StartAiming;
     public bool StartAdjust;
     public bool FinishedAiming;
@@ -66,7 +66,7 @@ public class Bot : Player
         this.AngleModifyingFactor = 5f;
         this.ForceScaleFactor = 1f;
         this.AngleEpsilon = 5f;
-        this.AimingSpeed = 5f;
+        this.AimingSpeed = 10f;
         this.pathFinder.OnFindPathComplete.AddListener(this.Fire);
         this.pathFound = false;
         this.usedPathFinder = false;
