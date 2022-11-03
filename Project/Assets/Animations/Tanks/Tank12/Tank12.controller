@@ -90,7 +90,7 @@ MonoBehaviour:
   player: {fileID: 0}
   bullet: {fileID: 0}
   normalizedTimeToShoot: 0.55
-  timePlayShootingSound: 0.3
+  timePlayShootingSound: 0.5
 --- !u!1102 &-4048934546588172265
 AnimatorState:
   serializedVersion: 6
