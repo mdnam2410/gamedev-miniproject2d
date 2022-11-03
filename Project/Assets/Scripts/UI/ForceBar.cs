@@ -38,7 +38,7 @@ public class ForceBar : MonoBehaviour
     void Start()
     {
         slider.value = 0;
-        slider.maxValue = 1000;
+        slider.maxValue = 1500;
         sign = 1;
         isLocked = false;
 

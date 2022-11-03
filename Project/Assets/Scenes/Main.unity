@@ -595,6 +595,10 @@ PrefabInstance:
       propertyPath: m_PresetInfoIsWorld
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3897792397920923556, guid: 4f01bee6b9c44f6429b98f474d916a11, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 10340ef99e0270846a44a9598635d0af, type: 3}
     - target: {fileID: 5385770707947122960, guid: 4f01bee6b9c44f6429b98f474d916a11, type: 3}
       propertyPath: m_Name
       value: MainMenu

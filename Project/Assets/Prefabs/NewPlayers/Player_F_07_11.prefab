@@ -272,7 +272,7 @@ MonoBehaviour:
   ForceScaleFactor: 0.1
   ForceEpsilon: 0
   AngleEpsilon: 5
-  AimingSpeed: 20
+  AimingSpeed: 30
   StartAiming: 0
   StartAdjust: 0
   FinishedAiming: 0
@@ -625,6 +625,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.35
       objectReference: {fileID: 0}
+    - target: {fileID: 6439208435862857788, guid: 95aabfd0c8f256047a069c331ac084c0, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6783765744566599277, guid: 95aabfd0c8f256047a069c331ac084c0, type: 3}
       propertyPath: maxAngle
       value: 70
@@ -869,6 +873,10 @@ PrefabInstance:
     - target: {fileID: 7771330459071515172, guid: e88ae21b2a5c2a84b9a815c38409cbf3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7771330459071515176, guid: e88ae21b2a5c2a84b9a815c38409cbf3, type: 3}
+      propertyPath: m_Mass
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7771330459071515177, guid: e88ae21b2a5c2a84b9a815c38409cbf3, type: 3}
       propertyPath: owner
