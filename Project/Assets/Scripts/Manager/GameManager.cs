@@ -5,12 +5,44 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
+    [Header("PLAYERS")]
+    public PlayerInfo PlayerInfo1;
+    public PlayerInfo PlayerInfo2;
+    public Player P1;
+    public Player P2;
+    public Bot P2Bot;
+    public Player currentPlayer;
+
+    [Header("TIME AND ENVIRONMENT")]
     public float totalTimeOfTurn = 31;
     public float remainingTimeOfTurn;
     public float validTimeForMoving = 15;
     public float validTimeForShooting = 0;
-    
+    public float waitingTime = 4f;
+    public float windSpeed;
+    public Text windSpeedUI;
+    public float timeRandomChangeWindSpeed;
+    public float cachedTimeRandomChangeWindSpeed;
+    public float windSpeedOfLastShot;
     public int windForceScaleFactor = 10;
+    public ConfigAvatar configAvatar;
+    public AudioSource mapSound;
+
+    public int timeCount;
+    public GameType gameType;
+    public GameTurn currentTurn;
+    public ValidAction currentValidAction;
+
+    public bool endTurn;
+    public bool timeout;
+
+    [Header("UI")]
+    public HealthBar healthBar1;
+    public HealthBar healthBar2;
+    public AngleRuler angleRuler;
+    public CameraController cameraController;
+    public PlayerIndicator playerIndicator;
+    public DamageIndicator damageIndicator;
 
     public static GameManager Instance;
 
@@ -48,50 +80,16 @@ public class GameManager : MonoBehaviour
         Player2Win
     }
 
-    public int timeCount;
-    public GameType gameType;
-    public GameTurn currentTurn;
-    public ValidAction currentValidAction;
 
-    public bool endTurn;
-    public bool timeout;
-
-    // Players
-    public Transform tempTransform;
-    public PlayerInfo PlayerInfo1;
-    public PlayerInfo PlayerInfo2;
-    public Player P1;
-    public Player P2;
-    public Bot P2Bot;
-    public Player currentPlayer;
-
-    // UIs
-    public HealthBar healthBar1;
-    public HealthBar healthBar2;
-    public AngleRuler angleRuler;
-    public CameraController cameraController;
-    public PlayerIndicator playerIndicator;
-    public DamageIndicator damageIndicator;
-
-    // Environment - wind
-    public float windSpeed;
-    public Text windSpeedUI;
-    public float timeRandomChangeWindSpeed;
-    public float cachedTimeRandomChangeWindSpeed;
-    public float windSpeedOfLastShot;
 
     public UnityEvent OnTurnChanged;
     public UnityEvent OnGameEnd = new UnityEvent();
     public UnityEvent OnPlayerShoot;
     public UnityEvent OnBulletDestroyed;
 
-    public float waitingTime = 4f;
+    
 
     private float dt;
-    public ConfigAvatar configAvatar;
-    public Transform demoTransform1;
-    public Transform demoTransform2;
-
 
 
     private void Start()
@@ -268,6 +266,7 @@ public class GameManager : MonoBehaviour
         this.UpdateTurn();
         this.UpdateValidAction();
         this.UpdateEnvironment();
+        this.UpdateBackgroundSound();
         //this.UpdateHpUI();
     }
 
@@ -462,5 +461,14 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         EndGameView.GameEndType = gameEndType;
         ViewManager.Instance.PushTop(EndGameView.Path);
+    }
+
+    public void UpdateBackgroundSound()
+    {
+        if (!this.mapSound.isPlaying)
+        {
+            this.mapSound.Stop();
+            this.mapSound.Play();
+        }
     }
 }

@@ -50,9 +50,16 @@ public class PathFinder : MonoBehaviour
         this.fired = false;
         this.nearestDistance = 999999;
 
+        FinderMissile[] missiles = this.GetComponentsInChildren<FinderMissile>();
+        for (int i = 0; i < missiles.Length; i++)
+        {
+            if (missiles[i].gameObject != this.prefab)
+                Destroy(missiles[i].gameObject);
+        }
+
         for (int i = 0; i <= this.angleSample; i++)
         {
-            float curAngle = baseAngle + (this.maxAngle - baseAngle) / 20f * i;
+            float curAngle = baseAngle + (this.maxAngle - baseAngle) / this.angleSample * i;
             if (GameManager.Instance.P2.faceDirection == Player.FaceDirection.RightLeft)
                 curAngle = 180f - curAngle;
 

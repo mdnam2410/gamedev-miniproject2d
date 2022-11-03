@@ -145,9 +145,11 @@ MonoBehaviour:
   AngleEpsilon: 5
   AimingSpeed: 20
   StartAiming: 0
+  StartAdjust: 0
   FinishedAiming: 0
   pathFinder: {fileID: 1326865873941560427}
   pathFound: 0
+  usedPathFinder: 0
 --- !u!61 &2283144661588095084
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -354,6 +356,18 @@ PrefabInstance:
     - target: {fileID: 2408591086152593034, guid: 95aabfd0c8f256047a069c331ac084c0, type: 3}
       propertyPath: m_Name
       value: PathFinder
+      objectReference: {fileID: 0}
+    - target: {fileID: 4753258941456622666, guid: 95aabfd0c8f256047a069c331ac084c0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4753258941456622666, guid: 95aabfd0c8f256047a069c331ac084c0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4753258941456622666, guid: 95aabfd0c8f256047a069c331ac084c0, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 6783765744566599277, guid: 95aabfd0c8f256047a069c331ac084c0, type: 3}
       propertyPath: maxAngle
