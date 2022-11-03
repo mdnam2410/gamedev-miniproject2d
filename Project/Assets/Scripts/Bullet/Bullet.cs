@@ -87,6 +87,8 @@ public class Bullet : MonoBehaviour
         if (this.ownerColliders.Contains(collision.gameObject)) return;
         if (Bullet.ignoreTags.Contains(collision.gameObject.tag)) return;
 
+        this.PlayExplodingSound();
+
         if (collision.gameObject.tag.Equals("Player"))
         {
             this.HitTarget();
@@ -109,7 +111,7 @@ public class Bullet : MonoBehaviour
         this.rbd.bodyType = RigidbodyType2D.Static;
         this.cld.enabled = false;
         this.animator.SetTrigger("Destroyed");
-        this.PlayExplodingSound();
+        
         GameManager.Instance.OnBulletDestroyed.Invoke();
     }
 
@@ -119,6 +121,8 @@ public class Bullet : MonoBehaviour
         if (this.ownerColliders.Contains(collision.gameObject)) return;
         if (Bullet.ignoreTags.Contains(collision.gameObject.tag)) return;
 
+        this.PlayExplodingSound();
+
         if (collision.gameObject.tag.Equals("Player"))
         {
             this.HitTarget();
@@ -141,7 +145,7 @@ public class Bullet : MonoBehaviour
         this.rbd.bodyType = RigidbodyType2D.Static;
         this.cld.enabled = false;
         this.animator.SetTrigger("Destroyed");
-        this.PlayExplodingSound();
+        
         GameManager.Instance.OnBulletDestroyed.Invoke();
     }
 

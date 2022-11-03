@@ -56,7 +56,7 @@ public class PathFinder : MonoBehaviour
             if (missiles[i].gameObject != this.prefab)
                 Destroy(missiles[i].gameObject);
         }
-
+        /*
         for (int i = 0; i <= this.angleSample; i++)
         {
             float curAngle = baseAngle + (this.maxAngle - baseAngle) / this.angleSample * i;
@@ -66,6 +66,21 @@ public class PathFinder : MonoBehaviour
             for (int j = 0; j < this.forceSample; j++)
             {
                 float curForce = this.minForce + (this.maxForce - this.minForce) / forceSample * j;
+                this.FireMissle(curAngle, curForce);
+                this.count++;
+            }
+        }
+        */
+
+        for (int i = 0; i <= this.forceSample; i++)
+        {
+            float curForce = this.minForce + (this.maxForce - this.minForce) / forceSample * i;
+            for (int j = 0; j <= this.angleSample; j++)
+            {
+                float curAngle = baseAngle + (this.maxAngle - baseAngle) / this.angleSample * j;
+                if (GameManager.Instance.P2.faceDirection == Player.FaceDirection.RightLeft)
+                    curAngle = 180f - curAngle;
+
                 this.FireMissle(curAngle, curForce);
                 this.count++;
             }
@@ -85,7 +100,7 @@ public class PathFinder : MonoBehaviour
 
     public void ReceiveResultFromMissile(float distance, float angle, float force)
     {
-        if (distance < nearestDistance)
+        if (distance < nearestDistance - 0.1)
         {
             this.angle = angle;
             this.force = force;
