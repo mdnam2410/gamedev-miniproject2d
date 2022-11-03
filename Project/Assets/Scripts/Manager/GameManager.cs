@@ -86,7 +86,6 @@ public class GameManager : MonoBehaviour
     public UnityEvent OnGameEnd = new UnityEvent();
     public UnityEvent OnPlayerShoot;
     public UnityEvent OnBulletDestroyed;
-
     
 
     private float dt;
@@ -136,6 +135,11 @@ public class GameManager : MonoBehaviour
 
         // test only
         GameStartData.Instance.gameType = GameType.vsBot;
+        var inGameView = ViewManager.Instance.GetMain() as InGameView;
+        if (inGameView != null)
+        {
+            inGameView.BindPlayerName();
+        }
     }
 
     public void InitPlayers()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,7 +23,7 @@ public class InGameView : BaseView
 
     private void Start()
     {
-        //GameManager.Instance.OnGameEnd.AddListener(OnGameEnd);
+
     }
 
     private void Update()
@@ -38,6 +39,12 @@ public class InGameView : BaseView
         textCountdown.text = ((int)GameManager.Instance.remainingTimeOfTurn).ToString();
     }
 
+    public void BindPlayerName()
+    {
+        healthBar1.SetPlayerName(GameDefine.GetPlayerDisplayName(GameManager.Instance.gameType, GameManager.GameTurn.P1));
+        healthBar2.SetPlayerName(GameDefine.GetPlayerDisplayName(GameManager.Instance.gameType, GameManager.GameTurn.P2));
+    }
+
     public void OnClick_Pause()
     {
         Time.timeScale = 0f;
@@ -47,6 +54,5 @@ public class InGameView : BaseView
     public void OnGameEnd()
     {
         Time.timeScale = 0f;
-
     }
 }
