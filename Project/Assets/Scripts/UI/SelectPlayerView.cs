@@ -23,6 +23,9 @@ public class SelectPlayerView : BaseView
     [SerializeField] GameObject selectPlayerB;
     [SerializeField] Transform avatarContainer2;
 
+    [Header("Player Stat Preview")]
+    [SerializeField]
+    SelectPlayerView_PlayerStatPreview playerStatPreview;
 
     private string sceneToPlay;
     private GameManager.GameType selectedGameType;
@@ -38,9 +41,9 @@ public class SelectPlayerView : BaseView
         selectedGameType = gameType;
 
         textMode.text = gameType == GameManager.GameType.vsBot ? "Mode: Vs BOT" : "Mode: Vs Player";
-        textDescriptionPlayerA.SetActive(gameType == GameManager.GameType.vsPlayer);
         textDescriptionPlayerB.SetActive(gameType == GameManager.GameType.vsPlayer);
         selectPlayerB.SetActive(gameType == GameManager.GameType.vsPlayer);
+        playerStatPreview.gameObject.SetActive(gameType == GameManager.GameType.vsBot);
 
         InitSelectPlayerA();
         InitSelectPlayerB();
@@ -95,6 +98,10 @@ public class SelectPlayerView : BaseView
         {
             playerAAvatars[i].Select(playerAAvatars[i].AvatarId == selectedAvatarId);
         }
+
+        var config = ConfigManager.Instance.ConfigAvatar.GetFromId(selectedAvatarId);
+        playerStatPreview.Init(config);
+        playerStatPreview.DisplayPlayerStat();
     }
 
     void AvatarItemPlayerBOnClickCallback(int selectedAvatarId)

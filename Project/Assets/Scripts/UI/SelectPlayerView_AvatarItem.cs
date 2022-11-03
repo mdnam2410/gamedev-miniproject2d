@@ -14,7 +14,6 @@ public class SelectPlayerView_AvatarItem : MonoBehaviour
     private ConfigAvatarData config;
     private Action<int> onClick;
 
-
     public void Init(ConfigAvatarData config, Action<int> onClickCallback)
     {
         this.config = config;
