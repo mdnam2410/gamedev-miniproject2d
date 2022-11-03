@@ -13,6 +13,13 @@ public class ViewManager : MonoBehaviourSingletonPersistent<ViewManager>
     [SerializeField] Transform main;
     [SerializeField] Transform top;
 
+    public BaseView GetMain()
+    {
+        if (main.childCount <= 0)
+            return null;
+        return main.GetChild(0).GetComponent<BaseView>();
+    }
+
     public BaseView ChangeMain(string path)
     {
         if (main.childCount > 0)
