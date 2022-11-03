@@ -7,13 +7,16 @@ public class OnShoot : StateMachineBehaviour
     public Player player;
     public Bullet bullet;
     public float normalizedTimeToShoot;
+    public float timePlayShootingSound;
     private bool fired;
+    private bool played;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         this.player = animator.gameObject.GetComponent<PlayerRef>().owner;
         this.bullet = this.player.bullet;
         this.fired = false;
+        this.played = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -23,6 +26,12 @@ public class OnShoot : StateMachineBehaviour
         {
             this.fired = true;
             this.player.ThrowBullet();
+        }
+
+        if (stateInfo.normalizedTime >= this.timePlayShootingSound && this.played == false)
+        {
+            this.played = true;
+            this.bullet.PlayFiringSound();
 
         }
     }

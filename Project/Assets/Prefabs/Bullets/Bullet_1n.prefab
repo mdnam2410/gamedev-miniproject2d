@@ -165,8 +165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 1
-  radius: 2
-  damage: 10
+  radius: 0.5
+  damage: 16
   partialDamageRate: 0.5
   damageBuff: 0
   firePos: {fileID: 0}

@@ -80,6 +80,7 @@ public class Player : MonoBehaviour
     public JointMotor2D frontStopSpeed;
     public JointMotor2D backStopSpeed;
 
+
     public UnityEvent<Player, int> OnBehit = new UnityEvent<Player, int>();
 
     protected virtual void Start()
@@ -242,6 +243,7 @@ public class Player : MonoBehaviour
             this.backWheel.useMotor = true;
 
             this.movingState = MovingState.ToRight;
+
         }
         else if (this.MoveLeft())
         {
@@ -378,7 +380,8 @@ public class Player : MonoBehaviour
         this.bullet.gameObject.SetActive(true);
         this.bullet.rbd.AddForce(this.forceVector + new Vector2(GameManager.Instance.windSpeed * GameManager.Instance.windForceScaleFactor, 0));
         GameManager.Instance.SaveWindSpeed(); // for bot using
-        this.bullet.PlayFiringSound();
+        
+        //this.bullet.PlayFiringSound();
         
         GameManager.Instance.cameraController.FocusBullet(this.bullet.gameObject);
     }

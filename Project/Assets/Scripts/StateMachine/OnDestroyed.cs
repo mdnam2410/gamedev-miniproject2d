@@ -5,19 +5,27 @@ using UnityEngine;
 public class OnDestroyed : StateMachineBehaviour
 {
     public float normalizedTimeDestroyed;
+    public float normalizedTimePlaySound;
     private Bullet bullet;
     private bool destroyed;
+    private bool played;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         this.bullet = animator.gameObject.GetComponent<Bullet>();
         this.destroyed = false;
+        this.played = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (stateInfo.normalizedTime > this.normalizedTimePlaySound && !this.played)
+        {
+            //this.bullet.PlayExplodingSound();
+            this.played = true;
+        }
         if (stateInfo.normalizedTime > this.normalizedTimeDestroyed && !this.destroyed)
         {
             this.bullet.gameObject.transform.position = this.bullet.offsetToFirePos + this.bullet.firePos.position;
