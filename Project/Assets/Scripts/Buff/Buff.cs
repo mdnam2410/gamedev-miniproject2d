@@ -5,6 +5,7 @@ using UnityEngine;
 public class Buff : MonoBehaviour
 {
     public BuffData buffData;
+    public AudioSource buffSound;
 
     public BuffData GetBuffData()
     {
@@ -19,6 +20,14 @@ public class Buff : MonoBehaviour
             owner.AddBuff(buffData);
             //Debug.Log($"Buff {this.ToString()}");
             BuffManager.Instance.OnBuffDestroyed.Invoke();
+            if (this.buffSound != null)
+            {
+                if (SoundManager.Instance.Enabled)
+                {
+                    this.buffSound.transform.SetParent(GameManager.Instance.transform);
+                    this.buffSound.Play();
+                }
+            }
             this.gameObject.SetActive(false);
         }
     }

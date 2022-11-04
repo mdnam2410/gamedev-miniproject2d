@@ -259,7 +259,7 @@ public class Player : MonoBehaviour
         }
 
 
-        if (this.verticalMove)
+        if (this.verticalMove && !(this is Bot))
         {
             if (Input.GetKey(KeyCode.E)){
                 this.collider.isTrigger = true;
