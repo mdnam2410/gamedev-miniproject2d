@@ -10,8 +10,8 @@ public static class GameDefine
         new Dictionary<GameManager.GameType, Dictionary<GameManager.GameTurn, string>>()
         {
             { GameManager.GameType.vsBot, new Dictionary<GameManager.GameTurn, string>{
-                { GameManager.GameTurn.Bot, "Bot" },
-                { GameManager.GameTurn.P1,  "Player" }
+                { GameManager.GameTurn.P1, "Player" },
+                { GameManager.GameTurn.P2,  "Bot" }
             }},
             { GameManager.GameType.vsPlayer, new Dictionary<GameManager.GameTurn, string>{
                 {GameManager.GameTurn.P1, "Player 1"},

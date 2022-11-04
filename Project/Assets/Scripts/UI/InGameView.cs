@@ -41,8 +41,8 @@ public class InGameView : BaseView
 
     public void BindPlayerName()
     {
-        healthBar1.SetPlayerName(GameDefine.GetPlayerDisplayName(GameManager.Instance.gameType, GameManager.GameTurn.P1));
-        healthBar2.SetPlayerName(GameDefine.GetPlayerDisplayName(GameManager.Instance.gameType, GameManager.GameTurn.P2));
+        healthBar1.SetPlayerName(GameDefine.GetPlayerDisplayName(GameConfig.Instance.GameType, GameManager.GameTurn.P1));
+        healthBar2.SetPlayerName(GameDefine.GetPlayerDisplayName(GameConfig.Instance.GameType, GameManager.GameTurn.P2));
     }
 
     public void OnClick_Pause()
