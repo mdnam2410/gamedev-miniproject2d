@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class Bullet : MonoBehaviour
 {
-    public static List<string> ignoreTags = new List<string> { "Buff" };
+    public static List<string> ignoreTags = new List<string> { "Buff", "Stair" };
     public enum BulletStatus
     {
         Hidden,
