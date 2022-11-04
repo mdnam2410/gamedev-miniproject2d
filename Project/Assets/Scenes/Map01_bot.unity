@@ -511,7 +511,6 @@ MonoBehaviour:
   movingSpeed: 10
   firePos: {fileID: 1156288352}
   heroHead: {fileID: 1671139120}
-  tank: {fileID: 1156288351}
   heroHeadAnimator: {fileID: 1671139119}
   tankAnimator: {fileID: 1156288350}
   ownTurn: 0
@@ -559,7 +558,6 @@ MonoBehaviour:
   movingSpeed: 10
   firePos: {fileID: 1156288352}
   heroHead: {fileID: 1671139120}
-  tank: {fileID: 1156288351}
   heroHeadAnimator: {fileID: 1671139119}
   tankAnimator: {fileID: 1156288350}
   ownTurn: 0
@@ -598,9 +596,12 @@ MonoBehaviour:
   ForceScaleFactor: 0.1
   ForceEpsilon: 0
   AngleEpsilon: 0
-  AimingSpeed: 20
   StartAiming: 0
+  StartAdjust: 0
   FinishedAiming: 0
+  pathFinder: {fileID: 0}
+  pathFound: 0
+  usedPathFinder: 0
 --- !u!4 &150292337
 Transform:
   m_ObjectHideFlags: 0
@@ -913,11 +914,6 @@ Transform:
 --- !u!95 &500878641 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5692810792599902484, guid: e06cd6e5e182ae543957f0fb4da9789e, type: 3}
-  m_PrefabInstance: {fileID: 7394733717700243573}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &500878642 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 5692810792599902485, guid: e06cd6e5e182ae543957f0fb4da9789e, type: 3}
   m_PrefabInstance: {fileID: 7394733717700243573}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &504948575
@@ -1713,11 +1709,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 7215825732374118345, guid: dd2db3a72de75d74cbfd20cacdfaa246, type: 3}
   m_PrefabInstance: {fileID: 1444851620807779596}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &1034729847 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 7215825732374118346, guid: dd2db3a72de75d74cbfd20cacdfaa246, type: 3}
-  m_PrefabInstance: {fileID: 1444851620807779596}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1087704955
 GameObject:
   m_ObjectHideFlags: 0
@@ -2074,11 +2065,6 @@ Transform:
 --- !u!95 &1156288350 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7215825732374118345, guid: dd2db3a72de75d74cbfd20cacdfaa246, type: 3}
-  m_PrefabInstance: {fileID: 1156288347}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &1156288351 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 7215825732374118346, guid: dd2db3a72de75d74cbfd20cacdfaa246, type: 3}
   m_PrefabInstance: {fileID: 1156288347}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1156288352 stripped
@@ -3268,6 +3254,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3593089463429667617}
   m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1988587042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1988587044}
+  - component: {fileID: 1988587043}
+  m_Layer: 0
+  m_Name: BG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1988587043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988587042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d79fe42852e4c1285ae5fd9bee32b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 9136336089998015269, guid: 1b692bf797c2c484483b7fe3c8967a90, type: 3}
+  audioSource: {fileID: 0}
+  playingMode: 0
+  isMainSound: 0
+--- !u!4 &1988587044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988587042}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.4533312, y: -1.5829101, z: -5.9816027}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2069492031
 GameObject:
@@ -4500,7 +4533,6 @@ MonoBehaviour:
   movingSpeed: 5
   firePos: {fileID: 591557703}
   heroHead: {fileID: 1340711132}
-  tank: {fileID: 500878642}
   heroHeadAnimator: {fileID: 1340711131}
   tankAnimator: {fileID: 500878641}
   ownTurn: 0
@@ -16333,7 +16365,6 @@ MonoBehaviour:
   movingSpeed: 3
   firePos: {fileID: 627716659}
   heroHead: {fileID: 1475589341}
-  tank: {fileID: 1034729847}
   heroHeadAnimator: {fileID: 1475589340}
   tankAnimator: {fileID: 1034729846}
   ownTurn: 0
@@ -16372,9 +16403,12 @@ MonoBehaviour:
   ForceScaleFactor: 0.05
   ForceEpsilon: 20
   AngleEpsilon: 10
-  AimingSpeed: 20
   StartAiming: 0
+  StartAdjust: 0
   FinishedAiming: 0
+  pathFinder: {fileID: 0}
+  pathFound: 0
+  usedPathFinder: 0
 --- !u!1 &8159082088237281265
 GameObject:
   m_ObjectHideFlags: 0
