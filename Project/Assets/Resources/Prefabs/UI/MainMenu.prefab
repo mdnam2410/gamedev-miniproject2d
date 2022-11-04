@@ -197,7 +197,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: FIGHTING COUPLES
+  m_text: GunFight
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ccc55b454eb37a348b51fa909eb1912c, type: 2}
   m_sharedMaterial: {fileID: 6770717307974008480, guid: ccc55b454eb37a348b51fa909eb1912c, type: 2}
