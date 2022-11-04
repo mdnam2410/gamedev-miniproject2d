@@ -204,6 +204,9 @@ public class Bullet : MonoBehaviour
 
     public void PlayFiringSound()
     {
+        if (!SoundManager.Instance.Enabled)
+            return;
+
         if (this.firingSound == null) return;
         if (this.firingSound.isPlaying)
         {
@@ -214,6 +217,9 @@ public class Bullet : MonoBehaviour
 
     public void PlayExplodingSound()
     {
+        if (!SoundManager.Instance.Enabled)
+            return;
+
         if (this.explodingSound == null) return;
         if (this.explodingSound.isPlaying)
         {
