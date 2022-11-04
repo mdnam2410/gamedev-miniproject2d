@@ -213,6 +213,11 @@ MonoBehaviour:
   speedBuff: 0
   frontWheel: {fileID: 6360325838152377586}
   backWheel: {fileID: 6964615202781220323}
+  verticalMove: 0
+  cachedMass: 0
+  collider: {fileID: 0}
+  forceScale: 2
+  buffMultiplier: 1
   OnBehit:
     m_PersistentCalls:
       m_Calls: []
@@ -260,6 +265,11 @@ MonoBehaviour:
   speedBuff: 0
   frontWheel: {fileID: 6360325838152377586}
   backWheel: {fileID: 6964615202781220323}
+  verticalMove: 0
+  cachedMass: 0
+  collider: {fileID: 0}
+  forceScale: 1
+  buffMultiplier: 1
   OnBehit:
     m_PersistentCalls:
       m_Calls: []
@@ -272,7 +282,6 @@ MonoBehaviour:
   ForceScaleFactor: 0.1
   ForceEpsilon: 0
   AngleEpsilon: 5
-  AimingSpeed: 30
   StartAiming: 0
   StartAdjust: 0
   FinishedAiming: 0
@@ -627,7 +636,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6439208435862857788, guid: 95aabfd0c8f256047a069c331ac084c0, type: 3}
       propertyPath: m_Mass
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6783765744566599277, guid: 95aabfd0c8f256047a069c331ac084c0, type: 3}
       propertyPath: maxAngle
@@ -635,11 +644,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6783765744566599277, guid: 95aabfd0c8f256047a069c331ac084c0, type: 3}
       propertyPath: maxForce
-      value: 1200
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 6783765744566599277, guid: 95aabfd0c8f256047a069c331ac084c0, type: 3}
       propertyPath: minForce
-      value: 100
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6783765744566599277, guid: 95aabfd0c8f256047a069c331ac084c0, type: 3}
       propertyPath: startPos
@@ -876,7 +885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7771330459071515176, guid: e88ae21b2a5c2a84b9a815c38409cbf3, type: 3}
       propertyPath: m_Mass
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7771330459071515177, guid: e88ae21b2a5c2a84b9a815c38409cbf3, type: 3}
       propertyPath: owner

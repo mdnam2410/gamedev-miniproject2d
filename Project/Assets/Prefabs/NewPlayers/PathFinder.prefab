@@ -57,6 +57,11 @@ MonoBehaviour:
   fired: 0
   angleSample: 20
   forceSample: 10
+  maxWaitingTime: 0
+  remainingTime: 0
+  maxAngle: 0
+  minForce: 0
+  maxForce: 0
 --- !u!1 &5996157803608589741
 GameObject:
   m_ObjectHideFlags: 0

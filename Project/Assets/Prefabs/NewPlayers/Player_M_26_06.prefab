@@ -182,8 +182,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ownRole: 1
-  hp: 100
-  maxHp: 100
+  hp: 60
+  maxHp: 60
   movingSpeed: 300
   firePos: {fileID: 2328767406323781877}
   heroHead: {fileID: 4973841604085731706}
@@ -213,6 +213,12 @@ MonoBehaviour:
   speedBuff: 0
   frontWheel: {fileID: 8071034163447439789}
   backWheel: {fileID: 5251532284423784636}
+  verticalMove: 0
+  cachedMass: 0
+  collider: {fileID: 0}
+  forceScale: 1
+  buffMultiplier: 1
+  healingCheat: 5
   OnBehit:
     m_PersistentCalls:
       m_Calls: []
@@ -229,8 +235,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ownRole: 3
-  hp: 100
-  maxHp: 100
+  hp: 60
+  maxHp: 60
   movingSpeed: 300
   firePos: {fileID: 2328767406323781877}
   heroHead: {fileID: 4973841604085731706}
@@ -260,6 +266,12 @@ MonoBehaviour:
   speedBuff: 0
   frontWheel: {fileID: 8071034163447439789}
   backWheel: {fileID: 5251532284423784636}
+  verticalMove: 0
+  cachedMass: 0
+  collider: {fileID: 0}
+  forceScale: 1
+  buffMultiplier: 1
+  healingCheat: 10
   OnBehit:
     m_PersistentCalls:
       m_Calls: []
@@ -272,7 +284,6 @@ MonoBehaviour:
   ForceScaleFactor: 0.1
   ForceEpsilon: 0
   AngleEpsilon: 5
-  AimingSpeed: 30
   StartAiming: 0
   StartAdjust: 0
   FinishedAiming: 0

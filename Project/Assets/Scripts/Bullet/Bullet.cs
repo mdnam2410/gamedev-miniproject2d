@@ -96,7 +96,7 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            Debug.Log("Bullet destroyed by " + collision.gameObject.ToString());
+            Debug.Log("Bullet destroyed by Trigger: " + collision.gameObject.ToString());
             Collider2D[] collidersAround = Physics2D.OverlapCircleAll(this.transform.position, this.radius);
 
             for (int i = 0; i < collidersAround.Length; i++)
@@ -130,7 +130,7 @@ public class Bullet : MonoBehaviour
         }
         else
         {
-            Debug.Log("Bullet destroyed by " + collision.gameObject.ToString());
+            Debug.Log("Bullet destroyed by Collision: " + collision.gameObject.ToString());
             Collider2D[] collidersAround = Physics2D.OverlapCircleAll(this.transform.position, this.radius);
 
             for (int i = 0; i < collidersAround.Length; i++)

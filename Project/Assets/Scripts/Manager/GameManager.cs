@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-
+    public AudioSource turnChangedSound;
     public UnityEvent OnTurnChanged;
     public UnityEvent OnGameEnd = new UnityEvent();
     public UnityEvent OnPlayerShoot;
@@ -133,7 +133,7 @@ public class GameManager : MonoBehaviour
 
 
         // test only
-        // GameStartData.Instance.gameType = GameType.vsBot;
+        GameStartData.Instance.gameType = GameType.vsBot;
 
         var inGameView = ViewManager.Instance.GetMain() as InGameView;
         if (inGameView != null)
@@ -378,6 +378,10 @@ public class GameManager : MonoBehaviour
         else this.currentPlayer = this.P1;
 
         this.cameraController.FocusPlayer(this.currentPlayer.gameObject);
+        if (this.turnChangedSound != null)
+        {
+            this.turnChangedSound.Play();
+        }
     }
 
     public void UpdateTurnUI()
