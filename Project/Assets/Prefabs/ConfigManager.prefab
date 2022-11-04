@@ -46,3 +46,4 @@ MonoBehaviour:
   ConfigHero: {fileID: 11400000, guid: 591ae5b62c93b1c46a75784335cfef3f, type: 2}
   ConfigTank: {fileID: 11400000, guid: 866e80785020ea8419d3d3c316c6fad7, type: 2}
   ConfigAvatar: {fileID: 11400000, guid: ffc67c85834ea8141a7c1f17360c6941, type: 2}
+  ConfigMap: {fileID: 11400000, guid: 876c2cf2529c4344cb665496e3a1db21, type: 2}
