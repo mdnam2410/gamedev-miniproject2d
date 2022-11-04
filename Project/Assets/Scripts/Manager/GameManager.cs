@@ -104,10 +104,8 @@ public class GameManager : MonoBehaviour
 
         this.cameraController.FocusPlayer(P1.gameObject);
 
-        /*
         this.P1.OnBehit.AddListener(damageIndicator.OnBehitCallback);
         this.P2.OnBehit.AddListener(damageIndicator.OnBehitCallback);
-        */
 
     }
 
@@ -133,7 +131,7 @@ public class GameManager : MonoBehaviour
 
 
         // test only
-        GameStartData.Instance.gameType = GameType.vsBot;
+        GameStartData.Instance.gameType = GameConfig.Instance.GameType;
 
         var inGameView = ViewManager.Instance.GetMain() as InGameView;
         if (inGameView != null)

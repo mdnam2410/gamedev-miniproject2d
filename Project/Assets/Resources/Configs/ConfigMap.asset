@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ConfigMap
   m_EditorClassIdentifier: 
   Data:
-  - Name: Map01
+  - Name: Map01_bot
     Sprite: {fileID: 0}
-  - Name: Map02
+  - Name: Map02_bot
     Sprite: {fileID: 0}
   - Name: Map03_bot
     Sprite: {fileID: 0}

@@ -8,10 +8,6 @@ public class MainMenuView : BaseView
 {
     public static readonly string Path = "Prefabs/UI/MainMenu";
 
-    [Header("Scenes")]
-    [SerializeField] string scene1;
-    [SerializeField] string scene2;
-
     [Header("Buttons")]
     [SerializeField] GameObject btnNewGame;
     [SerializeField] GameObject btnVsBot;
