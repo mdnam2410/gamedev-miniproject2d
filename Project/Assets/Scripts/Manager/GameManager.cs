@@ -133,7 +133,8 @@ public class GameManager : MonoBehaviour
 
 
         // test only
-        GameStartData.Instance.gameType = GameType.vsBot;
+        // GameStartData.Instance.gameType = GameType.vsBot;
+
         var inGameView = ViewManager.Instance.GetMain() as InGameView;
         if (inGameView != null)
         {
@@ -151,6 +152,7 @@ public class GameManager : MonoBehaviour
         GameObject obj1 = Instantiate(GameStartData.Instance.P1.Prefab, tp1);
         GameObject obj2 = Instantiate(GameStartData.Instance.P2.Prefab, tp2);
 
+        // SET P1 TO BE HUMAN
         this.P1 = EnableExactPlayerComponent(obj1);
         PlayerRef[] playerRefArr1 = this.P1.GetComponentsInChildren<PlayerRef>();
         for (int i = 0; i < playerRefArr1.Length; i++)
@@ -158,16 +160,29 @@ public class GameManager : MonoBehaviour
             playerRefArr1[i].owner = this.P1;
         }
 
+        // SET P2
         if (this.gameType == GameType.vsPlayer)
             this.P2 = EnableExactPlayerComponent(obj2);
         else
             this.P2 = EnableExactBotComponent(obj2);
+
         PlayerRef[] playerRefArr2 = this.P2.GetComponentsInChildren<PlayerRef>();
-        for (int i = 0; i < playerRefArr2.Length; i++)
+        if (this.P2 is Bot)
         {
-            playerRefArr2[i].owner = this.P2Bot;
+            for (int i = 0; i < playerRefArr2.Length; i++)
+            {
+                playerRefArr2[i].owner = this.P2Bot;
+            }
+            this.P2Bot.bullet.owner = this.P2Bot;
         }
-        this.P2Bot.bullet.owner = this.P2Bot;
+        else
+        {
+            for (int i = 0; i < playerRefArr2.Length; i++)
+            {
+                playerRefArr2[i].owner = this.P2;
+            }
+        }
+        
 
         this.P1.gameObject.transform.position = tp1.position;
         this.P2.gameObject.transform.position = tp2.position;

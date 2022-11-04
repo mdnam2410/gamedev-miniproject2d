@@ -80,6 +80,11 @@ public class Player : MonoBehaviour
     public JointMotor2D frontStopSpeed;
     public JointMotor2D backStopSpeed;
 
+    public bool verticalMove;
+    private float verticalSpeed;
+    public float cachedMass;
+    public Collider2D collider;
+
 
     public UnityEvent<Player, int> OnBehit = new UnityEvent<Player, int>();
 
@@ -100,6 +105,9 @@ public class Player : MonoBehaviour
         this.frontStopSpeed.maxMotorTorque = 0.001f;
         this.backStopSpeed.motorSpeed = -0.001f;
         this.backStopSpeed.maxMotorTorque = -0.001f;
+        this.verticalSpeed = 4f;
+        this.verticalMove = false;
+        this.collider = this.transform.GetComponent<Collider2D>();
 
 
         GameManager.Instance.OnTurnChanged.AddListener(this.OnTurnChange);
@@ -209,32 +217,9 @@ public class Player : MonoBehaviour
             this.movingState = MovingState.None;
             return;
         }
-        /*
-        if (this.DetectNearLowObstacle() && this.jumpTimeCooldown <= 0)
-        {
-            this.verticalVelocity = this.verticalJumpingVelocity;
-            this.jumpTimeCooldown = 2f;
-            Debug.Log("Detect: " + this.hitLow.collider.gameObject.ToString());
-        }
-
-        else
-        {
-            this.verticalVelocity = this.verticalDefaultVelocity + this.verticalJumpingVelocity * Mathf.Sin(this.transform.eulerAngles.z * Mathf.PI / 180f) * 0.5f;
-            this.jumpTimeCooldown -= Time.deltaTime;
-        }
-        
-        this.verticalVelocity = this.verticalDefaultVelocity + this.verticalJumpingVelocity * Mathf.Sin(this.transform.eulerAngles.z * Mathf.PI / 180f) * 0.5f;
-        */
+  
         if (this.MoveRight())
         {
-            /*
-            if (this.rigid2D.velocity.x <= 0)
-            {
-                this.rigid2D.velocity = new Vector2((this.movingSpeed + this.speedBuff) * Time.deltaTime, this.verticalVelocity);
-            }
-            else if (this.rigid2D.velocity.magnitude < 1)
-                this.rigid2D.velocity = new Vector2(this.rigid2D.velocity.x + (this.movingSpeed + this.speedBuff)  * Time.deltaTime, this.verticalVelocity);
-            */
             this.forwardSpeed.motorSpeed = this.movingSpeed;
             this.forwardSpeed.maxMotorTorque = this.movingSpeed * 2;
             this.frontWheel.motor = this.forwardSpeed;
@@ -272,29 +257,27 @@ public class Player : MonoBehaviour
             this.backWheel.useMotor = true;
             this.movingState = MovingState.None;
         }
-    }
-    /*
-    protected bool DetectNearLowObstacle()
-    {
-        if (this.detectorLow == null || this.detectorMid == null) return false;
-        if (!this.isMovingToward()) return false;
 
-        if (this.faceDirection == FaceDirection.LeftRight)
-            this.detectorDirection = new Vector2(Mathf.Cos(this.transform.eulerAngles.z * Mathf.PI / 180f), Mathf.Sin(this.transform.eulerAngles.z * Mathf.PI / 180f)) * this.obstacleDetectionRange;
-        else
-            this.detectorDirection = new Vector2(-Mathf.Cos(this.transform.eulerAngles.z * Mathf.PI / 180f), -Mathf.Sin(this.transform.eulerAngles.z * Mathf.PI / 180f)) * this.obstacleDetectionRange;
 
-        this.hitLow = Physics2D.Raycast(this.detectorLow.transform.position, this.detectorDirection, this.obstacleDetectionRange, LayerMask.GetMask("Obstacle"));
-        this.hitMid = Physics2D.Raycast(this.detectorMid.transform.position, this.detectorDirection, this.obstacleDetectionRange, LayerMask.GetMask("Obstacle"));
-
-        if (hitLow.collider != null && hitMid.collider == null)
+        if (this.verticalMove)
         {
-            return true;
+            if (Input.GetKey(KeyCode.E)){
+                this.collider.isTrigger = true;
+                this.transform.localEulerAngles = Vector3.zero;
+                this.transform.Translate(new Vector3(0, this.verticalSpeed * Time.deltaTime, 0), Space.World);
+            }
+            else if (Input.GetKey(KeyCode.Q))
+            {
+                this.collider.isTrigger = true;
+                this.transform.localEulerAngles = Vector3.zero;
+                this.transform.Translate(new Vector3(0, -this.verticalSpeed * Time.deltaTime, 0), Space.World);
+            }
+            else
+            {
+                this.collider.isTrigger = false;
+            }
         }
-
-        return false;
     }
-    */
 
     protected virtual bool MoveLeft()
     {
@@ -490,6 +473,22 @@ public class Player : MonoBehaviour
             case BuffType.Health:
                 UpdateHp((int)buff.buffValue);
                 break;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Stair"))
+        {
+            this.verticalMove = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Stair"))
+        {
+            this.verticalMove = false;
         }
     }
 }

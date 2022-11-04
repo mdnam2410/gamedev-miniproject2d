@@ -339,6 +339,9 @@ MonoBehaviour:
   speedBuff: 0
   frontWheel: {fileID: 27670705608872608}
   backWheel: {fileID: 4071654676137819057}
+  verticalMove: 0
+  verticalSpeed: 5
+  cachedMass: 0
   OnBehit:
     m_PersistentCalls:
       m_Calls: []
@@ -386,6 +389,9 @@ MonoBehaviour:
   speedBuff: 0
   frontWheel: {fileID: 27670705608872608}
   backWheel: {fileID: 4071654676137819057}
+  verticalMove: 0
+  verticalSpeed: 0.5
+  cachedMass: 0
   OnBehit:
     m_PersistentCalls:
       m_Calls: []
@@ -398,7 +404,6 @@ MonoBehaviour:
   ForceScaleFactor: 0.1
   ForceEpsilon: 0
   AngleEpsilon: 5
-  AimingSpeed: 30
   StartAiming: 0
   StartAdjust: 0
   FinishedAiming: 0
