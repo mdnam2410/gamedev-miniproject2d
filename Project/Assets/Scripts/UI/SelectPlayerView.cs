@@ -26,6 +26,10 @@ public class SelectPlayerView : BaseView
     [SerializeField]
     SelectPlayerView_PlayerStatPreview playerStatPreview2;
 
+    [Header("Select map")]
+    [SerializeField] SelectPlayerView_MapItem mapItemTemplate;
+    [SerializeField] Transform mapItemContainer;
+
     private string selectedScene;
     private GameManager.GameType selectedGameType;
     private int selectedTab = 0;
@@ -33,6 +37,7 @@ public class SelectPlayerView : BaseView
     private int selectedAvatar_playerB;
 
     private List<SelectPlayerView_AvatarItem> listAvatars = new List<SelectPlayerView_AvatarItem>();
+    private List<SelectPlayerView_MapItem> listMaps = new List<SelectPlayerView_MapItem>();
 
     public void Init(GameManager.GameType gameType)
     {
@@ -45,6 +50,8 @@ public class SelectPlayerView : BaseView
             InitModeSinglePlayer();
         else
             InitModeMultiplayer();
+
+        InitMap();
     }
 
     #region Initializing
@@ -81,12 +88,31 @@ public class SelectPlayerView : BaseView
         selectedTab = 0;
     }
 
+    private void InitMap()
+    {
+        foreach (var config in ConfigManager.Instance.ConfigMap.Data)
+        {
+            GenerateMap(config, mapItemContainer, listMaps, OnClickCallback_Map);
+        }
+
+        selectedScene = listMaps[0].MapName;
+        listMaps[0].OnClick();
+    }
+
     private SelectPlayerView_AvatarItem GenerateAvatar(ConfigAvatarData config, Transform parent, List<SelectPlayerView_AvatarItem> listToUpdate, System.Action<int> onClickCallback)
     {
         var avatarItem = Instantiate(avatarItemTemplate, parent);
         avatarItem.Init(config, onClickCallback);
         listToUpdate.Add(avatarItem);
         return avatarItem;
+    }
+
+    private SelectPlayerView_MapItem GenerateMap(ConfigMapData config, Transform parent, List<SelectPlayerView_MapItem> listToUpdate, System.Action<string> onClickCallback)
+    {
+        var item = Instantiate(mapItemTemplate, mapItemContainer);
+        item.Init(config, onClickCallback);
+        listToUpdate.Add(item);
+        return item;
     }
     #endregion
 
@@ -152,6 +178,15 @@ public class SelectPlayerView : BaseView
         selectedLine1.SetActive(false);
         selectedTab = 1;
     }
+
+    public void OnClickCallback_Map(string selectedMap)
+    {
+        selectedScene = selectedMap;
+        for (int i = 0; i < listMaps.Count; ++i)
+        {
+            listMaps[i].Select(listMaps[i].MapName == selectedMap);
+        }
+    }
     #endregion
 
     #region Events
@@ -163,7 +198,7 @@ public class SelectPlayerView : BaseView
             return;
 
         // Set game configuration
-        GameConfig.Instance.MapName = GameDefine.DEFAULT_SCENE;
+        GameConfig.Instance.MapName = selectedScene;
         GameConfig.Instance.GameType = selectedGameType;
         switch (selectedGameType)
         {
@@ -189,7 +224,7 @@ public class SelectPlayerView : BaseView
         InGameView.CurrentScene = GameConfig.Instance.MapName;
         ViewManager.Instance.PopTop();
         ViewManager.Instance.ChangeMain(InGameView.Path);
-        SceneManager.LoadScene(selectedScene, LoadSceneMode.Additive);
+        SceneManager.LoadScene(GameConfig.Instance.MapName, LoadSceneMode.Additive);
     }
     #endregion
 }

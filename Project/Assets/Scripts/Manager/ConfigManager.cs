@@ -7,4 +7,5 @@ public class ConfigManager : MonoBehaviourSingletonPersistent<ConfigManager>
     public ConfigHero ConfigHero;
     public ConfigTank ConfigTank;
     public ConfigAvatar ConfigAvatar;
+    public ConfigMap ConfigMap;
 }
