@@ -55,14 +55,7 @@ public class Player : MonoBehaviour
     public bool fired = false;
     public bool canMove;
     public Vector2 velo;
-    /*
-    public Transform detectorLow;
-    public Transform detectorMid;
-    public RaycastHit2D hitLow;
-    public RaycastHit2D hitMid;
-    public Vector2 detectorDirection;
-    public float obstacleDetectionRange;
-    */
+
     public float verticalVelocity;
     public float verticalJumpingVelocity;
     public float verticalDefaultVelocity;
@@ -84,6 +77,8 @@ public class Player : MonoBehaviour
     private float verticalSpeed;
     public float cachedMass;
     public Collider2D collider;
+    public Collider2D fWheelCollider;
+    public Collider2D bWheelCollider;
 
     [Header("SPECIAL ABILITIES")]
     public float forceScale = 1;
@@ -113,6 +108,8 @@ public class Player : MonoBehaviour
         this.verticalSpeed = 4f;
         this.verticalMove = false;
         this.collider = this.transform.GetComponent<Collider2D>();
+        this.fWheelCollider = this.frontWheel.GetComponent<Collider2D>();
+        this.bWheelCollider = this.backWheel.GetComponent<Collider2D>();
 
 
         GameManager.Instance.OnTurnChanged.AddListener(this.OnTurnChange);
@@ -237,14 +234,6 @@ public class Player : MonoBehaviour
         }
         else if (this.MoveLeft())
         {
-            /*
-            if (this.rigid2D.velocity.x >= 0)
-            {
-                this.rigid2D.velocity = new Vector2(-(this.movingSpeed + this.speedBuff) * Time.deltaTime, this.verticalVelocity);
-            }
-            else if (this.rigid2D.velocity.magnitude < 1)
-                this.rigid2D.velocity = new Vector2(this.rigid2D.velocity.x - (this.movingSpeed + this.speedBuff)  * Time.deltaTime, this.verticalVelocity);
-            */
             this.backwardSpeed.motorSpeed = -this.movingSpeed;
             this.backwardSpeed.maxMotorTorque = this.movingSpeed * 2;
             this.frontWheel.motor = this.backwardSpeed;
@@ -268,18 +257,24 @@ public class Player : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E)){
                 this.collider.isTrigger = true;
+                this.fWheelCollider.isTrigger = true;
+                this.bWheelCollider.isTrigger = true;
                 this.transform.localEulerAngles = Vector3.zero;
                 this.transform.Translate(new Vector3(0, this.verticalSpeed * Time.deltaTime, 0), Space.World);
             }
             else if (Input.GetKey(KeyCode.Q))
             {
                 this.collider.isTrigger = true;
+                this.fWheelCollider.isTrigger = true;
+                this.bWheelCollider.isTrigger = true;
                 this.transform.localEulerAngles = Vector3.zero;
                 this.transform.Translate(new Vector3(0, -this.verticalSpeed * Time.deltaTime, 0), Space.World);
             }
             else
             {
                 this.collider.isTrigger = false;
+                this.fWheelCollider.isTrigger = false;
+                this.bWheelCollider.isTrigger = false;
             }
         }
     }
