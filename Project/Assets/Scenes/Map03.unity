@@ -380,7 +380,6 @@ MonoBehaviour:
   movingSpeed: 10
   firePos: {fileID: 1156288352}
   heroHead: {fileID: 1671139120}
-  tank: {fileID: 1156288351}
   heroHeadAnimator: {fileID: 1671139119}
   tankAnimator: {fileID: 1156288350}
   ownTurn: 0
@@ -407,6 +406,14 @@ MonoBehaviour:
   speedBuff: 0
   frontWheel: {fileID: 0}
   backWheel: {fileID: 0}
+  verticalMove: 0
+  cachedMass: 0
+  collider: {fileID: 0}
+  fWheelCollider: {fileID: 0}
+  bWheelCollider: {fileID: 0}
+  forceScale: 1
+  buffMultiplier: 1
+  healingCheat: 0
   OnBehit:
     m_PersistentCalls:
       m_Calls: []
@@ -428,7 +435,6 @@ MonoBehaviour:
   movingSpeed: 10
   firePos: {fileID: 1156288352}
   heroHead: {fileID: 1671139120}
-  tank: {fileID: 1156288351}
   heroHeadAnimator: {fileID: 1671139119}
   tankAnimator: {fileID: 1156288350}
   ownTurn: 0
@@ -455,6 +461,14 @@ MonoBehaviour:
   speedBuff: 0
   frontWheel: {fileID: 0}
   backWheel: {fileID: 0}
+  verticalMove: 0
+  cachedMass: 0
+  collider: {fileID: 0}
+  fWheelCollider: {fileID: 0}
+  bWheelCollider: {fileID: 0}
+  forceScale: 1
+  buffMultiplier: 1
+  healingCheat: 0
   OnBehit:
     m_PersistentCalls:
       m_Calls: []
@@ -467,9 +481,12 @@ MonoBehaviour:
   ForceScaleFactor: 0.1
   ForceEpsilon: 0
   AngleEpsilon: 0
-  AimingSpeed: 20
   StartAiming: 0
+  StartAdjust: 0
   FinishedAiming: 0
+  pathFinder: {fileID: 0}
+  pathFound: 0
+  usedPathFinder: 0
 --- !u!4 &150292337
 Transform:
   m_ObjectHideFlags: 0
@@ -1032,11 +1049,6 @@ Transform:
 --- !u!95 &500878641 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5692810792599902484, guid: e06cd6e5e182ae543957f0fb4da9789e, type: 3}
-  m_PrefabInstance: {fileID: 7394733717700243573}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &500878642 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 5692810792599902485, guid: e06cd6e5e182ae543957f0fb4da9789e, type: 3}
   m_PrefabInstance: {fileID: 7394733717700243573}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &591557703 stripped
@@ -1943,11 +1955,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 7215825732374118345, guid: dd2db3a72de75d74cbfd20cacdfaa246, type: 3}
   m_PrefabInstance: {fileID: 1444851620807779596}
   m_PrefabAsset: {fileID: 0}
---- !u!61 &1034729847 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 7215825732374118346, guid: dd2db3a72de75d74cbfd20cacdfaa246, type: 3}
-  m_PrefabInstance: {fileID: 1444851620807779596}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1087704955
 GameObject:
   m_ObjectHideFlags: 0
@@ -2224,11 +2231,6 @@ Transform:
 --- !u!95 &1156288350 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 7215825732374118345, guid: dd2db3a72de75d74cbfd20cacdfaa246, type: 3}
-  m_PrefabInstance: {fileID: 1156288347}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &1156288351 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 7215825732374118346, guid: dd2db3a72de75d74cbfd20cacdfaa246, type: 3}
   m_PrefabInstance: {fileID: 1156288347}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1156288352 stripped
@@ -2733,7 +2735,7 @@ GameObject:
   - component: {fileID: 1525103541}
   - component: {fileID: 1525103540}
   - component: {fileID: 1525103539}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: colliders_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3039,7 +3041,7 @@ GameObject:
   - component: {fileID: 1630966150}
   - component: {fileID: 1630966152}
   - component: {fileID: 1630966151}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: colliders_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3365,7 +3367,7 @@ GameObject:
   - component: {fileID: 1772575756}
   - component: {fileID: 1772575758}
   - component: {fileID: 1772575757}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: colliders_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5113,7 +5115,6 @@ MonoBehaviour:
   movingSpeed: 5
   firePos: {fileID: 591557703}
   heroHead: {fileID: 1340711132}
-  tank: {fileID: 500878642}
   heroHeadAnimator: {fileID: 1340711131}
   tankAnimator: {fileID: 500878641}
   ownTurn: 0
@@ -5140,6 +5141,14 @@ MonoBehaviour:
   speedBuff: 0
   frontWheel: {fileID: 0}
   backWheel: {fileID: 0}
+  verticalMove: 0
+  cachedMass: 0
+  collider: {fileID: 0}
+  fWheelCollider: {fileID: 0}
+  bWheelCollider: {fileID: 0}
+  forceScale: 1
+  buffMultiplier: 1
+  healingCheat: 0
   OnBehit:
     m_PersistentCalls:
       m_Calls: []
@@ -5691,6 +5700,7 @@ MonoBehaviour:
   - {fileID: 1707191371537962249, guid: 85e4114d2344d4800b42b85d2a389686, type: 3}
   - {fileID: 2372205585809111788, guid: b3d4c622cfb69409e92a90a4dfab9091, type: 3}
   - {fileID: 5613889359161403239, guid: 07a835a9a5a8941e188b9370cbd12b0f, type: 3}
+  - {fileID: 2372205585809111788, guid: b3d4c622cfb69409e92a90a4dfab9091, type: 3}
   OnBuffDestroyed:
     m_PersistentCalls:
       m_Calls: []
@@ -6199,7 +6209,6 @@ MonoBehaviour:
   movingSpeed: 3
   firePos: {fileID: 627716659}
   heroHead: {fileID: 1475589341}
-  tank: {fileID: 1034729847}
   heroHeadAnimator: {fileID: 1475589340}
   tankAnimator: {fileID: 1034729846}
   ownTurn: 0
@@ -6226,6 +6235,14 @@ MonoBehaviour:
   speedBuff: 0
   frontWheel: {fileID: 0}
   backWheel: {fileID: 0}
+  verticalMove: 0
+  cachedMass: 0
+  collider: {fileID: 0}
+  fWheelCollider: {fileID: 0}
+  bWheelCollider: {fileID: 0}
+  forceScale: 1
+  buffMultiplier: 1
+  healingCheat: 0
   OnBehit:
     m_PersistentCalls:
       m_Calls: []
@@ -6238,9 +6255,12 @@ MonoBehaviour:
   ForceScaleFactor: 0.05
   ForceEpsilon: 20
   AngleEpsilon: 10
-  AimingSpeed: 20
   StartAiming: 0
+  StartAdjust: 0
   FinishedAiming: 0
+  pathFinder: {fileID: 0}
+  pathFound: 0
+  usedPathFinder: 0
 --- !u!1 &8159082088237281265
 GameObject:
   m_ObjectHideFlags: 0

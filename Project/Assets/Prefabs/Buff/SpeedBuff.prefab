@@ -226,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffData:
     buffType: 0
-    buffValue: 5
+    buffValue: 200
   buffSound: {fileID: 3626081916799811976}
 --- !u!61 &2774128275910168116
 BoxCollider2D:
