@@ -9,7 +9,8 @@ public class SelectPlayerView_AvatarItem : MonoBehaviour
     public int AvatarId => config.Id;
     
     [SerializeField] Image avatarImage;
-    [SerializeField] GameObject selected;
+    [SerializeField] GameObject selected1;
+    [SerializeField] GameObject selected2;
 
     private ConfigAvatarData config;
     private Action<int> onClick;
@@ -25,7 +26,15 @@ public class SelectPlayerView_AvatarItem : MonoBehaviour
 
     public void Select(bool value)
     {
-        selected.SetActive(value);
+        selected1.SetActive(value);
+    }
+
+    public void Select(bool value, int mode)
+    {
+        if (mode == 1)
+            Select(value);
+        else
+            selected2.SetActive(value);
     }
 
     public void OnClick() => onClick?.Invoke(AvatarId);
