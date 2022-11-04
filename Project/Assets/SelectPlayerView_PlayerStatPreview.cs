@@ -14,10 +14,12 @@ public class SelectPlayerView_PlayerStatPreview : MonoBehaviour
     [SerializeField] TMP_Text specialAbility;
 
     private ConfigAvatarData config;
+    private string forcePlayerName;
 
-    public void Init(ConfigAvatarData config)
+    public void Init(ConfigAvatarData config, string forcePlayerName = "")
     {
         this.config = config;
+        this.forcePlayerName = forcePlayerName;
 
         statBarSpeed.Init(abilityName: "Speed", 5);
         statBarPower.Init(abilityName: "Power", 5);
@@ -26,7 +28,7 @@ public class SelectPlayerView_PlayerStatPreview : MonoBehaviour
 
     public void DisplayPlayerStat()
     {
-        playerName.text = config.Name;
+        playerName.text = string.IsNullOrEmpty(forcePlayerName) ? config.Name : forcePlayerName;
         avatar.sprite = config.Sprite;
         avatar.preserveAspect = true;
 

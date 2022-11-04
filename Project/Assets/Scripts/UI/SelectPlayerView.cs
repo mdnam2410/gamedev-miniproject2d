@@ -23,6 +23,8 @@ public class SelectPlayerView : BaseView
     [Header("Player Stat Preview")]
     [SerializeField]
     SelectPlayerView_PlayerStatPreview playerStatPreview;
+    [SerializeField]
+    SelectPlayerView_PlayerStatPreview playerStatPreview2;
 
     private string selectedScene;
     private GameManager.GameType selectedGameType;
@@ -38,7 +40,6 @@ public class SelectPlayerView : BaseView
         selectedGameType = gameType;
 
         textMode.text = gameType == GameManager.GameType.vsBot ? "Mode: Vs BOT" : "Mode: Vs Player";
-        playerStatPreview.gameObject.SetActive(gameType == GameManager.GameType.vsBot);
 
         if (selectedGameType == GameManager.GameType.vsBot)
             InitModeSinglePlayer();
@@ -50,6 +51,7 @@ public class SelectPlayerView : BaseView
     public void InitModeSinglePlayer()
     {
         textDescription2.gameObject.SetActive(false);
+        playerStatPreview2.gameObject.SetActive(false);
 
         var configAvatars = ConfigManager.Instance.ConfigAvatar.Data;
         for (int i = 0; i < configAvatars.Length; ++i)
@@ -103,11 +105,11 @@ public class SelectPlayerView : BaseView
             {
                 listAvatars[i].Select(listAvatars[i].AvatarId == selectedAvatarId);
             }
-        }
 
-        var config = ConfigManager.Instance.ConfigAvatar.GetFromId(selectedAvatarId);
-        playerStatPreview.Init(config);
-        playerStatPreview.DisplayPlayerStat();
+            var config = ConfigManager.Instance.ConfigAvatar.GetFromId(selectedAvatarId);
+            playerStatPreview.Init(config);
+            playerStatPreview.DisplayPlayerStat();
+        }
     }
 
     void AvatarOnClickCallback_ModeMultiplayer(int selectedAvatar)
@@ -121,6 +123,9 @@ public class SelectPlayerView : BaseView
             {
                 listAvatars[i].Select(listAvatars[i].AvatarId == selectedAvatar, mode: 1);
             }
+            var config = ConfigManager.Instance.ConfigAvatar.GetFromId(selectedAvatar);
+            playerStatPreview.Init(config, "Player 1");
+            playerStatPreview.DisplayPlayerStat();
         }
         else
         {
@@ -129,6 +134,9 @@ public class SelectPlayerView : BaseView
             {
                 listAvatars[i].Select(listAvatars[i].AvatarId == selectedAvatar, mode: 2);
             }
+            var config = ConfigManager.Instance.ConfigAvatar.GetFromId(selectedAvatar);
+            playerStatPreview2.Init(config, "Player 2");
+            playerStatPreview2.DisplayPlayerStat();
         }
     }
 
