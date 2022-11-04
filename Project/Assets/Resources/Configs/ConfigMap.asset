@@ -15,3 +15,7 @@ MonoBehaviour:
   Data:
   - Name: Map01
     Sprite: {fileID: 0}
+  - Name: Map02
+    Sprite: {fileID: 0}
+  - Name: Map03_bot
+    Sprite: {fileID: 0}

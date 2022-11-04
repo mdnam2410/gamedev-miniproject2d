@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Map01_bot_Nghia.unity
     guid: 0a9db667c57f7cc448fd3e1b8c0bd641
+  - enabled: 1
+    path: Assets/Scenes/Map03_bot.unity
+    guid: 39f321c4fc4a0eb45b54935071bad558
   m_configObjects: {}

@@ -44,6 +44,6 @@ public class GameConfig
 
     public void PrintDebugInfo()
     {
-        Debug.Log($"[GameConfig] Game type: {GameType}, player A: {PlayerA.AvatarId}, player B: {PlayerB.AvatarId}");
+        Debug.Log($"[GameConfig] Game type: {GameType}, Map: {MapName}, player A: {PlayerA.AvatarId}, player B: {PlayerB.AvatarId}");
     }
 }
