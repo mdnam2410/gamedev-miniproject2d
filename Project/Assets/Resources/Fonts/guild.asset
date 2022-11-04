@@ -57,11 +57,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: SVN-Supercell Magic SDF
+  m_Name: guild
   m_EditorClassIdentifier: 
-  hashCode: 906953713
+  hashCode: 121297043
   material: {fileID: 6770717307974008480}
-  materialHashCode: -565475663
+  materialHashCode: -473818541
   m_Version: 1.1.0
   m_SourceFontFileGUID: 794bc3ba9c7d7c142aa7b6f6749f2f45
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 794bc3ba9c7d7c142aa7b6f6749f2f45, type: 3}
