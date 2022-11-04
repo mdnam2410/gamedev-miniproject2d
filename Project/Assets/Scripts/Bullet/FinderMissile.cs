@@ -8,10 +8,11 @@ public class FinderMissile : MonoBehaviour
     public float angle;
     public float force;
     public Rigidbody2D rigid2D;
+    public static List<string> ignoreColliders = new List<string> { "Finder", "Buff", "Stair" };
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag.Equals("Finder")) return;
-        if (collision.gameObject.tag.Equals("Buff")) return;
+        if (ignoreColliders.Contains(collision.gameObject.tag))
+            return;
         float distance = (collision.transform.position - pathFinder.target.transform.position).magnitude;
         this.pathFinder.ReceiveResultFromMissile(distance, this.angle, this.force);
         //Debug.Log("Destroy by " + collision.ToString());
@@ -21,8 +22,8 @@ public class FinderMissile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("Finder")) return;
-        if (collision.gameObject.tag.Equals("Buff")) return;
+        if (ignoreColliders.Contains(collision.gameObject.tag))
+            return;
 
         float distance = (collision.transform.position - pathFinder.target.transform.position).magnitude;
         this.pathFinder.ReceiveResultFromMissile(distance, this.angle, this.force);

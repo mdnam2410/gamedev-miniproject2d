@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     public GameManager.GameTurn ownRole;
 
     public int hp;
-    public int maxHp = 100;
+    public int maxHp;
     public float movingSpeed = 5;
 
     public Transform firePos;
@@ -85,12 +85,17 @@ public class Player : MonoBehaviour
     public float cachedMass;
     public Collider2D collider;
 
+    [Header("SPECIAL ABILITIES")]
+    public float forceScale = 1;
+    public float buffMultiplier = 1;
+    public float healingCheat = 0;
+
 
     public UnityEvent<Player, int> OnBehit = new UnityEvent<Player, int>();
 
     protected virtual void Start()
     {
-        this.hp = 100;
+        this.hp = this.maxHp;
         this.currentStatus = Status.Idle;
         this.movingState = MovingState.None;
         this.canMove = true;
@@ -361,7 +366,12 @@ public class Player : MonoBehaviour
         this.bullet.gameObject.transform.rotation = Quaternion.identity;
         this.bullet.gameObject.transform.localScale = this.bullet.cachedScale;
         this.bullet.gameObject.SetActive(true);
-        this.bullet.rbd.AddForce(this.forceVector + new Vector2(GameManager.Instance.windSpeed * GameManager.Instance.windForceScaleFactor, 0));
+
+        if (this.forceScale < 1f)
+        {
+            this.forceScale = 1f;
+        }
+        this.bullet.rbd.AddForce(this.forceVector * this.forceScale + new Vector2(GameManager.Instance.windSpeed * GameManager.Instance.windForceScaleFactor, 0));
         GameManager.Instance.SaveWindSpeed(); // for bot using
         
         //this.bullet.PlayFiringSound();
@@ -399,6 +409,7 @@ public class Player : MonoBehaviour
         if (this.ownRole == GameManager.Instance.currentTurn)
         {
             this.fired = false;
+            this.UpdateHp((int)this.healingCheat);
         }
 
         this.canMove = true;
@@ -455,23 +466,25 @@ public class Player : MonoBehaviour
 
     public void AddBuff(BuffData buff)
     {
+        if (this.buffMultiplier < 1f)
+            this.buffMultiplier = 1f;
         switch (buff.buffType)
         {
             case BuffType.Speed:
-                speedBuff += buff.buffValue;
-                this.movingSpeed += buff.buffValue;
+                speedBuff += buff.buffValue * this.buffMultiplier;
+                this.movingSpeed += buff.buffValue * this.buffMultiplier;
                 break;
 
             case BuffType.Power:
-                powerBuff += buff.buffValue;
+                powerBuff += buff.buffValue * this.buffMultiplier;
                 break;
 
             case BuffType.Shield:
-                shieldBuff += buff.buffValue;
+                shieldBuff += buff.buffValue * this.buffMultiplier;
                 break;
 
             case BuffType.Health:
-                UpdateHp((int)buff.buffValue);
+                UpdateHp((int)(buff.buffValue * this.buffMultiplier));
                 break;
         }
     }

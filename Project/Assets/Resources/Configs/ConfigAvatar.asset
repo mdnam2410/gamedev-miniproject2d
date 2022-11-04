@@ -20,7 +20,7 @@ MonoBehaviour:
     Speed: 4
     Power: 4
     Health: 4
-    SpecialAbility: HORSE
+    SpecialAbility: BUFF CHEATER
   - Id: 1
     Name: Player_F_81_12
     Prefab: {fileID: 2683243650670973104, guid: 1389c4e67f820416ca59d0ce7f25c8d3, type: 3}
@@ -28,7 +28,7 @@ MonoBehaviour:
     Speed: 2
     Power: 5
     Health: 5
-    SpecialAbility: TURTLE
+    SpecialAbility: LONGEVITY TURTLE
   - Id: 2
     Name: Player_M_00_17
     Prefab: {fileID: 5856081934966259049, guid: 63c75c3d93fda4df39a98335d11b616b, type: 3}
@@ -43,8 +43,8 @@ MonoBehaviour:
     Sprite: {fileID: 21300000, guid: 2aeebb6b9d668429c9e97f9414592268, type: 3}
     Speed: 3
     Power: 5
-    Health: 4
-    SpecialAbility: WIDE EXPLOSION RANGE
+    Health: 2
+    SpecialAbility: SELF HEALING
   - Id: 4
     Name: Player_F_07_11
     Prefab: {fileID: 2283144661588095086, guid: 607d16e709c07410ebb83f0352390753, type: 3}
@@ -52,7 +52,7 @@ MonoBehaviour:
     Speed: 3
     Power: 5
     Health: 4
-    SpecialAbility: WIDE EXPLOSION RANGE
+    SpecialAbility: HEAVY BULLET
   - Id: 5
     Name: Player_M_28_08
     Prefab: {fileID: 6296057915855409240, guid: 9dc8e7aed0ff02140bc38c58a6b29d6b, type: 3}
@@ -60,4 +60,4 @@ MonoBehaviour:
     Speed: 5
     Power: 3
     Health: 4
-    SpecialAbility: SUPER SPEED/demo
+    SpecialAbility: FLASH SPEED

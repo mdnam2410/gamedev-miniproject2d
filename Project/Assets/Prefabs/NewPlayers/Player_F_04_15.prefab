@@ -85,6 +85,11 @@ MonoBehaviour:
   speedBuff: 0
   frontWheel: {fileID: 2683984848471624078}
   backWheel: {fileID: 2151682653285146783}
+  verticalMove: 0
+  cachedMass: 0
+  collider: {fileID: 0}
+  forceScale: 1
+  buffMultiplier: 1.5
   OnBehit:
     m_PersistentCalls:
       m_Calls: []
@@ -132,6 +137,11 @@ MonoBehaviour:
   speedBuff: 0
   frontWheel: {fileID: 2683984848471624078}
   backWheel: {fileID: 2151682653285146783}
+  verticalMove: 0
+  cachedMass: 0
+  collider: {fileID: 0}
+  forceScale: 1
+  buffMultiplier: 1.5
   OnBehit:
     m_PersistentCalls:
       m_Calls: []
@@ -144,7 +154,6 @@ MonoBehaviour:
   ForceScaleFactor: 0.1
   ForceEpsilon: 0
   AngleEpsilon: 5
-  AimingSpeed: 30
   StartAiming: 0
   StartAdjust: 0
   FinishedAiming: 0
@@ -877,6 +886,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e06cd6e5e182ae543957f0fb4da9789e, type: 3}
+--- !u!4 &1400331067073900519 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5692810792752697824, guid: e06cd6e5e182ae543957f0fb4da9789e, type: 3}
+  m_PrefabInstance: {fileID: 6660283914573774343}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1400331067210573597 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5692810792599902490, guid: e06cd6e5e182ae543957f0fb4da9789e, type: 3}
@@ -885,11 +899,6 @@ Transform:
 --- !u!95 &1400331067210573587 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5692810792599902484, guid: e06cd6e5e182ae543957f0fb4da9789e, type: 3}
-  m_PrefabInstance: {fileID: 6660283914573774343}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1400331067073900519 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5692810792752697824, guid: e06cd6e5e182ae543957f0fb4da9789e, type: 3}
   m_PrefabInstance: {fileID: 6660283914573774343}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8231793912076516207
