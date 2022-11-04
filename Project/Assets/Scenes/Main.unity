@@ -607,6 +607,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5385770707947122973, guid: 4f01bee6b9c44f6429b98f474d916a11, type: 3}
+      propertyPath: scene1
+      value: Map02_bot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5385770707947122973, guid: 4f01bee6b9c44f6429b98f474d916a11, type: 3}
+      propertyPath: scene2
+      value: Map02_bot
+      objectReference: {fileID: 0}
     - target: {fileID: 5385770707947122975, guid: 4f01bee6b9c44f6429b98f474d916a11, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25

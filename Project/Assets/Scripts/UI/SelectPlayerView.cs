@@ -207,7 +207,9 @@ public class SelectPlayerView : BaseView
                 GameConfig.Instance.PlayerA.AvatarId = selectedAvatar_playerA;
 
                 GameConfig.Instance.PlayerB.Role = GameManager.GameTurn.Bot;
-                GameConfig.Instance.PlayerB.AvatarId = GameDefine.BOT_AVATAR_ID;
+                //GameConfig.Instance.PlayerB.AvatarId = GameDefine.BOT_AVATAR_ID;
+                // 6 is a dangerous number
+                GameConfig.Instance.PlayerB.AvatarId = UnityEngine.Random.Range(0, 6);
                 break;
 
             case GameManager.GameType.vsPlayer:
