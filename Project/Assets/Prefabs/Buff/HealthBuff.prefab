@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffData:
     buffType: 1
-    buffValue: 30
+    buffValue: 20
 --- !u!61 &-5078843744763677723
 BoxCollider2D:
   m_ObjectHideFlags: 0

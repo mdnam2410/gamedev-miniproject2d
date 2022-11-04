@@ -477,7 +477,7 @@ public class Player : MonoBehaviour
                 break;
 
             case BuffType.Power:
-                powerBuff += buff.buffValue;
+                powerBuff += (buff.buffValue * this.bullet.damage);
                 break;
 
             case BuffType.Shield:
